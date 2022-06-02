@@ -1,10 +1,6 @@
-//import { createGlobalStyle } from "styled-components";
-
 import GlobalStyles from "./GlobalStyles";
 import { default as ThemeProvider } from "./ThemeProvider";
 import theme from "./theme";
-//import variables from "./variables";
+import Variables from "./variables";
 
-//const VariablesGlobalStyles = createGlobalStyle(variables);
-
-export { theme, GlobalStyles, ThemeProvider /* VariablesGlobalStyles */ };
+export { theme, GlobalStyles, ThemeProvider, Variables };

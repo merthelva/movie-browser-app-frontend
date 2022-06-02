@@ -1,6 +1,6 @@
-import { css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-export default css`
+const Variables = createGlobalStyle`
   :root {
     /* Font Weights */
     --fw-thin: 300;
@@ -10,3 +10,5 @@ export default css`
     --fw-bolder: 700;
   }
 `;
+
+export default Variables;
