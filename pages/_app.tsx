@@ -1,17 +1,22 @@
-import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
+//import { Provider } from "react-redux";
 
-import { store } from "../store";
+//import { store } from "../store";
+import { MainLayout } from "../layouts";
+import { AppPropsWithLayout } from "./app.types";
 import { GlobalStyles, ThemeProvider } from "../globals";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout =
+    Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>);
+
   return (
-    <Provider store={store}>
+    <>
+      {/* <Provider store={store}> */}
       <GlobalStyles />
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </Provider>
+      <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+      {/* </Provider> */}
+    </>
   );
 }
 
