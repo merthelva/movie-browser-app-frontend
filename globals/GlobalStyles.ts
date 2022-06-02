@@ -12,7 +12,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    //font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
   }
 
   p, h1, h2, h3, h4, h5, h6 {
