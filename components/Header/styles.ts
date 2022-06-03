@@ -6,7 +6,9 @@ export const Header = styled.header`
   left: 0;
   right: 0;
   height: 60px;
+  padding: 0 var(--spacing-8x);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.dark};
 `;
