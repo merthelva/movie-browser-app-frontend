@@ -1,7 +1,8 @@
-import { IconSize } from "lib/constants";
+import { Colors, IconSize } from "lib/constants";
 
 export interface IIconProps {
   name: string;
+  color?: Colors;
   format?: IconSize;
   isSpinning?: boolean;
   size?: number;

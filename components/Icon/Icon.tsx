@@ -7,6 +7,7 @@ import { IconSize } from "lib/constants";
 
 const Icon: React.FC<IIconProps> = ({
   name,
+  color,
   format = IconSize.LARGE,
   isSpinning = false,
   ...props
@@ -16,7 +17,7 @@ const Icon: React.FC<IIconProps> = ({
 
   return (
     <S.Wrapper {...wrapperProps}>
-      <S.Svg viewBox={icons[name].viewBox} {...iconProps}>
+      <S.Svg color={color} viewBox={icons[name].viewBox} {...iconProps}>
         <S.Path d={icons[name].path} />
       </S.Svg>
     </S.Wrapper>
