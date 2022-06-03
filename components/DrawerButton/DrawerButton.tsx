@@ -1,9 +1,13 @@
 import * as S from "./styles";
 
+import Icon from "../Icon";
+
+import { Colors, SvgIcon } from "lib/constants";
+
 const DrawerButton: React.FC = () => {
   return (
     <S.Wrapper>
-      <S.Bar />
+      <Icon name={SvgIcon.BARS} color={Colors.LIGHT} />
     </S.Wrapper>
   );
 };
