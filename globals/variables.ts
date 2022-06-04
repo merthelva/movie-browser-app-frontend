@@ -18,6 +18,8 @@ const Variables = createGlobalStyle`
     --spacing-16x: calc(var(--spacing-1x) * 16);
     --spacing-24x: calc(var(--spacing-1x) * 24);
     --spacing-32x: calc(var(--spacing-1x) * 32);
+
+    --shadow: 0 8px 16px;
   }
 `;
 
