@@ -7,7 +7,7 @@ import { Colors, SvgIcon } from "lib/constants";
 const DrawerButton: React.FC = () => {
   return (
     <S.Wrapper>
-      <Icon name={SvgIcon.BARS} color={Colors.LIGHT} />
+      <Icon name={SvgIcon.BARS} color={Colors.DARK} />
     </S.Wrapper>
   );
 };
