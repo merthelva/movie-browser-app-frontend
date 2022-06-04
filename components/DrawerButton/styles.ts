@@ -1,3 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.button``;
+import { Breakpoints } from "lib/constants";
+
+export const Wrapper = styled.button`
+  @media (min-width: ${Breakpoints.LAPTOP.MIN}px) {
+    display: none;
+  }
+`;
