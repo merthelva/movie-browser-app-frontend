@@ -17,7 +17,17 @@ const initialState: IInitialState = {
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    goToNextPage(state) {
+      // TODO: Add a limitation for the upper limit of page number that can be visited. In API response, there is a field called "total_pages". Make use of it!
+      state.page++;
+    },
+    goToPrevPage(state) {
+      if (state.page > 1) {
+        state.page--;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(MoviesActions.fetchMoviesPerPageRequest, (state, action) => {
@@ -40,5 +50,5 @@ const moviesSlice = createSlice({
   },
 });
 
-//export {} = moviesSlice.actions
+export const { goToNextPage, goToPrevPage } = moviesSlice.actions;
 export default moviesSlice.reducer;

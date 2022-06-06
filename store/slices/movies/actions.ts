@@ -1,5 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
+import { goToNextPage, goToPrevPage } from "./moviesSlice";
+
 export const fetchMoviesPerPageRequest = createAction(
   "movies/fetchMoviesPerPageRequest",
   function prepare(data = 1) {
@@ -33,3 +35,5 @@ export const fetchMoviesPerPageFailed = createAction(
     };
   }
 );
+
+export { goToNextPage, goToPrevPage };
