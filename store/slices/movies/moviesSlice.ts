@@ -29,7 +29,7 @@ const moviesSlice = createSlice({
       })
       .addCase(MoviesActions.fetchMoviesPerPageSuccess, (state, action) => {
         state.status = Status.LOADED;
-        state.moviesPerPage = action.payload;
+        state.moviesPerPage = action.payload.movies;
       })
       .addCase(MoviesActions.fetchMoviesPerPageFailed, (state, action) => {
         state.status = Status.FAILED;

@@ -13,9 +13,11 @@ export const fetchMoviesPerPageRequest = createAction(
 
 export const fetchMoviesPerPageSuccess = createAction(
   "movies/fetchMoviesPerPageSuccess",
-  function prepare(data) {
+  function prepare({ results }) {
     return {
-      payload: data,
+      payload: {
+        movies: results,
+      },
     };
   }
 );
