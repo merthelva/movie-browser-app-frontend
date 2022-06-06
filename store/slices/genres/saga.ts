@@ -11,7 +11,7 @@ function* fetchGenresStarterSaga() {
   });
 
   if (response.status === 200) {
-    yield put(GenresActions.fetchGenresSuccess(response.data));
+    yield put(GenresActions.fetchGenresSuccess(response.data.genres));
   } else {
     yield put(GenresActions.fetchGenresFailed(response));
   }
