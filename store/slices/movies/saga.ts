@@ -1,12 +1,13 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
-import { MoviesActions, IResponse, IFetchMoviesRequestAction } from ".";
+import { MoviesActions, IFetchMoviesRequestAction } from ".";
 
+import { IResponse } from "interface";
 import { handleRequest } from "services";
 
 function* fetchMoviesStarterSaga(action: IFetchMoviesRequestAction) {
   const response: IResponse = yield call(handleRequest, {
-    url: "/3/movie/popular",
+    url: "/movie/popular",
     params: {
       page: action.payload.page,
     },

@@ -1,15 +1,5 @@
 import { Status } from "lib/constants";
 
-export interface IResponse {
-  config?: any;
-  data?: any;
-  headers?: any;
-  request?: any;
-  status?: number;
-  statusText?: string;
-  message?: string;
-}
-
 export interface IInitialState {
   moviesPerPage: any;
   status: Status;
