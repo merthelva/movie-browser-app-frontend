@@ -7,7 +7,7 @@ import Text from "../Text";
 const MovieRate: React.FC<IMovieRate> = ({ rate }) => {
   return (
     <S.Wrapper>
-      <Text>{rate}</Text>
+      <Text>{rate.toFixed(1)}</Text>
     </S.Wrapper>
   );
 };
