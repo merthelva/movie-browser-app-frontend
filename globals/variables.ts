@@ -13,6 +13,7 @@ const Variables = createGlobalStyle`
     --spacing-1x: 2px;
     --spacing-2x: calc(var(--spacing-1x) * 2);
     --spacing-4x: calc(var(--spacing-1x) * 4);
+    --spacing-6x: calc(var(--spacing-1x) * 6);
     --spacing-8x: calc(var(--spacing-1x) * 8);
     --spacing-12x: calc(var(--spacing-1x) * 12);
     --spacing-16x: calc(var(--spacing-1x) * 16);
