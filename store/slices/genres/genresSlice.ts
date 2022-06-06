@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { GenresActions, IInitialState } from ".";
 import { Status } from "lib/constants";
+import { GenresActions, IInitialState } from ".";
+import { normalizeEntities } from "lib/utilities";
 
 const initialState: IInitialState = {
   genres: [],
@@ -25,7 +26,7 @@ const genresSlice = createSlice({
       })
       .addCase(GenresActions.fetchGenresSuccess, (state, action) => {
         state.status = Status.LOADED;
-        state.genres = action.payload.genres;
+        state.genres = normalizeEntities(action.payload.genres);
       })
       .addCase(GenresActions.fetchGenresFailed, (state, action) => {
         state.status = Status.FAILED;
