@@ -1,8 +1,10 @@
 import { combineReducers, PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 
+import { moviesReducer } from "./slices";
+
 const combinedReducer = combineReducers({
-  //movies: moviesReducer,
+  movies: moviesReducer,
 });
 
 const rootReducer = (state: any, action: PayloadAction<any>) => {
