@@ -7,7 +7,12 @@ import { IMovieCard } from "./props.interface";
 import MovieRate from "../MovieRate";
 import Text from "../Text";
 
-const MovieCard: React.FC<IMovieCard> = ({ coverImageSrc, title, rate }) => {
+const MovieCard: React.FC<IMovieCard> = ({
+  coverImageSrc,
+  genres,
+  title,
+  rate,
+}) => {
   return (
     <Link href="/">
       <S.Wrapper>
@@ -21,7 +26,7 @@ const MovieCard: React.FC<IMovieCard> = ({ coverImageSrc, title, rate }) => {
         <S.DetailsWrapper>
           <S.TextWrapper>
             <Text>{title}</Text>
-            <Text>Fantasy, Adventure, Action</Text>
+            <Text>{genres.join(", ")}</Text>
           </S.TextWrapper>
           <MovieRate rate={rate} />
         </S.DetailsWrapper>
