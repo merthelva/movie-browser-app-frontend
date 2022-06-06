@@ -2,16 +2,16 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
-import * as RateStyles from "../MovieRate/styles";
 
 export const Wrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 640px;
+  min-height: 620px;
   box-shadow: var(--shadow) ${({ theme }) => theme.colors.shadow};
   background-color: ${({ theme }) => theme.colors.dark};
+  cursor: pointer;
 
   & > span {
     height: 500px !important;
@@ -25,13 +25,9 @@ export const Poster = styled(Image)`
 export const DetailsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 140px;
+  align-items: flex-start;
+  min-height: 120px;
   padding: var(--spacing-8x);
-
-  ${RateStyles.Wrapper} {
-    align-self: flex-start;
-  }
 `;
 
 export const TextWrapper = styled.div`
