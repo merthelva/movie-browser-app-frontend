@@ -10,11 +10,12 @@ import Text from "../Text";
 const MovieCard: React.FC<IMovieCard> = ({
   coverImageSrc,
   genres,
+  id,
   title,
   rate,
 }) => {
   return (
-    <Link href="/">
+    <Link href={`/movies/${id}`}>
       <S.Wrapper>
         <S.Poster
           alt={title}
