@@ -27,7 +27,7 @@ const store = makeStore();
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore, { debug: false });
 
 export const customGetStaticProps = (callback: any) =>
   wrapper.getStaticProps((store) => async (context) => {
