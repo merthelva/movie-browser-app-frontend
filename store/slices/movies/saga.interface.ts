@@ -11,7 +11,7 @@ export interface IResponse {
 }
 
 export interface IInitialState {
-  list: any;
+  moviesPerPage: any;
   status: Status;
   error: {
     message: string | null; // TODO: We may create an object map which overrides default error messages for each error status code

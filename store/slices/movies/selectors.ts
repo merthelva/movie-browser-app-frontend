@@ -2,9 +2,9 @@ import { createSelector } from "@reduxjs/toolkit";
 
 const selectMovies = (state: any) => state.movies;
 
-export const makeSelectMoviesList = createSelector(
+export const makeSelectMoviesPerPage = createSelector(
   selectMovies,
-  ({ list }) => list
+  ({ moviesPerPage }) => moviesPerPage
 );
 
 export const makeSelectMoviesStatus = createSelector(

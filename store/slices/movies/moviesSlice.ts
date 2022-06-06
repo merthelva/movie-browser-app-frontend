@@ -5,7 +5,7 @@ import { MoviesActions, IInitialState } from ".";
 import { Status } from "lib/constants";
 
 const initialState: IInitialState = {
-  list: [],
+  moviesPerPage: [],
   status: Status.INIT,
   page: 1,
   error: {
@@ -22,18 +22,18 @@ const moviesSlice = createSlice({
     builder
       .addCase(MoviesActions.fetchMoviesPerPageRequest, (state, action) => {
         state.status = Status.LOADING;
-        state.list = [];
+        state.moviesPerPage = [];
         state.error.message = null;
         state.error.statusCode = null;
         state.page = action.payload.page;
       })
       .addCase(MoviesActions.fetchMoviesPerPageSuccess, (state, action) => {
         state.status = Status.LOADED;
-        state.list = action.payload;
+        state.moviesPerPage = action.payload;
       })
       .addCase(MoviesActions.fetchMoviesPerPageFailed, (state, action) => {
         state.status = Status.FAILED;
-        state.list = [];
+        state.moviesPerPage = [];
         state.error.message = action.payload.message;
         state.error.statusCode = action.payload.statusCode;
       });
