@@ -37,6 +37,10 @@ export const TextWrapper = styled.div`
   gap: 0.5rem;
   margin-right: var(--spacing-8x);
 
+  & > * {
+    text-align: left;
+  }
+
   ${TextStyles.Text}:first-child {
     font-weight: var(--fw-bold);
   }
