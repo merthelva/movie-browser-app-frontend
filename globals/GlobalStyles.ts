@@ -26,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     outline: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   img {
