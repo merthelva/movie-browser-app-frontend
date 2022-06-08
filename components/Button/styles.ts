@@ -5,23 +5,27 @@ import { IWrapperProps } from "./props.interface";
 import { ButtonSize, ButtonType } from "lib/constants";
 
 const noSpaceStyle = css`
-  padding: var(--spacing-4x) 0;
+  padding: 0;
+  height: min-content;
 `;
 
 const smallStyle = css`
-  padding: var(--spacing-4x) var(--spacing-8x);
+  height: 32px;
+  padding: 0 var(--spacing-8x);
 `;
 
 const mediumStyle = css`
-  padding: var(--spacing-6x) var(--spacing-12x);
+  height: 40px;
+  padding: 0 var(--spacing-12x);
 `;
 
 const largeStyle = css`
-  padding: var(--spacing-8x) var(--spacing-16x);
+  height: 48px;
+  padding: 0 var(--spacing-16x);
 `;
 
 const blockStyle = css`
-  padding: var(--spacing-12x) 0;
+  height: 64px;
   display: block;
   width: 100%;
 `;
