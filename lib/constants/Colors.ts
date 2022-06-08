@@ -5,6 +5,7 @@ enum Colors {
   LIGHT = "#EEEEEE",
   WHITE = "#FFFFFF",
   SHADOW = "#38393829",
+  GRAY500 = "#53bac2",
 }
 
 export default Colors;

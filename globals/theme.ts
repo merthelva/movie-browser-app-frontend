@@ -8,6 +8,7 @@ const theme: DefaultTheme = {
     light: "#EEEEEE",
     white: "#FFFFFF",
     shadow: "#38393829",
+    gray500: "#53bac2",
   },
 };
 
