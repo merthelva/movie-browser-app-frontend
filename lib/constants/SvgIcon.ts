@@ -5,6 +5,10 @@ const SvgIcon = {
   BARS: "bars",
   ANGLE_RIGHT: "angleRight",
   ANGLE_LEFT: "angleLeft",
+  BOOKMARK: "bookmark",
+  MONEY: "money",
+  HISTORY: "history",
+  CLOCK: "clock",
 };
 
 export default SvgIcon;
