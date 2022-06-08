@@ -28,6 +28,8 @@ const Index: NextPage = () => {
   const isLoading =
     moviesStatus === Status.LOADING || genresStatus === Status.LOADING;
 
+  // TODO: while movies are not loaded yet, <Paginate /> component is still being displayed!
+
   return isLoading ? (
     <Spinner />
   ) : (
