@@ -8,6 +8,7 @@ import { Colors, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
 import Text from "../Text";
+import NavLink from "../NavLink";
 import DrawerButton from "../DrawerButton";
 
 const Header: React.FC<IProps> = ({ onToggle }) => {
@@ -20,6 +21,17 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
         </S.LogoWrapper>
       </Link>
       <DrawerButton onToggle={onToggle} />
+      <S.NavLinksWrapper>
+        <NavLink
+          prefixIcon={{
+            color: Colors.SECONDARY,
+            name: SvgIcon.MOVIE,
+            size: 20,
+          }}
+          text="Movies"
+          to="/"
+        />
+      </S.NavLinksWrapper>
     </S.Header>
   );
 };

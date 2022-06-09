@@ -26,7 +26,7 @@ export const LogoWrapper = styled.div`
     display: none;
   }
 
-  @media (min-width: ${Breakpoints.LAPTOP.MIN}px) {
+  @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     ${TextStyles.Text} {
       display: inline-block;
       margin-left: var(--spacing-4x);
@@ -35,5 +35,14 @@ export const LogoWrapper = styled.div`
       font-weight: var(--fw-bolder);
       color: ${({ theme }) => theme.colors.primary};
     }
+  }
+`;
+
+export const NavLinksWrapper = styled.div`
+  display: none;
+
+  @media (min-width: ${Breakpoints.TABLET.MIN}px) {
+    display: flex;
+    align-items: center;
   }
 `;
