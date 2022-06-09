@@ -4,7 +4,7 @@ enum Colors {
   DARK = "#181818",
   LIGHT = "#EEEEEE",
   WHITE = "#FFFFFF",
-  SHADOW = "#38393829",
+  SHADOW = "#D8F0EE",
   GRAY500 = "#53BAC2",
   ERROR = "#CC4343",
   WARNING = "#E3DB3D",
