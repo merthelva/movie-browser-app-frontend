@@ -4,11 +4,15 @@ import Icon from "../Icon";
 
 import { IProps } from "./props.interface";
 
-import { Colors, SvgIcon } from "lib/constants";
+import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 const DrawerButton: React.FC<IProps> = ({ onToggle }) => {
   return (
-    <S.Wrapper onClick={onToggle}>
+    <S.Wrapper
+      kind={ButtonType.GHOST}
+      onClick={onToggle}
+      size={ButtonSize.NOSPACE}
+    >
       <Icon name={SvgIcon.BARS} color={Colors.DARK} />
     </S.Wrapper>
   );
