@@ -11,7 +11,7 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   return (
     <>
       <Backdrop isOpen={isToggled} onDismiss={handleToggle} />
-      <Drawer isOpen={isToggled} />
+      <Drawer isOpen={isToggled} onToggle={handleToggle} />
       <S.Wrapper>
         <Header onToggle={handleToggle} />
         <S.Main>{children}</S.Main>
