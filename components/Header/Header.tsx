@@ -4,10 +4,11 @@ import * as S from "./styles";
 
 import { IProps } from "./props.interface";
 
-import { Colors, SvgIcon } from "lib/constants";
+import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
 import Text from "../Text";
+import Button from "../Button";
 import NavLink from "../NavLink";
 import DrawerButton from "../DrawerButton";
 
@@ -31,6 +32,14 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
           text="Movies"
           to="/"
         />
+        <Button
+          kind={ButtonType.PRIMARY}
+          size={ButtonSize.SMALL}
+          onClick={() => {}}
+        >
+          <Icon name={SvgIcon.AUTHENTICATE} color={Colors.LIGHT} size={16} />
+          <Text>LOGIN</Text>
+        </Button>
       </S.NavLinksWrapper>
     </S.Header>
   );

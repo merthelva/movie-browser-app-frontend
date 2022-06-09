@@ -44,5 +44,9 @@ export const NavLinksWrapper = styled.div`
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     display: flex;
     align-items: center;
+
+    & > * {
+      margin: 0 var(--spacing-4x);
+    }
   }
 `;

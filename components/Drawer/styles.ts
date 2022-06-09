@@ -25,6 +25,11 @@ export const Wrapper = styled.div<IWrapperProps>`
     margin-bottom: var(--spacing-24x);
   }
 
+  ${ButtonStyles.Wrapper}:last-of-type {
+    margin-top: var(--spacing-8x);
+    width: 100%;
+  }
+
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     display: none;
   }

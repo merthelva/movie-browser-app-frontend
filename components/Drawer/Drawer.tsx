@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { IProps } from "./props.interface";
 
 import Icon from "../Icon";
+import Text from "../Text";
 import Button from "../Button";
 import NavLink from "../NavLink";
 
@@ -28,6 +29,14 @@ const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
         text="Movies"
         to="/"
       />
+      <Button
+        kind={ButtonType.PRIMARY}
+        size={ButtonSize.SMALL}
+        onClick={() => {}}
+      >
+        <Icon name={SvgIcon.AUTHENTICATE} color={Colors.LIGHT} size={16} />
+        <Text>LOGIN</Text>
+      </Button>
     </S.Wrapper>
   );
 };
