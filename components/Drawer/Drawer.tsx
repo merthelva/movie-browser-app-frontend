@@ -41,7 +41,7 @@ const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
         onClick={handleNavigateToAuthPage}
       >
         <Icon name={SvgIcon.AUTHENTICATE} color={Colors.LIGHT} size={16} />
-        <Text>LOGIN</Text>
+        <Text>SIGNUP</Text>
       </Button>
     </S.Wrapper>
   );

@@ -43,7 +43,7 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
           onClick={handleNavigateToAuthPage}
         >
           <Icon name={SvgIcon.AUTHENTICATE} color={Colors.LIGHT} size={16} />
-          <Text>LOGIN</Text>
+          <Text>SIGNUP</Text>
         </Button>
       </S.NavLinksWrapper>
     </S.Header>
