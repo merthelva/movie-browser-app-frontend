@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ZIndices } from "lib/constants";
+import { Breakpoints, ZIndices } from "lib/constants";
 
 import { IWrapperProps } from "./props.interface";
 
@@ -20,8 +20,12 @@ export const Wrapper = styled.div<IWrapperProps>`
   width: 70%;
   background-color: ${({ theme }) => theme.colors.light};
 
-  ${ButtonStyles.Wrapper} {
+  ${ButtonStyles.Wrapper}:first-of-type {
     align-self: flex-end;
     margin-bottom: var(--spacing-24x);
+  }
+
+  @media (min-width: ${Breakpoints.TABLET.MIN}px) {
+    display: none;
   }
 `;
