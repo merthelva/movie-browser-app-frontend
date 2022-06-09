@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 import * as S from "./styles";
@@ -13,6 +14,10 @@ import NavLink from "../NavLink";
 import DrawerButton from "../DrawerButton";
 
 const Header: React.FC<IProps> = ({ onToggle }) => {
+  const router = useRouter();
+
+  const handleNavigateToAuthPage = () => router.push("/auth");
+
   return (
     <S.Header>
       <Link href="">
@@ -35,7 +40,7 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
         <Button
           kind={ButtonType.PRIMARY}
           size={ButtonSize.SMALL}
-          onClick={() => {}}
+          onClick={handleNavigateToAuthPage}
         >
           <Icon name={SvgIcon.AUTHENTICATE} color={Colors.LIGHT} size={16} />
           <Text>LOGIN</Text>
