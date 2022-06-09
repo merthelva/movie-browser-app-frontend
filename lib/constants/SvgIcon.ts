@@ -9,6 +9,7 @@ const SvgIcon = {
   MONEY: "money",
   HISTORY: "history",
   CLOCK: "clock",
+  CANCEL: "cancel",
 };
 
 export default SvgIcon;
