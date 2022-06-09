@@ -11,6 +11,7 @@ const SvgIcon = {
   CLOCK: "clock",
   CANCEL: "cancel",
   MOVIE: "movie",
+  AUTHENTICATE: "authenticate",
 };
 
 export default SvgIcon;
