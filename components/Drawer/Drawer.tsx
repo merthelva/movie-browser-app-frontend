@@ -1,7 +1,9 @@
 import * as S from "./styles";
 
-const Drawer: React.FC = () => {
-  return <S.Wrapper></S.Wrapper>;
+import { IProps } from "./props.interface";
+
+const Drawer: React.FC<IProps> = ({ isOpen }) => {
+  return <S.Wrapper isOpen={isOpen}></S.Wrapper>;
 };
 
 export default Drawer;

@@ -2,13 +2,15 @@ import Link from "next/link";
 
 import * as S from "./styles";
 
+import { IProps } from "./props.interface";
+
 import { Colors, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
 import Text from "../Text";
 import DrawerButton from "../DrawerButton";
 
-const Header: React.FC = () => {
+const Header: React.FC<IProps> = ({ onToggle }) => {
   return (
     <S.Header>
       <Link href="">
@@ -17,7 +19,7 @@ const Header: React.FC = () => {
           <Text>MovieBrowser</Text>
         </S.LogoWrapper>
       </Link>
-      <DrawerButton />
+      <DrawerButton onToggle={onToggle} />
     </S.Header>
   );
 };
