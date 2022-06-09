@@ -7,6 +7,7 @@ export interface IWrapperProps {
 
 export interface IButtonProps {
   children: React.ReactNode;
+  className?: any;
   disabled?: boolean;
   kind: ButtonType;
   onClick: VoidFunction;
