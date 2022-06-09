@@ -15,7 +15,7 @@ const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
         size={ButtonSize.NOSPACE}
         onClick={onToggle}
       >
-        <Icon name={SvgIcon.CANCEL} color={Colors.SECONDARY} />{" "}
+        <Icon name={SvgIcon.CANCEL} color={Colors.SECONDARY} />
       </Button>
     </S.Wrapper>
   );
