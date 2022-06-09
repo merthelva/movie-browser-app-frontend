@@ -7,10 +7,10 @@ import { IProps } from "./props.interface";
 import Icon from "../Icon";
 import Text from "../Text";
 
-const NavLink: React.FC<IProps> = ({ prefixIcon, text, to }) => {
+const NavLink: React.FC<IProps> = ({ onCloseDrawer, prefixIcon, text, to }) => {
   return (
     <Link href={to}>
-      <S.Wrapper>
+      <S.Wrapper onClick={onCloseDrawer}>
         {prefixIcon && (
           <Icon
             name={prefixIcon.name}

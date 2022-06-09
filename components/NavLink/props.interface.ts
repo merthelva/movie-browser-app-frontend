@@ -1,6 +1,7 @@
 import { Colors } from "lib/constants";
 
 export interface IProps {
+  onCloseDrawer?: VoidFunction;
   prefixIcon?: {
     name: string;
     color: Colors;

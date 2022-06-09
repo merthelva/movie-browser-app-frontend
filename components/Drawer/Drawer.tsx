@@ -19,6 +19,7 @@ const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
         <Icon name={SvgIcon.CANCEL} color={Colors.SECONDARY} />
       </Button>
       <NavLink
+        onCloseDrawer={onToggle}
         prefixIcon={{
           color: Colors.SECONDARY,
           name: SvgIcon.MOVIE,
