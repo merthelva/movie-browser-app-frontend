@@ -12,6 +12,7 @@ const SvgIcon = {
   CANCEL: "cancel",
   MOVIE: "movie",
   AUTHENTICATE: "authenticate",
+  ERROR: "error",
 };
 
 export default SvgIcon;
