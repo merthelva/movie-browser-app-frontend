@@ -6,9 +6,10 @@ import { IProps } from "./props.interface";
 
 import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
-const DrawerButton: React.FC<IProps> = ({ onToggle }) => {
+const DrawerButton: React.FC<IProps> = ({ className, onToggle }) => {
   return (
     <S.Wrapper
+      className={className}
       kind={ButtonType.GHOST}
       onClick={onToggle}
       size={ButtonSize.NOSPACE}
