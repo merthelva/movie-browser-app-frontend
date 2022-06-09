@@ -10,6 +10,7 @@ const SvgIcon = {
   HISTORY: "history",
   CLOCK: "clock",
   CANCEL: "cancel",
+  MOVIE: "movie",
 };
 
 export default SvgIcon;
