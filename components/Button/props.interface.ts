@@ -10,6 +10,6 @@ export interface IButtonProps {
   className?: any;
   disabled?: boolean;
   kind: ButtonType;
-  onClick: VoidFunction;
+  onClick: (e: React.FormEvent) => void;
   size: ButtonSize;
 }
