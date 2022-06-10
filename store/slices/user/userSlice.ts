@@ -4,41 +4,46 @@ import { UserActions, IInitialState } from ".";
 
 import { Status } from "lib/constants";
 
+// TODO: For consistency, "email" and "password" fields may be kept in the state as well
 const initialState: IInitialState = {
   userId: null,
   token: null,
   watchList: [],
   status: Status.INIT,
-  error: {
-    message: null,
-    statusCode: null,
-  },
+  error: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
-  /* extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder
-      .addCase(MoviesActions.fetchMoviesPerPageRequest, (state, action) => {
+      .addCase(UserActions.loginRequest, (state) => {
         state.status = Status.LOADING;
-        state.moviesPerPage = [];
-        state.error.message = null;
-        state.error.statusCode = null;
-        state.page = action.payload.page;
+        state.error = null;
       })
-      .addCase(MoviesActions.fetchMoviesPerPageSuccess, (state, action) => {
+      .addCase(UserActions.loginSuccess, (state, action) => {
         state.status = Status.LOADED;
-        state.moviesPerPage = action.payload.movies;
+        state.token = action.payload.token;
       })
-      .addCase(MoviesActions.fetchMoviesPerPageFailed, (state, action) => {
+      .addCase(UserActions.loginFailed, (state, action) => {
         state.status = Status.FAILED;
-        state.moviesPerPage = [];
-        state.error.message = action.payload.message;
-        state.error.statusCode = action.payload.statusCode;
+        state.error = action.payload.error;
+      })
+      .addCase(UserActions.signupRequest, (state) => {
+        state.status = Status.LOADING;
+        state.error = null;
+      })
+      .addCase(UserActions.signupSuccess, (state, action) => {
+        state.status = Status.LOADED;
+        state.userId = action.payload.userId;
+      })
+      .addCase(UserActions.signupFailed, (state, action) => {
+        state.status = Status.FAILED;
+        state.error = action.payload.error;
       });
-  }, */
+  },
 });
 
 //export const { goToNextPage, goToPrevPage } = userSlice.actions;
