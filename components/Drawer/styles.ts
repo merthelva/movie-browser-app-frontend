@@ -30,6 +30,10 @@ export const Wrapper = styled.div<IWrapperProps>`
     width: 100%;
   }
 
+  @media (min-width: ${Breakpoints.MOBILE.MAX}px) {
+    width: 45%;
+  }
+
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     display: none;
   }
