@@ -1,3 +1,5 @@
+import { Database } from "lib/constants";
+
 export interface IAxiosResponse {
   config?: any;
   data?: any;
@@ -8,8 +10,16 @@ export interface IAxiosResponse {
   error?: any;
 }
 
+export interface IMongoDbAxiosConfig {
+  url: string;
+  method?: string;
+  headers?: any;
+  params?: any;
+}
+
 export interface IRequestConfig {
-  url?: string;
+  dbName?: Database;
+  url: string;
   method?: string;
   params?: any;
   headers?: any;

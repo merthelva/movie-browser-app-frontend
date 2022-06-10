@@ -1,9 +1,26 @@
-import handleCreateAxiosInstance from "./axiosInstance";
+import {
+  createMongoDbAxiosInstance,
+  createTMDBAxiosInstance,
+} from "./axiosInstance";
 
 import { IRequestConfig, IAxiosResponse } from "./instance.interface";
 
-const handleRequest = async ({ url, method, ...rest }: IRequestConfig = {}) => {
-  const instance = await handleCreateAxiosInstance();
+import { Database } from "lib/constants";
+
+const handleRequest = async ({
+  url,
+  method,
+  dbName = Database.TMBD,
+  ...rest
+}: IRequestConfig) => {
+  let instance = await createTMDBAxiosInstance();
+  if (dbName === Database.MONGODB) {
+    instance = await createMongoDbAxiosInstance({
+      url,
+      method,
+      ...rest,
+    });
+  }
 
   try {
     const response: IAxiosResponse = await instance({
