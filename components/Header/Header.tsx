@@ -16,7 +16,8 @@ import DrawerButton from "../DrawerButton";
 const Header: React.FC<IProps> = ({ onToggle }) => {
   const router = useRouter();
 
-  const handleNavigateToAuthPage = () => router.push("/auth");
+  const handleNavigateToAuthPage = () =>
+    router.replace("/auth", "/auth/signup");
 
   return (
     <S.Header>

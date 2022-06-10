@@ -14,7 +14,8 @@ import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
   const router = useRouter();
 
-  const handleNavigateToAuthPage = () => router.push("/auth");
+  const handleNavigateToAuthPage = () =>
+    router.replace("/auth", "/auth/signup");
 
   return (
     <S.Wrapper isOpen={isOpen}>
