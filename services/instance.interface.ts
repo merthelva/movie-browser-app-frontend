@@ -23,4 +23,5 @@ export interface IRequestConfig {
   method?: string;
   params?: any;
   headers?: any;
+  body?: any;
 }

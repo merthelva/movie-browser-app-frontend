@@ -11,6 +11,7 @@ const handleRequest = async ({
   url,
   method,
   dbName = Database.TMBD,
+  body,
   ...rest
 }: IRequestConfig) => {
   let instance = await createTMDBAxiosInstance();
@@ -26,6 +27,7 @@ const handleRequest = async ({
     const response: IAxiosResponse = await instance({
       url,
       method,
+      data: body,
       ...rest,
     });
 
