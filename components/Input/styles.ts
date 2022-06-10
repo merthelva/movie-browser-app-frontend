@@ -28,23 +28,21 @@ export const Wrapper = styled.div`
 export const InputWrapper = styled.div<IWrapperProps>`
   position: relative;
   display: flex;
-  flex-direction: ${({ alignment }) =>
-    alignment === "horizontal" ? "row" : "column"};
+  flex-direction: column;
   margin-bottom: var(--spacing-2x);
   width: 100%;
+`;
 
-  & > ${ButtonStyles.Wrapper} {
-    position: absolute;
-    bottom: ${({ size }) => (size ? size / 2 - 12 : 12)}px;
-    right: 0;
-  }
+export const ClearButtonWrapper = styled.div<IWrapperProps>`
+  position: absolute;
+  bottom: ${({ size }) => (size ? size / 2 - 12 : 4)}px;
+  right: var(--spacing-2x);
 `;
 
 export const LabelWrapper = styled.div<IWrapperProps>`
   display: flex;
   align-items: center;
-  margin-bottom: ${({ alignment }) =>
-    alignment === "horizontal" ? "0" : "var(--spacing-2x)"};
+  margin-bottom: var(--spacing-2x);
   margin-right: var(--spacing-2x);
 `;
 
