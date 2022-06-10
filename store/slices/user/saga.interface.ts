@@ -5,8 +5,20 @@ export interface IInitialState {
   token: string | null;
   watchList: any[];
   status: Status;
-  error: {
-    message: string | null; // TODO: We may create an object map which overrides default error messages for each error status code
-    statusCode: number | null;
+  error: any;
+}
+
+export interface ISignupRequestAction {
+  payload: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  };
+}
+
+export interface ILoginRequestAction {
+  payload: {
+    email: string;
+    password: string;
   };
 }
