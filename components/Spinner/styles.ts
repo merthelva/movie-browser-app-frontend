@@ -14,8 +14,8 @@ const spin = keyframes`
 
 export const Wrapper = styled.span<IWrapper>`
   display: inline-block;
-  border: 4px solid ${({ theme }) => theme.colors.light};
-  border-top: 4px solid ${({ color }) => color};
+  border: 2px solid ${({ theme }) => theme.colors.light};
+  border-top: 2px solid ${({ color }) => color};
   border-radius: 50%;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
