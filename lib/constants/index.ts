@@ -1,3 +1,4 @@
+export { default as Alignment } from "./Alignment";
 export { default as Breakpoints } from "./Breakpoints";
 export { default as ButtonSize } from "./ButtonSize";
 export { default as ButtonType } from "./ButtonType";
