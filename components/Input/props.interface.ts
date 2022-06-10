@@ -1,7 +1,6 @@
-import { Alignment, InputSize, InputType } from "lib/constants";
+import { InputSize, InputType } from "lib/constants";
 
 export interface IProps {
-  alignment?: Alignment;
   errorMsg?: string;
   hasClear?: boolean;
   id: string;
@@ -13,7 +12,6 @@ export interface IProps {
 }
 
 export interface IWrapperProps {
-  alignment: Alignment;
   size?: InputSize;
 }
 
