@@ -1,25 +1,69 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const fetchUserRequest = createAction("user/fetchUserRequest");
-
-export const fetchUserSuccess = createAction(
-  "user/fetchUserSuccess",
-  function prepare({ results }) {
+export const loginRequest = createAction(
+  "user/loginRequest",
+  function prepare({ email, password }) {
     return {
       payload: {
-        user: results,
+        email,
+        password,
       },
     };
   }
 );
 
-export const fetchUserFailed = createAction(
-  "user/fetchUserFailed",
-  function prepare({ message, response: { status } }) {
+export const loginSuccess = createAction(
+  "user/loginSuccess",
+  function prepare(token) {
     return {
       payload: {
-        message,
-        statusCode: status,
+        token,
+      },
+    };
+  }
+);
+
+export const loginFailed = createAction(
+  "user/loginFailed",
+  function prepare(reason) {
+    return {
+      payload: {
+        error: reason,
+      },
+    };
+  }
+);
+
+export const signupRequest = createAction(
+  "user/signupRequest",
+  function prepare({ email, password, confirmPassword }) {
+    return {
+      payload: {
+        email,
+        password,
+        confirmPassword,
+      },
+    };
+  }
+);
+
+export const signupSuccess = createAction(
+  "user/signupSuccess",
+  function prepare(userId) {
+    return {
+      payload: {
+        userId,
+      },
+    };
+  }
+);
+
+export const signupFailed = createAction(
+  "user/signupFailed",
+  function prepare(reason) {
+    return {
+      payload: {
+        error: reason,
       },
     };
   }
