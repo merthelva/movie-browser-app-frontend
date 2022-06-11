@@ -38,7 +38,6 @@ const Input: React.FC<IProps> = ({
   };
 
   const inputProps = {
-    hasClear,
     hasError: !!errorMsg,
     id,
     name: id,
@@ -70,7 +69,12 @@ const Input: React.FC<IProps> = ({
         {type === InputType.RICH_TEXT ? (
           <S.TextArea ref={textAreaRef} rows={4} {...inputProps} />
         ) : (
-          <S.Input ref={inputRef} variant={variant} {...inputProps} />
+          <S.Input
+            hasClear={hasClear}
+            ref={inputRef}
+            variant={variant}
+            {...inputProps}
+          />
         )}
         {hasClear && !!props.value?.trim() && (
           <S.ClearButtonWrapper size={size}>
