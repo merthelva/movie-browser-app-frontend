@@ -1,6 +1,7 @@
 export { default as Backdrop } from "./Backdrop";
 export { default as Button } from "./Button";
 export { default as CharacterDetail } from "./CharacterDetail";
+export { default as Container } from "./Container";
 export { default as Drawer } from "./Drawer";
 export { default as DrawerButton } from "./DrawerButton";
 export { default as Header } from "./Header";
