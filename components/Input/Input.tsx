@@ -60,12 +60,14 @@ const Input: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       <S.InputWrapper size={size}>
-        <S.LabelWrapper>
-          <S.Label htmlFor={id}>{label}</S.Label>
-          {errorMsg && (
-            <Icon color={Colors.ERROR} name={SvgIcon.ERROR} size={14} />
-          )}
-        </S.LabelWrapper>
+        {label && (
+          <S.LabelWrapper>
+            <S.Label htmlFor={id}>{label}</S.Label>
+            {errorMsg && (
+              <Icon color={Colors.ERROR} name={SvgIcon.ERROR} size={14} />
+            )}
+          </S.LabelWrapper>
+        )}
         {type === InputType.RICH_TEXT ? (
           <S.TextArea ref={textAreaRef} rows={4} {...inputProps} />
         ) : (
