@@ -21,6 +21,8 @@ const Variables = createGlobalStyle`
     --spacing-32x: calc(var(--spacing-1x) * 32);
 
     --shadow: 0 1px 5px;
+
+    --container-width: 1200px;
   }
 `;
 
