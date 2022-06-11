@@ -42,6 +42,11 @@ const secondaryStyle = css`
   color: ${({ theme }) => theme.colors.white};
 `;
 
+const dangerStyle = css`
+  background-color: ${({ theme }) => theme.colors.error};
+  color: ${({ theme }) => theme.colors.white};
+`;
+
 const ButtonSizeStyles = {
   [ButtonSize.SMALL]: smallStyle,
   [ButtonSize.MEDIUM]: mediumStyle,
@@ -54,6 +59,7 @@ const ButtonTypeStyles = {
   [ButtonType.GHOST]: ghostStyle,
   [ButtonType.PRIMARY]: primaryStyle,
   [ButtonType.SECONDARY]: secondaryStyle,
+  [ButtonType.DANGER]: dangerStyle,
 };
 
 export const Wrapper = styled.button<IWrapperProps>`
