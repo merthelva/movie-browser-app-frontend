@@ -122,31 +122,45 @@ export const getStaticPaths = async () => {
 export const getStaticProps = wrapper.getStaticProps(
   (store) =>
     async ({ params }) => {
-      const { data: movieDetailsData }: any = await handleRequest({
-        url: `/movie/${params!.id}`,
+      const movieDetailsDataPromise = new Promise((resolve) => {
+        handleRequest({
+          url: `/movie/${params!.id}`,
+        }).then(({ data: movieDetailsData }: any) => resolve(movieDetailsData));
       });
 
-      const {
-        data: { backdrops: movieImagesData },
-      }: any = await handleRequest({
-        url: `/movie/${params!.id}/images`,
+      const movieImagesDataPromise = new Promise((resolve) => {
+        handleRequest({
+          url: `/movie/${params!.id}/images`,
+        }).then(({ data: { backdrops: movieImagesData } }: any) => {
+          const imageGallery = movieImagesData.map(
+            (image: any) => image.file_path
+          );
+          resolve(imageGallery);
+        });
       });
-      const imageGallery = movieImagesData.map((image: any) => image.file_path);
 
-      const {
-        data: { cast: movieCastData },
-      }: any = await handleRequest({
-        url: `/movie/${params!.id}/credits`,
+      const movieCastDataPromise = new Promise((resolve) => {
+        handleRequest({
+          url: `/movie/${params!.id}/credits`,
+        }).then(({ data: { cast: movieCastData } }: any) => {
+          const movieCast = movieCastData.map((person: any) => ({
+            id: person.id,
+            name: person.name,
+            avatar: person.profile_path,
+            character: person.character,
+          }));
+          resolve(movieCast);
+        });
       });
-      const movieCast = movieCastData.map((person: any) => ({
-        id: person.id,
-        name: person.name,
-        avatar: person.profile_path,
-        character: person.character,
-      }));
 
-      // TODO: all these 3 API requests may be collected under one Promise.all call for better performance
+      const promises = [
+        movieDetailsDataPromise,
+        movieImagesDataPromise,
+        movieCastDataPromise,
+      ];
 
+      const [movieDetailsData, imageGallery, movieCast]: any[] =
+        await Promise.all(promises);
       return {
         props: {
           coverImageSrc: movieDetailsData.poster_path,
