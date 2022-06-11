@@ -10,6 +10,7 @@ import {
   Colors,
   InputSize,
   InputType,
+  InputVariants,
   SvgIcon,
 } from "lib/constants";
 
@@ -25,6 +26,7 @@ const Input: React.FC<IProps> = ({
   placeholder = "",
   size = InputSize.SMALL,
   type = InputType.TEXT,
+  variant = InputVariants.TRANSPARENT,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -68,7 +70,7 @@ const Input: React.FC<IProps> = ({
         {type === InputType.RICH_TEXT ? (
           <S.TextArea ref={textAreaRef} rows={4} {...inputProps} />
         ) : (
-          <S.Input ref={inputRef} {...inputProps} />
+          <S.Input ref={inputRef} variant={variant} {...inputProps} />
         )}
         {hasClear && !!props.value?.trim() && (
           <S.ClearButtonWrapper size={size}>
