@@ -23,7 +23,7 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
   return (
     <S.Header>
       <Container>
-        <Link href="">
+        <Link href="/">
           <S.LogoWrapper>
             <Icon name={SvgIcon.VIDEO} color={Colors.PRIMARY} />
             <Text>MovieBrowser</Text>
