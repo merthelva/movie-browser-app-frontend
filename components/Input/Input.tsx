@@ -34,7 +34,7 @@ const Input: React.FC<IProps> = ({
 
   const handleClearInput = (e: React.FormEvent) => {
     e.preventDefault();
-    props.onClearInput && props.onClearInput(id);
+    props.handleClearInput && props.handleClearInput(id);
   };
 
   const inputProps = {

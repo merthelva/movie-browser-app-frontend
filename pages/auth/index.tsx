@@ -128,7 +128,7 @@ const AuthPage: NextPage = () => {
         id="email"
         errorMsg={errorMessages.email}
         hasClear={email !== ""}
-        onClearInput={handleClearInputValue}
+        handleClearInput={handleClearInputValue}
         //isAutoFocused
         label="Email"
         onChange={handleInputValueChange}
@@ -141,7 +141,7 @@ const AuthPage: NextPage = () => {
         id="password"
         errorMsg={errorMessages.password}
         hasClear={password !== ""}
-        onClearInput={handleClearInputValue}
+        handleClearInput={handleClearInputValue}
         label="Password"
         onChange={handleInputValueChange}
         size={InputSize.MEDIUM}
@@ -153,7 +153,7 @@ const AuthPage: NextPage = () => {
           id="confirmPassword"
           errorMsg={errorMessages.confirmPassword}
           hasClear={confirmPassword !== ""}
-          onClearInput={handleClearInputValue}
+          handleClearInput={handleClearInputValue}
           label="Confirm Password"
           onChange={handleInputValueChange}
           size={InputSize.MEDIUM}
