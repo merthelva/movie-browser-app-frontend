@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Breakpoints, ZIndices } from "lib/constants";
 
 import * as TextStyles from "../Text/styles";
+import * as ContainerStyles from "../Container/styles";
 
 export const Header = styled.header`
   position: fixed;
@@ -11,10 +12,13 @@ export const Header = styled.header`
   z-index: ${ZIndices.HEADER};
   height: 60px;
   padding: 0 var(--spacing-8x);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.light};
+
+  ${ContainerStyles.Wrapper} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const LogoWrapper = styled.div`
