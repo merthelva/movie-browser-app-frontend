@@ -14,6 +14,7 @@ const SvgIcon = {
   AUTHENTICATE: "authenticate",
   ERROR: "error",
   CANCEL_FILLED: "cancelFilled",
+  LOGOUT: "logout",
 };
 
 export default SvgIcon;
