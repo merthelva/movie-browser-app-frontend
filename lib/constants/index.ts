@@ -3,6 +3,7 @@ export { default as Breakpoints } from "./Breakpoints";
 export { default as ButtonSize } from "./ButtonSize";
 export { default as ButtonType } from "./ButtonType";
 export { default as Colors } from "./Colors";
+export { default as CookieType } from "./CookieType";
 export { default as Database } from "./Database";
 export { default as IconSize } from "./IconSize";
 export { default as InputFields } from "./InputFields";

@@ -31,7 +31,7 @@ const Index: NextPage = () => {
   // TODO: while movies are not loaded yet, <Paginate /> component is still being displayed!
 
   return isLoading ? (
-    <Spinner />
+    <Spinner thickness={6} />
   ) : (
     <>
       <S.Wrapper>

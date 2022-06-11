@@ -5,6 +5,7 @@ import { UserActions, ISignupRequestAction, ILoginRequestAction } from ".";
 import { IResponse } from "interface";
 import { handleRequest } from "services";
 import { Database } from "lib/constants";
+import { cookie } from "lib/utilities";
 
 function* loginUserStarterSaga(action: ILoginRequestAction) {
   try {
@@ -17,6 +18,7 @@ function* loginUserStarterSaga(action: ILoginRequestAction) {
       body: { ...action.payload },
     });
 
+    yield call(cookie.set, "token", token, {}, undefined);
     yield put(UserActions.loginSuccess(token));
   } catch (error: any) {
     //yield put(UserActions.loginFailed(error.response.data.reason));
@@ -35,6 +37,7 @@ function* signupUserStarterSaga(action: ISignupRequestAction) {
       body: { ...action.payload },
     });
 
+    yield call(cookie.set, "userId", userId, {}, undefined);
     yield put(UserActions.signupSuccess(userId));
   } catch (error: any) {
     //yield put(UserActions.signupFailed(error.response.data.reason));
@@ -42,9 +45,15 @@ function* signupUserStarterSaga(action: ISignupRequestAction) {
   }
 }
 
+function* logoutUserStarterSaga() {
+  yield call(cookie.remove, "token", undefined);
+  yield put(UserActions.logoutSuccess());
+}
+
 function* rootSaga() {
   yield takeLatest(UserActions.loginRequest, loginUserStarterSaga);
   yield takeLatest(UserActions.signupRequest, signupUserStarterSaga);
+  yield takeLatest(UserActions.logoutRequest, logoutUserStarterSaga);
 }
 
 export default rootSaga;

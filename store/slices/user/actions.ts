@@ -68,3 +68,7 @@ export const signupFailed = createAction(
     };
   }
 );
+
+export const logoutRequest = createAction("user/logoutRequest");
+
+export const logoutSuccess = createAction("user/logoutSuccess");
