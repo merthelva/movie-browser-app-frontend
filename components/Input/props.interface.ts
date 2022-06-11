@@ -1,4 +1,4 @@
-import { InputSize, InputType } from "lib/constants";
+import { InputSize, InputType, InputVariants } from "lib/constants";
 
 export interface IProps {
   errorMsg?: string;
@@ -11,6 +11,7 @@ export interface IProps {
   size?: InputSize;
   type?: InputType;
   value?: string;
+  variant?: InputVariants;
 }
 
 export interface IWrapperProps {
@@ -20,4 +21,5 @@ export interface IWrapperProps {
 export interface IInputProps {
   hasError?: boolean;
   size?: InputSize;
+  variant?: InputVariants;
 }
