@@ -50,7 +50,7 @@ export const NavLinksWrapper = styled.div`
     align-items: center;
 
     & > * {
-      margin: 0 var(--spacing-4x);
+      margin: 0 0 0 var(--spacing-4x);
     }
   }
 `;
