@@ -2,20 +2,39 @@ import styled, { css } from "styled-components";
 
 import { IInputProps, IWrapperProps } from "./props.interface";
 
-import * as ButtonStyles from "../Button/styles";
+import { InputVariants } from "lib/constants";
 
 const baseInputStyles = css`
   border-radius: 4px;
   padding: var(--spacing-4x);
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.white};
 
   &::placeholder {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.light};
+    color: currentColor;
   }
 `;
+
+const transparentStyle = css`
+  background-color: transparent;
+  color: inherit;
+`;
+
+const lightStyle = css`
+  background-color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.dark};
+`;
+
+const darkStyle = css`
+  background-color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.light};
+`;
+
+const InputVariantStyles = {
+  [InputVariants.TRANSPARENT]: transparentStyle,
+  [InputVariants.LIGHT]: lightStyle,
+  [InputVariants.DARK]: darkStyle,
+};
 
 export const Wrapper = styled.div`
   display: flex;
@@ -55,6 +74,10 @@ export const Label = styled.label`
 
 export const Input = styled.input<IInputProps>`
   ${baseInputStyles};
+  ${({ variant }) =>
+    variant
+      ? InputVariantStyles[variant]
+      : InputVariantStyles[InputVariants.TRANSPARENT]};
   border: 1px solid
     ${({ hasError, theme }) =>
       hasError ? theme.colors.error : theme.colors.white};
