@@ -3,7 +3,7 @@ import * as S from "./styles";
 import IMainLayoutProps from "./props.interface";
 
 import { useToggle } from "hooks";
-import { Backdrop, DrawerButton, Drawer, Header } from "components";
+import { Backdrop, Container, Drawer, Header } from "components";
 
 const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   const [isToggled, handleToggle] = useToggle();
@@ -14,7 +14,9 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
       <Drawer isOpen={isToggled} onToggle={handleToggle} />
       <S.Wrapper>
         <Header onToggle={handleToggle} />
-        <S.Main>{children}</S.Main>
+        <S.Main>
+          <Container>{children}</Container>
+        </S.Main>
       </S.Wrapper>
     </>
   );
