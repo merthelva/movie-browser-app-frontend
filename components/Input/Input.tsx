@@ -34,7 +34,7 @@ const Input: React.FC<IProps> = ({
 
   const handleClearInput = (e: React.FormEvent) => {
     e.preventDefault();
-    inputRef.current!.value = "";
+    props.onClearInput && props.onClearInput(id);
   };
 
   const inputProps = {
@@ -78,7 +78,7 @@ const Input: React.FC<IProps> = ({
             {...inputProps}
           />
         )}
-        {hasClear && !!props.value?.trim() && (
+        {hasClear && (
           <S.ClearButtonWrapper size={size}>
             <Button
               kind={ButtonType.GHOST}
