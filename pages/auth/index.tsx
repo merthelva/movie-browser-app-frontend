@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
 import * as S from "./styles";
 import formFields from "./util";
+import { IFieldSetterMap } from "./props.interface";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 import { Button, Input, Spinner, Text } from "components";
@@ -31,6 +32,12 @@ const AuthPage: NextPage = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
+  const fieldSetterMap: IFieldSetterMap = {
+    email: setEmail,
+    password: setPassword,
+    confirmPassword: setConfirmPassword,
+  };
+
   const [errorMessages, setErrorMessages] = useState({
     email: undefined,
     password: undefined,
@@ -41,19 +48,10 @@ const AuthPage: NextPage = () => {
 
   const handleInputValueChange = (event: React.FormEvent) => {
     const { name, value } = event.target as HTMLInputElement;
-
-    if (name === InputFields.PASSWORD) {
-      setPassword(value);
-      return;
-    }
-
-    if (name === InputFields.CONFIRM_PASSWORD) {
-      setConfirmPassword(value);
-      return;
-    }
-
-    setEmail(value);
+    fieldSetterMap[name](value);
   };
+
+  const handleClearInputValue = (id: string) => fieldSetterMap[id]("");
 
   const handleSwitchAuthMode = (event: React.FormEvent) => {
     event.preventDefault();
@@ -129,7 +127,8 @@ const AuthPage: NextPage = () => {
       <Input
         id="email"
         errorMsg={errorMessages.email}
-        hasClear
+        hasClear={email !== ""}
+        onClearInput={handleClearInputValue}
         //isAutoFocused
         label="Email"
         onChange={handleInputValueChange}
@@ -141,7 +140,8 @@ const AuthPage: NextPage = () => {
       <Input
         id="password"
         errorMsg={errorMessages.password}
-        hasClear
+        hasClear={password !== ""}
+        onClearInput={handleClearInputValue}
         label="Password"
         onChange={handleInputValueChange}
         size={InputSize.MEDIUM}
@@ -152,7 +152,8 @@ const AuthPage: NextPage = () => {
         <Input
           id="confirmPassword"
           errorMsg={errorMessages.confirmPassword}
-          hasClear
+          hasClear={confirmPassword !== ""}
+          onClearInput={handleClearInputValue}
           label="Confirm Password"
           onChange={handleInputValueChange}
           size={InputSize.MEDIUM}
