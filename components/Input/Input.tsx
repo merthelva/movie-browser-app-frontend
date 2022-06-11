@@ -26,7 +26,7 @@ const Input: React.FC<IProps> = ({
   placeholder = "",
   size = InputSize.SMALL,
   type = InputType.TEXT,
-  variant = InputVariants.TRANSPARENT,
+  variant = InputVariants.LIGHT,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
