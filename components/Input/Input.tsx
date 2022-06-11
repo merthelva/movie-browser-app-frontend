@@ -22,7 +22,7 @@ const Input: React.FC<IProps> = ({
   hasClear = false,
   id,
   isAutoFocused = false,
-  label,
+  label = null,
   placeholder = "",
   size = InputSize.SMALL,
   type = InputType.TEXT,

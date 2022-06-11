@@ -5,7 +5,7 @@ export interface IProps {
   hasClear?: boolean;
   id: string;
   isAutoFocused?: boolean;
-  label: string;
+  label?: string;
   onChange?: (e: React.FormEvent) => void;
   placeholder?: string;
   size?: InputSize;
