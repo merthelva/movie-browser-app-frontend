@@ -19,6 +19,7 @@ export interface IWrapperProps {
 }
 
 export interface IInputProps {
+  hasClear?: boolean;
   hasError?: boolean;
   size?: InputSize;
   variant?: InputVariants;
