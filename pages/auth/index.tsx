@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
@@ -116,6 +116,13 @@ const AuthPage: NextPage = () => {
       });
     } */
   };
+
+  useEffect(() => {
+    if (status === Status.LOADED) {
+      router.replace("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status]);
 
   return (
     <S.FormWrapper isLoading={status === Status.LOADING}>
