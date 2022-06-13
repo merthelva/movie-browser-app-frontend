@@ -2,9 +2,10 @@ import { Status } from "lib/constants";
 
 export interface IInitialState {
   moviesPerPage: any;
+  totalPages: number;
   status: Status;
   error: {
-    message: string | null; // TODO: We may create an object map which overrides default error messages for each error status code
+    message: string | null;
     statusCode: number | null;
   };
   page: number;

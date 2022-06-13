@@ -15,10 +15,11 @@ export const fetchMoviesPerPageRequest = createAction(
 
 export const fetchMoviesPerPageSuccess = createAction(
   "movies/fetchMoviesPerPageSuccess",
-  function prepare({ results }) {
+  function prepare({ results, total_pages }) {
     return {
       payload: {
         movies: results,
+        totalPages: total_pages,
       },
     };
   }

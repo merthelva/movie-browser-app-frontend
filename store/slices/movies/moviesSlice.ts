@@ -6,6 +6,7 @@ import { Status } from "lib/constants";
 
 const initialState: IInitialState = {
   moviesPerPage: [],
+  totalPages: 1,
   status: Status.INIT,
   page: 1,
   error: {
@@ -19,8 +20,9 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     goToNextPage(state) {
-      // TODO: Add a limitation for the upper limit of page number that can be visited. In API response, there is a field called "total_pages". Make use of it!
-      state.page++;
+      if (state.page < state.totalPages) {
+        state.page++;
+      }
     },
     goToPrevPage(state) {
       if (state.page > 1) {
@@ -40,6 +42,7 @@ const moviesSlice = createSlice({
       .addCase(MoviesActions.fetchMoviesPerPageSuccess, (state, action) => {
         state.status = Status.LOADED;
         state.moviesPerPage = action.payload.movies;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(MoviesActions.fetchMoviesPerPageFailed, (state, action) => {
         state.status = Status.FAILED;
