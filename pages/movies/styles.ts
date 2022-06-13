@@ -78,7 +78,7 @@ export const Footer = styled.div`
   background-color: ${({ theme }) => theme.colors.dark};
   opacity: 0.6;
   margin: 0 calc(-1 * var(--spacing-12x)) calc(-1 * var(--spacing-12x));
-  padding: var(--spacing-4x) var(--spacing-6x);
+  padding: var(--spacing-4x) var(--spacing-12x);
 
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     margin: 0;
