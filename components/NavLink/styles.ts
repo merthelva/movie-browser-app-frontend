@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   align-items: center;
 
   & > ${TextStyles.Text} {
-    font-size: 18px;
     font-weight: var(--fw-bold);
     text-align: left;
     color: ${({ theme }) => theme.colors.secondary};
