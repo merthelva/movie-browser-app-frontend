@@ -20,7 +20,10 @@ const Drawer: React.FC<IProps> = ({ isOpen, onToggle }) => {
     UserSelectors.makeSelectIsAuthenticated
   );
 
-  const handleNavigateToAuthPage = () => router.push("/auth", "/auth/signup");
+  const handleNavigateToAuthPage = () => {
+    onToggle();
+    router.push("/auth", "/auth/signup");
+  };
 
   const handleLogoutUser = () => {
     dispatch(UserActions.logoutRequest());
