@@ -3,7 +3,7 @@ import App, { AppInitialProps } from "next/app";
 import { wrapper } from "../store";
 import { MainLayout } from "../layouts";
 import { cookie } from "../lib/utilities";
-import { CookieType } from "../lib/constants";
+import { AuthMode, CookieType } from "../lib/constants";
 import { UserActions } from "../store/slices/user";
 import { AppPropsWithLayout } from "./app.types";
 import { GlobalStyles, ThemeProvider, Variables } from "../globals";
@@ -25,8 +25,15 @@ MyApp.getInitialProps = wrapper.getInitialAppProps(
   (store) => async (context) => {
     const userId = cookie.get("userId", CookieType.STRING, context.ctx);
     const token = cookie.get("token", CookieType.STRING, context.ctx);
+    const authMode = cookie.get("authMode", CookieType.NUMBER, context.ctx);
 
-    const isAuthenticated = !!(userId || token);
+    let isAuthenticated = false;
+    if (+authMode === AuthMode.SIGNUP) {
+      isAuthenticated = !!userId;
+    } else if (+authMode === AuthMode.LOGIN) {
+      isAuthenticated = !!token;
+    }
+    userId && store.dispatch(UserActions.setUserId(userId));
     store.dispatch(UserActions.setIsAuthenticated(isAuthenticated));
 
     return {

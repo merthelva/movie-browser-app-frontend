@@ -9,7 +9,7 @@ import {
 
 import { IResponse } from "interface";
 import { handleRequest } from "services";
-import { Database } from "lib/constants";
+import { AuthMode, Database } from "lib/constants";
 import { cookie } from "lib/utilities";
 
 function* loginUserStarterSaga(action: ILoginRequestAction) {
@@ -24,6 +24,7 @@ function* loginUserStarterSaga(action: ILoginRequestAction) {
     const token = result.data.token;
 
     yield call(cookie.set, "token", token, {}, undefined);
+    yield call(cookie.set, "authMode", AuthMode.LOGIN, {}, undefined);
     yield put(UserActions.loginSuccess(token));
   } else {
     yield put(UserActions.loginFailed(result.response.data.reason));
@@ -42,6 +43,7 @@ function* signupUserStarterSaga(action: ISignupRequestAction) {
     const userId = result.data.userId;
 
     yield call(cookie.set, "userId", userId, {}, undefined);
+    yield call(cookie.set, "authMode", AuthMode.SIGNUP, {}, undefined);
     yield put(UserActions.signupSuccess(userId));
   } else {
     yield put(UserActions.signupFailed(result.response.data.reason));
@@ -55,7 +57,7 @@ function* logoutUserStarterSaga() {
 
   if (isAuthenticated) {
     yield call(cookie.remove, "token", undefined);
-    yield call(cookie.remove, "userId", undefined);
+    yield call(cookie.set, "authMode", -1, {}, undefined);
   }
   yield put(UserActions.logoutSuccess());
 }

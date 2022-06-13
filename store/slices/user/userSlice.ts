@@ -20,6 +20,9 @@ const userSlice = createSlice({
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
     },
+    setUserId(state, action: PayloadAction<string>) {
+      state.userId = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -51,7 +54,7 @@ const userSlice = createSlice({
         state.status = Status.LOADING;
       })
       .addCase(UserActions.logoutSuccess, (state) => {
-        state.status = Status.LOADED;
+        state.status = Status.INIT;
         state.userId = null;
         state.token = null;
         state.isAuthenticated = false;
@@ -63,5 +66,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setIsAuthenticated } = userSlice.actions;
+export const { setIsAuthenticated, setUserId } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import type { NextPage, GetStaticProps, GetStaticPropsContext } from "next";
+import type { NextPage } from "next";
 
 import * as S from "./styles";
 

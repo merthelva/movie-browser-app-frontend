@@ -12,6 +12,7 @@ import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 const Drawer: React.FC<IProps> = ({
   isAuthenticated,
   isOpen,
+  userId,
   onLogoutUser,
   onNavigateToAuthPage,
   onToggle,
@@ -35,16 +36,18 @@ const Drawer: React.FC<IProps> = ({
         text="Movies"
         to="/"
       />
-      <NavLink
-        onCloseDrawer={onToggle}
-        prefixIcon={{
-          color: Colors.SECONDARY,
-          name: SvgIcon.LIST,
-          size: 20,
-        }}
-        text="Watchlist"
-        to="/"
-      />
+      {isAuthenticated && (
+        <NavLink
+          onCloseDrawer={onToggle}
+          prefixIcon={{
+            color: Colors.SECONDARY,
+            name: SvgIcon.LIST,
+            size: 20,
+          }}
+          text="Watchlist"
+          to={`/${userId}/watchlist`}
+        />
+      )}
       {!isAuthenticated ? (
         <Button
           kind={ButtonType.PRIMARY}

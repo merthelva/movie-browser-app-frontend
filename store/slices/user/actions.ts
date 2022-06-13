@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export { setIsAuthenticated } from "./userSlice";
+export { setIsAuthenticated, setUserId } from "./userSlice";
 
 export const loginRequest = createAction(
   "user/loginRequest",

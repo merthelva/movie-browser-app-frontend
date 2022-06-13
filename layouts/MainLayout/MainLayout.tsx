@@ -14,17 +14,17 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   const isAuthenticated = useAppSelector(
     UserSelectors.makeSelectIsAuthenticated
   );
+  const userId = useAppSelector(UserSelectors.makeSelectUserId);
 
   const [isToggled, handleToggle] = useToggle();
 
   const handleNavigateToAuthPage = () => {
-    //handleToggle();
     router.push("/auth", "/auth/signup");
   };
 
   const handleLogoutUser = () => {
     dispatch(UserActions.logoutRequest());
-    window.location.reload();
+    router.replace("/");
   };
 
   return (
@@ -33,12 +33,14 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
       <Drawer
         isAuthenticated={isAuthenticated}
         isOpen={isToggled}
+        userId={userId}
         onLogoutUser={handleLogoutUser}
         onNavigateToAuthPage={handleNavigateToAuthPage}
         onToggle={handleToggle}
       />
       <Header
         isAuthenticated={isAuthenticated}
+        userId={userId}
         onLogoutUser={handleLogoutUser}
         onNavigateToAuthPage={handleNavigateToAuthPage}
         onToggle={handleToggle}

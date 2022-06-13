@@ -14,6 +14,7 @@ import DrawerButton from "../DrawerButton";
 
 const Header: React.FC<IProps> = ({
   isAuthenticated,
+  userId,
   onLogoutUser,
   onNavigateToAuthPage,
   onToggle,
@@ -38,15 +39,17 @@ const Header: React.FC<IProps> = ({
             text="Movies"
             to="/"
           />
-          <NavLink
-            prefixIcon={{
-              color: Colors.SECONDARY,
-              name: SvgIcon.LIST,
-              size: 20,
-            }}
-            text="Watchlist"
-            to="/"
-          />
+          {isAuthenticated && (
+            <NavLink
+              prefixIcon={{
+                color: Colors.SECONDARY,
+                name: SvgIcon.LIST,
+                size: 20,
+              }}
+              text="Watchlist"
+              to={`/${userId}/watchlist`}
+            />
+          )}
           {!isAuthenticated ? (
             <Button
               kind={ButtonType.PRIMARY}
