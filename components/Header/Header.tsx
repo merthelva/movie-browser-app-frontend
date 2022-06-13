@@ -1,12 +1,8 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 import * as S from "./styles";
 
 import { IProps } from "./props.interface";
-
-import { useAppDispatch, useAppSelector } from "hooks";
-import { UserActions, UserSelectors } from "store/slices/user";
 import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
@@ -16,20 +12,12 @@ import NavLink from "../NavLink";
 import Container from "../Container";
 import DrawerButton from "../DrawerButton";
 
-const Header: React.FC<IProps> = ({ onToggle }) => {
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const isAuthenticated = useAppSelector(
-    UserSelectors.makeSelectIsAuthenticated
-  );
-
-  const handleNavigateToAuthPage = () => router.push("/auth", "/auth/signup");
-
-  const handleLogoutUser = () => {
-    dispatch(UserActions.logoutRequest());
-    window.location.reload();
-  };
-
+const Header: React.FC<IProps> = ({
+  isAuthenticated,
+  onLogoutUser,
+  onNavigateToAuthPage,
+  onToggle,
+}) => {
   return (
     <S.Header>
       <Container>
@@ -54,7 +42,7 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
             <Button
               kind={ButtonType.PRIMARY}
               size={ButtonSize.SMALL}
-              onClick={handleNavigateToAuthPage}
+              onClick={onNavigateToAuthPage}
             >
               <Icon
                 name={SvgIcon.AUTHENTICATE}
@@ -67,7 +55,7 @@ const Header: React.FC<IProps> = ({ onToggle }) => {
             <Button
               kind={ButtonType.DANGER}
               size={ButtonSize.SMALL}
-              onClick={handleLogoutUser}
+              onClick={onLogoutUser}
             >
               <Icon name={SvgIcon.LOGOUT} color={Colors.LIGHT} size={16} />
               <Text>LOGOUT</Text>
