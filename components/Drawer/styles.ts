@@ -5,6 +5,7 @@ import { Breakpoints, ZIndices } from "lib/constants";
 import { IWrapperProps } from "./props.interface";
 
 import * as ButtonStyles from "../Button/styles";
+import * as NavLinkStyles from "../NavLink/styles";
 
 export const Wrapper = styled.div<IWrapperProps>`
   position: fixed;
@@ -20,13 +21,16 @@ export const Wrapper = styled.div<IWrapperProps>`
   width: 70%;
   background-color: ${({ theme }) => theme.colors.light};
 
+  ${NavLinkStyles.Wrapper} {
+    margin-bottom: var(--spacing-8x);
+  }
+
   ${ButtonStyles.Wrapper}:first-of-type {
     align-self: flex-end;
     margin-bottom: var(--spacing-24x);
   }
 
   ${ButtonStyles.Wrapper}:last-of-type {
-    margin-top: var(--spacing-8x);
     width: 100%;
   }
 
