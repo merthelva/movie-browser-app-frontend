@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { UserActions, IInitialState } from ".";
 
@@ -8,6 +8,7 @@ import { Status } from "lib/constants";
 const initialState: IInitialState = {
   userId: null,
   token: null,
+  isAuthenticated: false,
   watchList: [],
   status: Status.INIT,
   error: null,
@@ -16,7 +17,11 @@ const initialState: IInitialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    setIsAuthenticated(state, action: PayloadAction<boolean>) {
+      state.isAuthenticated = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(UserActions.loginRequest, (state) => {
@@ -42,9 +47,22 @@ const userSlice = createSlice({
       .addCase(UserActions.signupFailed, (state, action) => {
         state.status = Status.FAILED;
         state.error = action.payload.error;
+      })
+      .addCase(UserActions.logoutRequest, (state) => {
+        state.status = Status.LOADING;
+      })
+      .addCase(UserActions.logoutSuccess, (state) => {
+        state.status = Status.LOADED;
+        state.userId = null;
+        state.token = null;
+        state.isAuthenticated = false;
+      })
+      .addCase(UserActions.logoutFailed, (state, action) => {
+        state.status = Status.FAILED;
+        state.error = action.payload.errorMsg;
       });
   },
 });
 
-//export const { goToNextPage, goToPrevPage } = userSlice.actions;
+export const { setIsAuthenticated } = userSlice.actions;
 export default userSlice.reducer;

@@ -3,7 +3,6 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 
 import * as S from "./styles";
-import formFields from "./util";
 import { IFieldSetterMap } from "./props.interface";
 
 import { useAppDispatch, useAppSelector } from "hooks";
@@ -13,7 +12,7 @@ import {
   ButtonSize,
   ButtonType,
   Colors,
-  InputFields,
+  FormFields,
   InputSize,
   InputType,
   Status,
@@ -25,9 +24,8 @@ const AuthPage: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const status = useAppSelector(UserSelectors.makeSelectUserStatus);
+  const errorMessages = useAppSelector(UserSelectors.makeSelectUserError);
 
-  // Here, instead of keeping each state in its respective "useState" call,
-  // "useReducer" hook could be used, but it would complicate the case to handle
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -37,12 +35,6 @@ const AuthPage: NextPage = () => {
     password: setPassword,
     confirmPassword: setConfirmPassword,
   };
-
-  const [errorMessages, setErrorMessages] = useState({
-    email: undefined,
-    password: undefined,
-    confirmPassword: undefined,
-  });
 
   const [authMode, setAuthMode] = useState(AuthMode.SIGNUP);
 
@@ -84,35 +76,6 @@ const AuthPage: NextPage = () => {
         })
       );
     }
-
-    /* try {
-      // TODO: Create a dedicated axios instance for making auth related API requests.
-      const axios = await (await import("axios")).default;
-
-      const { data }: any = await axios.post(
-        "http://localhost:4000/auth/login",
-        {
-          email,
-          password,
-          //confirmPassword,
-        }
-      );
-
-      //router.push("/");
-      console.log(data);
-    } catch (error: any) {
-      const errors = error.response.data.reason;
-
-      // TODO: for "login" request, the following line throws an error as there is no errors[index]["confirmPassword"] value due to the reason that login action does not take "confirmPassword" argument
-      Object.keys(formFields).forEach((field: any, index: number) => {
-        setErrorMessages((prevState) => {
-          return {
-            ...prevState,
-            [field]: errors[index][field].message,
-          };
-        });
-      });
-    } */
   };
 
   useEffect(() => {
@@ -126,7 +89,7 @@ const AuthPage: NextPage = () => {
     <S.FormWrapper isLoading={status === Status.LOADING}>
       <Input
         id="email"
-        errorMsg={errorMessages.email}
+        errorMsg={errorMessages?.[FormFields.EMAIL]?.message}
         hasClear={email !== ""}
         handleClearInput={handleClearInputValue}
         //isAutoFocused
@@ -139,7 +102,7 @@ const AuthPage: NextPage = () => {
       />
       <Input
         id="password"
-        errorMsg={errorMessages.password}
+        errorMsg={errorMessages?.[FormFields.PASSWORD]?.message}
         hasClear={password !== ""}
         handleClearInput={handleClearInputValue}
         label="Password"
@@ -151,7 +114,7 @@ const AuthPage: NextPage = () => {
       {authMode === AuthMode.SIGNUP && (
         <Input
           id="confirmPassword"
-          errorMsg={errorMessages.confirmPassword}
+          errorMsg={errorMessages?.[FormFields.CONFIRM_PASSWORD]?.message}
           hasClear={confirmPassword !== ""}
           handleClearInput={handleClearInputValue}
           label="Confirm Password"

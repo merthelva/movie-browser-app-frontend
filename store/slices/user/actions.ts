@@ -1,5 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
+export { setIsAuthenticated } from "./userSlice";
+
 export const loginRequest = createAction(
   "user/loginRequest",
   function prepare({ email, password }) {
@@ -72,3 +74,12 @@ export const signupFailed = createAction(
 export const logoutRequest = createAction("user/logoutRequest");
 
 export const logoutSuccess = createAction("user/logoutSuccess");
+
+export const logoutFailed = createAction(
+  "user/logoutFailed",
+  function prepare(errorMsg) {
+    return {
+      payload: errorMsg,
+    };
+  }
+);

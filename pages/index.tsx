@@ -5,7 +5,6 @@ import * as S from "./styles";
 
 import { Status } from "lib/constants";
 import { MovieCard, Spinner, Paginate } from "components";
-import { customGetStaticProps } from "store";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { MoviesActions, MoviesSelectors } from "store/slices/movies";
 import { GenresActions, GenresSelectors } from "store/slices/genres";
@@ -50,11 +49,5 @@ const Index: NextPage = () => {
     </>
   );
 };
-
-/* export const getStaticProps: GetStaticProps = customGetStaticProps(
-  async (context: GetStaticPropsContext) => {
-    console.log("Index page getStaticProps:", context);
-  }
-); */
 
 export default Index;

@@ -12,6 +12,11 @@ export const makeSelectUserToken = createSelector(
   ({ userToken }) => userToken
 );
 
+export const makeSelectIsAuthenticated = createSelector(
+  selectUser,
+  ({ isAuthenticated }) => isAuthenticated
+);
+
 export const makeSelectUserWatchList = createSelector(
   selectUser,
   ({ watchList }) => watchList
@@ -22,7 +27,7 @@ export const makeSelectUserStatus = createSelector(
   ({ status }) => status
 );
 
-export const makeSelectUserError = createSelector(selectUser, ({ error }) => ({
-  message: error.message,
-  statusCode: error.statusCode,
-}));
+export const makeSelectUserError = createSelector(
+  selectUser,
+  ({ error }) => error
+);

@@ -6,4 +6,5 @@ export interface IResponse {
   status?: number;
   statusText?: string;
   message?: string;
+  response?: any;
 }

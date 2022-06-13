@@ -28,7 +28,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   duration,
   title,
   rate,
-  imageGallery,
+  //imageGallery,
   movieCast,
 }) => {
   const [isToggled, handleToggle] = useToggle();
@@ -107,19 +107,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   );
 };
 
-export const getStaticPaths = async () => {
-  const response: any = await handleRequest({
-    url: "/movie/popular",
-  });
-
-  const paths = response.data.results.map((movie: any) => ({
-    params: { id: movie.id.toString() },
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps = wrapper.getStaticProps(
+export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
       const movieDetailsDataPromise = new Promise((resolve) => {

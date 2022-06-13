@@ -14,6 +14,7 @@ export const makeStore = () => {
   const store = configureStore({
     reducer: rootReducer,
     middleware: [sagaMiddleware],
+    devTools: process.env.NODE_ENV !== "production",
   });
 
   // 3: Run your sagas on server
@@ -28,23 +29,3 @@ const store = makeStore();
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export const wrapper = createWrapper(makeStore, { debug: false });
-
-export const customGetStaticProps = (callback: any) =>
-  wrapper.getStaticProps((store) => async (context) => {
-    const pageProps = callback({ store, ...context });
-
-    /**
-     * END action says that, there will be no saga anymore
-     * so just END all dispatched requests
-     */
-    (store as ISagaStore).dispatch(END);
-
-    /**
-     * toPromise means that, wait for all the sagas until returning
-     * either fullfilled or rejected promises. It's needed because
-     * after all sagas done, it will HYDRATE the page
-     */
-    await (store as ISagaStore).sagaTask!.toPromise();
-
-    return pageProps;
-  });
