@@ -6,7 +6,6 @@ import * as TextStyles from "components/Text/styles";
 
 import { Breakpoints } from "lib/constants";
 
-// TODO: This Wrapper style may be generalized in MainLayout?? If so, do not forget to remove this Wrapper styles from this page!Ğ
 export const Wrapper = styled.div`
   max-width: 840px;
   margin: auto;
@@ -153,11 +152,11 @@ export const CastWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (min-width: 674px) and (max-width: ${Breakpoints.TABLET_MINI.MAX}px) {
+  @media (min-width: 674px) and (max-width: ${Breakpoints.TABLET.MIN}px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (min-width: ${Breakpoints.TABLET.MIN}px) {
+  @media (min-width: ${Breakpoints.TABLET.MIN + 1}px) {
     grid-template-columns: repeat(4, 1fr);
   }
 `;
