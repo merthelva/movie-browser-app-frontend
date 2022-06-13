@@ -37,17 +37,15 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
         onNavigateToAuthPage={handleNavigateToAuthPage}
         onToggle={handleToggle}
       />
-      <S.Wrapper>
-        <Header
-          isAuthenticated={isAuthenticated}
-          onLogoutUser={handleLogoutUser}
-          onNavigateToAuthPage={handleNavigateToAuthPage}
-          onToggle={handleToggle}
-        />
-        <S.Main>
-          <Container>{children}</Container>
-        </S.Main>
-      </S.Wrapper>
+      <Header
+        isAuthenticated={isAuthenticated}
+        onLogoutUser={handleLogoutUser}
+        onNavigateToAuthPage={handleNavigateToAuthPage}
+        onToggle={handleToggle}
+      />
+      <S.Main>
+        <Container>{children}</Container>
+      </S.Main>
     </>
   );
 };
