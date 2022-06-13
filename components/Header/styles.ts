@@ -30,7 +30,7 @@ export const LogoWrapper = styled.div`
     display: none;
   }
 
-  @media (min-width: ${Breakpoints.TABLET.MIN}px) {
+  @media (min-width: ${Breakpoints.MOBILE.MIN}px) {
     ${TextStyles.Text} {
       display: inline-block;
       margin-left: var(--spacing-4x);
