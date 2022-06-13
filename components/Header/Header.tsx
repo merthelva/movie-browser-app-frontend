@@ -38,6 +38,15 @@ const Header: React.FC<IProps> = ({
             text="Movies"
             to="/"
           />
+          <NavLink
+            prefixIcon={{
+              color: Colors.SECONDARY,
+              name: SvgIcon.LIST,
+              size: 20,
+            }}
+            text="Watchlist"
+            to="/"
+          />
           {!isAuthenticated ? (
             <Button
               kind={ButtonType.PRIMARY}
