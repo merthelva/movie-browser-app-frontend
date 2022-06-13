@@ -4,7 +4,6 @@ import { UserActions, IInitialState } from ".";
 
 import { Status } from "lib/constants";
 
-// TODO: For consistency, "email" and "password" fields may be kept in the state as well
 const initialState: IInitialState = {
   userId: null,
   token: null,
