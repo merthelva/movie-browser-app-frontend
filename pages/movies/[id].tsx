@@ -1,9 +1,11 @@
 import { useMemo } from "react";
 import type { NextPage } from "next";
+import { END, Task } from "redux-saga";
+import { Store } from "@reduxjs/toolkit";
 
 import * as S from "./styles";
 
-import { wrapper } from "store";
+import { wrapper, ISagaStore } from "store";
 import { handleRequest } from "services";
 import { convertLongNumberToReadableFormat } from "lib/utilities";
 
@@ -31,6 +33,8 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   //imageGallery,
   movieCast,
 }) => {
+  console.log("MovieDetailsPage RENDERED");
+
   const [isToggled, handleToggle] = useToggle();
 
   const numberOfCastsToBeRendered = useMemo(() => {
@@ -149,6 +153,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       const [movieDetailsData, imageGallery, movieCast]: any[] =
         await Promise.all(promises);
+
+      store.dispatch(END);
+      await (store as ISagaStore).sagaTask.toPromise();
+
       return {
         props: {
           coverImageSrc: movieDetailsData.poster_path,

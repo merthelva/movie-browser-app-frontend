@@ -11,12 +11,10 @@ const combinedReducer = combineReducers({
 
 const rootReducer = (state: any, action: PayloadAction<any>) => {
   if (action.type === HYDRATE) {
-    const nextState = {
+    return {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
     };
-
-    return nextState;
   }
 
   return combinedReducer(state, action);

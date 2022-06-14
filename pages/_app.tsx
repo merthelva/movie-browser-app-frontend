@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
   );
 }
 
-MyApp.getInitialProps = wrapper.getInitialAppProps(
+/* MyApp.getInitialProps = wrapper.getInitialAppProps(
   (store) => async (context) => {
     const userId = cookie.get("userId", CookieType.STRING, context.ctx);
     const token = cookie.get("token", CookieType.STRING, context.ctx);
@@ -42,6 +42,6 @@ MyApp.getInitialProps = wrapper.getInitialAppProps(
       },
     };
   }
-);
+); */
 
 export default wrapper.withRedux(MyApp);
