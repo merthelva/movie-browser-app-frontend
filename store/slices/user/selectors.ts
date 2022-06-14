@@ -17,9 +17,9 @@ export const makeSelectIsAuthenticated = createSelector(
   ({ isAuthenticated }) => isAuthenticated
 );
 
-export const makeSelectUserWatchList = createSelector(
+export const makeSelectUserWatchlist = createSelector(
   selectUser,
-  ({ watchList }) => watchList
+  ({ watchlist }) => watchlist
 );
 
 export const makeSelectUserStatus = createSelector(

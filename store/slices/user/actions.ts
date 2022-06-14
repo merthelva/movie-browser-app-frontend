@@ -2,6 +2,8 @@ import { createAction } from "@reduxjs/toolkit";
 
 export { setIsAuthenticated, setUserId } from "./userSlice";
 
+// TODO: Add required types for "prepare" function arguments in all actions.ts files
+
 export const loginRequest = createAction(
   "user/loginRequest",
   function prepare({ email, password }) {
@@ -80,6 +82,37 @@ export const logoutFailed = createAction(
   function prepare(errorMsg) {
     return {
       payload: errorMsg,
+    };
+  }
+);
+
+export const fetchWatchlistRequest = createAction(
+  "user/fetchWatchlistRequest",
+  function prepare(userId: string) {
+    return {
+      payload: userId,
+    };
+  }
+);
+
+export const fetchWatchlistSuccess = createAction(
+  "user/fetchWatchlistSuccess",
+  function prepare(watchlist) {
+    return {
+      payload: {
+        watchlist,
+      },
+    };
+  }
+);
+
+export const fetchWatchlistFailed = createAction(
+  "user/fetchWatchlistFailed",
+  function prepare(reason) {
+    return {
+      payload: {
+        error: reason,
+      },
     };
   }
 );

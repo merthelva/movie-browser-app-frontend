@@ -1,3 +1,4 @@
+import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, select, takeLatest } from "redux-saga/effects";
 
 import {
@@ -62,10 +63,31 @@ function* logoutUserStarterSaga() {
   yield put(UserActions.logoutSuccess());
 }
 
+function* fetchWatchlistStarterSaga(action: PayloadAction<string>) {
+  const result: IResponse = yield call(handleRequest, {
+    url: "/watchlist/all",
+    dbName: Database.MONGODB,
+    method: "get",
+    params: { userId: action.payload },
+  });
+
+  if ((result.status as number) < 400) {
+    const watchlist = result.data.watchlist;
+
+    yield put(UserActions.fetchWatchlistSuccess(watchlist));
+  } else {
+    yield put(UserActions.fetchWatchlistFailed(result.response.data.reason));
+  }
+}
+
 function* rootSaga() {
   yield takeLatest(UserActions.loginRequest, loginUserStarterSaga);
   yield takeLatest(UserActions.signupRequest, signupUserStarterSaga);
   yield takeLatest(UserActions.logoutRequest, logoutUserStarterSaga);
+  yield takeLatest(
+    UserActions.fetchWatchlistRequest,
+    fetchWatchlistStarterSaga
+  );
 }
 
 export default rootSaga;

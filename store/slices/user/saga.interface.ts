@@ -7,11 +7,20 @@ interface IError {
   };
 }
 
+export interface IWatchlistMovie {
+  id: string | number;
+  title: string;
+  rate: string | number;
+  releaseDate: string;
+  duration: string;
+  budget: string;
+}
+
 export interface IInitialState {
   userId: string | null;
   token: string | null;
   isAuthenticated: boolean;
-  watchList: any[];
+  watchlist: IWatchlistMovie[];
   status: Status;
   error: IError | null;
 }

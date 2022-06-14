@@ -8,7 +8,7 @@ const initialState: IInitialState = {
   userId: null,
   token: null,
   isAuthenticated: false,
-  watchList: [],
+  watchlist: [],
   status: Status.INIT,
   error: null,
 };
@@ -62,6 +62,19 @@ const userSlice = createSlice({
       .addCase(UserActions.logoutFailed, (state, action) => {
         state.status = Status.FAILED;
         state.error = action.payload.errorMsg;
+      })
+      .addCase(UserActions.fetchWatchlistRequest, (state) => {
+        state.status = Status.LOADING;
+        state.error = null;
+      })
+      .addCase(UserActions.fetchWatchlistSuccess, (state, action) => {
+        state.status = Status.LOADED;
+        state.watchlist = action.payload.watchlist;
+      })
+      .addCase(UserActions.fetchWatchlistFailed, (state, action) => {
+        state.status = Status.FAILED;
+        state.error = action.payload.error;
+        state.watchlist = [];
       });
   },
 });
