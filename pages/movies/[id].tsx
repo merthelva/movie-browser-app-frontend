@@ -155,7 +155,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         await Promise.all(promises);
 
       store.dispatch(END);
-      await (store as ISagaStore).sagaTask.toPromise();
+      await (store as ISagaStore).sagaTask!.toPromise();
 
       return {
         props: {
