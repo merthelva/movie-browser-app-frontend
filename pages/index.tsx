@@ -19,8 +19,8 @@ const Index: NextPage = () => {
   const genres = useAppSelector(GenresSelectors.makeSelectGenres);
 
   useEffect(() => {
-    dispatch(MoviesActions.fetchMoviesPerPageRequest(currentPage));
     dispatch(GenresActions.fetchGenresRequest());
+    dispatch(MoviesActions.fetchMoviesPerPageRequest(currentPage));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
