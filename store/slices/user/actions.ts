@@ -152,3 +152,37 @@ export const addMovieToWatchlistFailed = createAction(
     };
   }
 );
+
+export const removeMovieFromWatchlistRequest = createAction(
+  "user/removeMovieFromWatchlistRequest",
+  function prepare(id: number | string, userId: string) {
+    return {
+      payload: {
+        id,
+        userId,
+      },
+    };
+  }
+);
+
+export const removeMovieFromWatchlistSuccess = createAction(
+  "user/removeMovieFromWatchlistSuccess",
+  function prepare(id: string | number) {
+    return {
+      payload: {
+        movieId: id,
+      },
+    };
+  }
+);
+
+export const removeMovieFromWatchlistFailed = createAction(
+  "user/removeMovieFromWatchlistFailed",
+  function prepare(reason) {
+    return {
+      payload: {
+        error: reason,
+      },
+    };
+  }
+);

@@ -81,6 +81,7 @@ const AuthPage: NextPage = () => {
   };
 
   useEffect(() => {
+    // TODO: this logic may be replaced with checking "isAuthenticated" slice instead. In that case, all Status.INIT settings in userSlice reducers can be revert to Status.LOADED
     if (status === Status.LOADED) {
       router.replace("/");
     }

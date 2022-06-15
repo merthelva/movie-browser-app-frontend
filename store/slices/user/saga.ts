@@ -103,6 +103,28 @@ function* addMovieToWatchlistStarterSaga(
   }
 }
 
+function* removeMovieFromWatchlistStarterSaga(
+  action: PayloadAction<{ id: string | number; userId: string }>
+) {
+  const result: IResponse = yield call(handleRequest, {
+    url: "/watchlist/remove-movie",
+    dbName: Database.MONGODB,
+    method: "post",
+    params: { userId: action.payload.userId },
+    body: { id: action.payload.id },
+  });
+
+  if ((result.status as number) < 400) {
+    const removedMovieId = result.data.id;
+
+    yield put(UserActions.removeMovieFromWatchlistSuccess(removedMovieId));
+  } else {
+    yield put(
+      UserActions.removeMovieFromWatchlistFailed(result.response.data.reason)
+    );
+  }
+}
+
 function* rootSaga() {
   yield takeLatest(UserActions.loginRequest, loginUserStarterSaga);
   yield takeLatest(UserActions.signupRequest, signupUserStarterSaga);
@@ -114,6 +136,10 @@ function* rootSaga() {
   yield takeLatest(
     UserActions.addMovieToWatchlistRequest,
     addMovieToWatchlistStarterSaga
+  );
+  yield takeLatest(
+    UserActions.removeMovieFromWatchlistRequest,
+    removeMovieFromWatchlistStarterSaga
   );
 }
 

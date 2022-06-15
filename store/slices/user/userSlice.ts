@@ -87,6 +87,20 @@ const userSlice = createSlice({
       .addCase(UserActions.addMovieToWatchlistFailed, (state, action) => {
         state.status = Status.FAILED;
         state.error = action.payload.error;
+      })
+      .addCase(UserActions.removeMovieFromWatchlistRequest, (state) => {
+        state.status = Status.LOADING;
+        state.error = null;
+      })
+      .addCase(UserActions.removeMovieFromWatchlistSuccess, (state, action) => {
+        state.status = Status.INIT;
+        state.watchlist = state.watchlist.filter(
+          (movie) => movie.id !== action.payload.movieId
+        );
+      })
+      .addCase(UserActions.removeMovieFromWatchlistFailed, (state, action) => {
+        state.status = Status.FAILED;
+        state.error = action.payload.error;
       });
   },
 });

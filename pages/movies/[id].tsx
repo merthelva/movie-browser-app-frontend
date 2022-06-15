@@ -22,6 +22,7 @@ import {
   Text,
 } from "components";
 
+// TODO: Collect and group rendered parts and business logic into sub groups for better readability
 const MovieDetailsPage: NextPage<IPageProps> = ({
   id,
   coverImageSrc,
@@ -44,6 +45,10 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
 
   const [isToggled, handleToggle] = useToggle();
 
+  const isMovieInWatchlist = useMemo(() => {
+    return !!watchlist.find((movie: IWatchlistMovie) => movie.id === id);
+  }, [id, watchlist]);
+
   const numberOfCastsToBeRendered = useMemo(() => {
     return !isToggled ? 6 : movieCast.length;
   }, [isToggled, movieCast]);
@@ -62,6 +67,15 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     dispatch(UserActions.addMovieToWatchlistRequest(movie, userId));
   };
 
+  const handleRemoveMovieFromWatchlist = () => {
+    dispatch(UserActions.removeMovieFromWatchlistRequest(id, userId));
+  };
+
+  const handleToggleMovieInWatchlist = () =>
+    isMovieInWatchlist
+      ? handleRemoveMovieFromWatchlist()
+      : handleAddMovieToWatchlist();
+
   return (
     <S.Wrapper>
       <S.Details>
@@ -74,14 +88,24 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
             <Button
               kind={ButtonType.PRIMARY}
               size={ButtonSize.MEDIUM}
-              onClick={handleAddMovieToWatchlist}
+              onClick={handleToggleMovieInWatchlist}
             >
               {watchlistStatus === Status.LOADING ? (
                 <Spinner size={14} thickness={3} />
               ) : (
-                <Icon name={SvgIcon.BOOKMARK} color={Colors.LIGHT} size={16} />
+                <Icon
+                  name={
+                    isMovieInWatchlist
+                      ? SvgIcon.BOOKMARK_FILLED
+                      : SvgIcon.BOOKMARK_OUTLINED
+                  }
+                  color={Colors.LIGHT}
+                  size={16}
+                />
               )}
-              <Text>Add to Watchlist</Text>
+              <Text>{`${
+                isMovieInWatchlist ? "Remove from" : "Add to"
+              } Watchlist`}</Text>
             </Button>
             <Text>{overview}</Text>
           </S.Content>
