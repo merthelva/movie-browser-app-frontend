@@ -27,7 +27,7 @@ const Index: NextPage = () => {
   const isLoading =
     moviesStatus === Status.LOADING || genresStatus === Status.LOADING;
 
-  // TODO: while movies are not loaded yet, <Paginate /> component is still being displayed!
+  // TODO: while movies are not loaded yet, <Paginate /> component is still being displayed! One possible solution is to replace "isLoading" in above statement with "isLoaded" and checking if statuses are LOADED instead of checking if they are in LOADING status
 
   return isLoading ? (
     <Spinner thickness={6} />

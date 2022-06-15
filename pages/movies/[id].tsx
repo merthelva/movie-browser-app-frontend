@@ -8,9 +8,9 @@ import { IPageProps } from "./props.interface";
 
 import { handleRequest } from "services";
 import { wrapper, ISagaStore } from "store";
-import { useAppDispatch, useAppSelector, useToggle } from "hooks";
 import { convertLongNumberToReadableFormat } from "lib/utilities";
 import { UserActions, UserSelectors, IWatchlistMovie } from "store/slices/user";
+import { useAppDispatch, useAppSelector, useIsMounted, useToggle } from "hooks";
 import { ButtonSize, ButtonType, Colors, Status, SvgIcon } from "lib/constants";
 import {
   Button,
@@ -44,6 +44,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
   const errors = useAppSelector(UserSelectors.makeSelectUserError); // TODO: make use of this. e.g. a side notification may be displayed to user
 
+  const isMounted = useIsMounted();
   const [isToggled, handleToggle] = useToggle();
 
   const isMovieInWatchlist = useMemo(() => {
@@ -76,6 +77,8 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     isMovieInWatchlist
       ? handleRemoveMovieFromWatchlist()
       : handleAddMovieToWatchlist();
+
+  if (!isMounted) return null;
 
   return (
     <>
