@@ -20,6 +20,8 @@ import {
 import { UserActions } from "store/slices/user";
 import { UserSelectors } from "store/slices/user";
 
+// TODO: VERY IMPORTANT!!! After logging a user out and logging with another user in, "userId" cookie is NOT updated and it remains as the previous value!!
+
 const AuthPage: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();

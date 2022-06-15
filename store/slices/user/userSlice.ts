@@ -68,13 +68,25 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(UserActions.fetchWatchlistSuccess, (state, action) => {
-        state.status = Status.LOADED;
+        state.status = Status.INIT;
         state.watchlist = action.payload.watchlist;
       })
       .addCase(UserActions.fetchWatchlistFailed, (state, action) => {
         state.status = Status.FAILED;
         state.error = action.payload.error;
         state.watchlist = [];
+      })
+      .addCase(UserActions.addMovieToWatchlistRequest, (state) => {
+        state.status = Status.LOADING;
+        state.error = null;
+      })
+      .addCase(UserActions.addMovieToWatchlistSuccess, (state, action) => {
+        state.status = Status.INIT;
+        state.watchlist.push({ ...action.payload.addedMovie });
+      })
+      .addCase(UserActions.addMovieToWatchlistFailed, (state, action) => {
+        state.status = Status.FAILED;
+        state.error = action.payload.error;
       });
   },
 });

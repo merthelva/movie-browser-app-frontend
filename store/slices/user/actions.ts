@@ -1,5 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
+import { IWatchlistMovie } from ".";
+
 export { setIsAuthenticated, setUserId } from "./userSlice";
 
 // TODO: Add required types for "prepare" function arguments in all actions.ts files
@@ -108,6 +110,40 @@ export const fetchWatchlistSuccess = createAction(
 
 export const fetchWatchlistFailed = createAction(
   "user/fetchWatchlistFailed",
+  function prepare(reason) {
+    return {
+      payload: {
+        error: reason,
+      },
+    };
+  }
+);
+
+export const addMovieToWatchlistRequest = createAction(
+  "user/addMovieToWatchlistRequest",
+  function prepare(movieDetails: IWatchlistMovie, userId: string) {
+    return {
+      payload: {
+        movieDetails,
+        userId,
+      },
+    };
+  }
+);
+
+export const addMovieToWatchlistSuccess = createAction(
+  "user/addMovieToWatchlistSuccess",
+  function prepare(addedMovie: IWatchlistMovie) {
+    return {
+      payload: {
+        addedMovie,
+      },
+    };
+  }
+);
+
+export const addMovieToWatchlistFailed = createAction(
+  "user/addMovieToWatchlistFailed",
   function prepare(reason) {
     return {
       payload: {

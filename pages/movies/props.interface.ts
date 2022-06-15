@@ -5,7 +5,12 @@ interface ICastMember {
   character: string;
 }
 
+export interface IContentProps {
+  isLoading: boolean;
+}
+
 export interface IPageProps {
+  id: number | string;
   coverImageSrc: string;
   budget: string;
   overview: string;

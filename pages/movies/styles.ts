@@ -6,6 +6,8 @@ import * as TextStyles from "components/Text/styles";
 
 import { Breakpoints } from "lib/constants";
 
+import { IContentProps } from "./props.interface";
+
 export const Wrapper = styled.div`
   max-width: 840px;
   margin: auto;
@@ -35,7 +37,7 @@ export const Body = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<IContentProps>`
   grid-area: content;
 
   & > ${TextStyles.Text} {
@@ -47,7 +49,12 @@ export const Content = styled.div`
   }
 
   & > ${ButtonStyles.Wrapper} {
+    min-width: 180px;
     margin-bottom: var(--spacing-8x);
+
+    ${TextStyles.Text} {
+      margin-left: ${({ isLoading }) => (isLoading ? "var(--spacing-2x)" : 0)};
+    }
   }
 
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {

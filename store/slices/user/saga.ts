@@ -5,13 +5,14 @@ import {
   UserActions,
   ISignupRequestAction,
   ILoginRequestAction,
+  IWatchlistMovie,
   UserSelectors,
 } from ".";
 
 import { IResponse } from "interface";
+import { cookie } from "lib/utilities";
 import { handleRequest } from "services";
 import { AuthMode, Database } from "lib/constants";
-import { cookie } from "lib/utilities";
 
 function* loginUserStarterSaga(action: ILoginRequestAction) {
   const result: IResponse = yield call(handleRequest, {
@@ -80,6 +81,28 @@ function* fetchWatchlistStarterSaga(action: PayloadAction<string>) {
   }
 }
 
+function* addMovieToWatchlistStarterSaga(
+  action: PayloadAction<{ movieDetails: IWatchlistMovie; userId: string }>
+) {
+  const result: IResponse = yield call(handleRequest, {
+    url: "/watchlist/add-movie",
+    dbName: Database.MONGODB,
+    method: "post",
+    params: { userId: action.payload.userId },
+    body: { ...action.payload.movieDetails },
+  });
+
+  if ((result.status as number) < 400) {
+    const addedMovie = result.data.addedMovie;
+
+    yield put(UserActions.addMovieToWatchlistSuccess(addedMovie));
+  } else {
+    yield put(
+      UserActions.addMovieToWatchlistFailed(result.response.data.reason)
+    );
+  }
+}
+
 function* rootSaga() {
   yield takeLatest(UserActions.loginRequest, loginUserStarterSaga);
   yield takeLatest(UserActions.signupRequest, signupUserStarterSaga);
@@ -87,6 +110,10 @@ function* rootSaga() {
   yield takeLatest(
     UserActions.fetchWatchlistRequest,
     fetchWatchlistStarterSaga
+  );
+  yield takeLatest(
+    UserActions.addMovieToWatchlistRequest,
+    addMovieToWatchlistStarterSaga
   );
 }
 

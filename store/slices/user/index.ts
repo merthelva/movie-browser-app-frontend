@@ -4,4 +4,5 @@ export type {
   IInitialState,
   ILoginRequestAction,
   ISignupRequestAction,
+  IWatchlistMovie,
 } from "./saga.interface";

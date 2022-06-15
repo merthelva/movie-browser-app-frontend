@@ -1,28 +1,29 @@
 import { useMemo } from "react";
 import type { NextPage } from "next";
-import { END, Task } from "redux-saga";
-import { Store } from "@reduxjs/toolkit";
+import { END } from "redux-saga";
 
 import * as S from "./styles";
 
-import { wrapper, ISagaStore } from "store";
-import { handleRequest } from "services";
-import { convertLongNumberToReadableFormat } from "lib/utilities";
-
 import { IPageProps } from "./props.interface";
 
-import { useToggle } from "hooks";
+import { handleRequest } from "services";
+import { wrapper, ISagaStore } from "store";
+import { useAppDispatch, useAppSelector, useToggle } from "hooks";
+import { convertLongNumberToReadableFormat } from "lib/utilities";
+import { UserActions, UserSelectors, IWatchlistMovie } from "store/slices/user";
+import { ButtonSize, ButtonType, Colors, Status, SvgIcon } from "lib/constants";
 import {
   Button,
   CharacterDetail,
   Icon,
   MovieRate,
+  Spinner,
   Switch,
   Text,
 } from "components";
-import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 const MovieDetailsPage: NextPage<IPageProps> = ({
+  id,
   coverImageSrc,
   budget,
   overview,
@@ -33,7 +34,13 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   //imageGallery,
   movieCast,
 }) => {
+  const dispatch = useAppDispatch();
+
   console.log("MovieDetailsPage RENDERED");
+  const userId = useAppSelector(UserSelectors.makeSelectUserId);
+  const watchlistStatus = useAppSelector(UserSelectors.makeSelectUserStatus);
+  const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
+  const error = useAppSelector(UserSelectors.makeSelectUserError); // TODO: make use of this. e.g. a side notification may be displayed to user
 
   const [isToggled, handleToggle] = useToggle();
 
@@ -41,11 +48,25 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     return !isToggled ? 6 : movieCast.length;
   }, [isToggled, movieCast]);
 
+  const handleAddMovieToWatchlist = () => {
+    // TODO: Consider replacing the logic of dispatching the action directly with checking first that if the movie with "id" is already in watchlist
+    const movie = {
+      id,
+      budget,
+      releaseDate,
+      duration,
+      title,
+      rate,
+    };
+
+    dispatch(UserActions.addMovieToWatchlistRequest(movie, userId));
+  };
+
   return (
     <S.Wrapper>
       <S.Details>
         <S.Body>
-          <S.Content>
+          <S.Content isLoading={watchlistStatus === Status.LOADING}>
             <S.ContentHeader>
               <Text>{title}</Text>
               <MovieRate rate={rate} />
@@ -53,9 +74,13 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
             <Button
               kind={ButtonType.PRIMARY}
               size={ButtonSize.MEDIUM}
-              onClick={() => {}}
+              onClick={handleAddMovieToWatchlist}
             >
-              <Icon name={SvgIcon.BOOKMARK} color={Colors.LIGHT} size={16} />
+              {watchlistStatus === Status.LOADING ? (
+                <Spinner size={14} thickness={3} />
+              ) : (
+                <Icon name={SvgIcon.BOOKMARK} color={Colors.LIGHT} size={16} />
+              )}
               <Text>Add to Watchlist</Text>
             </Button>
             <Text>{overview}</Text>
@@ -114,6 +139,10 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
+      store.dispatch(
+        UserActions.fetchWatchlistRequest(store.getState().user.userId)
+      );
+
       const movieDetailsDataPromise = new Promise((resolve) => {
         handleRequest({
           url: `/movie/${params!.id}`,
@@ -159,6 +188,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
       return {
         props: {
+          id: params!.id,
           coverImageSrc: movieDetailsData.poster_path,
           budget: movieDetailsData.budget,
           overview: movieDetailsData.overview,
