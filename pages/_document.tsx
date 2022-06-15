@@ -55,6 +55,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <div id="backdrop" />
+          <div id="notification" />
           <Main />
           <NextScript />
         </body>

@@ -9,6 +9,7 @@ enum Colors {
   ERROR = "#CC4343",
   WARNING = "#E3DB3D",
   SUCCESS = "#17D914",
+  INFO = "#8b78de",
 }
 
 export default Colors;

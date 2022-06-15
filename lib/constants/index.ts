@@ -10,6 +10,7 @@ export { default as IconSize } from "./IconSize";
 export { default as InputSize } from "./InputSize";
 export { default as InputType } from "./InputType";
 export { default as InputVariants } from "./InputVariants";
+export { default as NotificationType } from "./NotificationType";
 export { default as SvgIcon } from "./SvgIcon";
 export { default as Status } from "./Status";
 export { default as TextType } from "./TextType";

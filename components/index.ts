@@ -11,6 +11,7 @@ export { default as ImageGallery } from "./ImageGallery";
 export { default as MovieCard } from "./MovieCard";
 export { default as MovieRate } from "./MovieRate";
 export { default as NavLink } from "./NavLink";
+export { default as Notification } from "./Notification";
 export { default as Paginate } from "./Paginate";
 export { default as Spinner } from "./Spinner";
 export { default as Switch } from "./Switch";

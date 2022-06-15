@@ -14,6 +14,9 @@ const SvgIcon = {
   MOVIE: "movie",
   AUTHENTICATE: "authenticate",
   ERROR: "error",
+  WARNING: "warning",
+  SUCCESS: "success",
+  INFO: "info",
   CANCEL_FILLED: "cancelFilled",
   LOGOUT: "logout",
 };

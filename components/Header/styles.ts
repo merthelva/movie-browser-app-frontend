@@ -42,7 +42,7 @@ export const LogoWrapper = styled.div`
   }
 `;
 
-export const NavLinksWrapper = styled.div`
+export const NavLinksWrapper = styled.nav`
   display: none;
 
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {

@@ -6,7 +6,7 @@ import * as S from "./styles";
 import { IFieldSetterMap } from "./props.interface";
 
 import { useAppDispatch, useAppSelector } from "hooks";
-import { Button, Input, Spinner, Text } from "components";
+import { Button, Input, Notification, Spinner, Text } from "components";
 import {
   AuthMode,
   ButtonSize,
@@ -89,63 +89,71 @@ const AuthPage: NextPage = () => {
   }, [status]);
 
   return (
-    <S.FormWrapper isLoading={status === Status.LOADING}>
-      <Input
-        id="email"
-        errorMsg={errorMessages?.[FormFields.EMAIL]?.message}
-        hasClear={email !== ""}
-        handleClearInput={handleClearInputValue}
-        //isAutoFocused
-        label="Email"
-        onChange={handleInputValueChange}
-        placeholder="john@doe.com"
-        size={InputSize.MEDIUM}
-        type={InputType.EMAIL}
-        value={email}
+    <>
+      <Notification
+        isOpen={errorMessages && Object.keys(errorMessages).length > 0}
+        notificationText="One or more form fields are invalid. Please check them again."
       />
-      <Input
-        id="password"
-        errorMsg={errorMessages?.[FormFields.PASSWORD]?.message}
-        hasClear={password !== ""}
-        handleClearInput={handleClearInputValue}
-        label="Password"
-        onChange={handleInputValueChange}
-        size={InputSize.MEDIUM}
-        type={InputType.PASSWORD}
-        value={password}
-      />
-      {authMode === AuthMode.SIGNUP && (
+      <S.FormWrapper isLoading={status === Status.LOADING}>
         <Input
-          id="confirmPassword"
-          errorMsg={errorMessages?.[FormFields.CONFIRM_PASSWORD]?.message}
-          hasClear={confirmPassword !== ""}
+          id="email"
+          errorMsg={errorMessages?.[FormFields.EMAIL]?.message}
+          hasClear={email !== ""}
           handleClearInput={handleClearInputValue}
-          label="Confirm Password"
+          //isAutoFocused
+          label="Email"
+          onChange={handleInputValueChange}
+          placeholder="john@doe.com"
+          size={InputSize.MEDIUM}
+          type={InputType.EMAIL}
+          value={email}
+        />
+        <Input
+          id="password"
+          errorMsg={errorMessages?.[FormFields.PASSWORD]?.message}
+          hasClear={password !== ""}
+          handleClearInput={handleClearInputValue}
+          label="Password"
           onChange={handleInputValueChange}
           size={InputSize.MEDIUM}
           type={InputType.PASSWORD}
-          value={confirmPassword}
+          value={password}
         />
-      )}
-      <Button
-        kind={ButtonType.PRIMARY}
-        size={ButtonSize.MEDIUM}
-        onClick={handleAuthFormSubmit}
-      >
-        {status === Status.LOADING && <Spinner size={16} color={Colors.DARK} />}
-        <Text>{authMode === AuthMode.SIGNUP ? "SIGNUP" : "LOGIN"}</Text>
-      </Button>
-      <S.SwitchModeWrapper>
-        <Text>Already have an account? </Text>
+        {authMode === AuthMode.SIGNUP && (
+          <Input
+            id="confirmPassword"
+            errorMsg={errorMessages?.[FormFields.CONFIRM_PASSWORD]?.message}
+            hasClear={confirmPassword !== ""}
+            handleClearInput={handleClearInputValue}
+            label="Confirm Password"
+            onChange={handleInputValueChange}
+            size={InputSize.MEDIUM}
+            type={InputType.PASSWORD}
+            value={confirmPassword}
+          />
+        )}
         <Button
-          kind={ButtonType.GHOST}
-          size={ButtonSize.NOSPACE}
-          onClick={handleSwitchAuthMode}
+          kind={ButtonType.PRIMARY}
+          size={ButtonSize.MEDIUM}
+          onClick={handleAuthFormSubmit}
         >
-          <Text>{authMode === AuthMode.SIGNUP ? "Login" : "Signup"}</Text>
+          {status === Status.LOADING && (
+            <Spinner size={16} color={Colors.DARK} />
+          )}
+          <Text>{authMode === AuthMode.SIGNUP ? "SIGNUP" : "LOGIN"}</Text>
         </Button>
-      </S.SwitchModeWrapper>
-    </S.FormWrapper>
+        <S.SwitchModeWrapper>
+          <Text>Already have an account? </Text>
+          <Button
+            kind={ButtonType.GHOST}
+            size={ButtonSize.NOSPACE}
+            onClick={handleSwitchAuthMode}
+          >
+            <Text>{authMode === AuthMode.SIGNUP ? "Login" : "Signup"}</Text>
+          </Button>
+        </S.SwitchModeWrapper>
+      </S.FormWrapper>
+    </>
   );
 };
 

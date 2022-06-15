@@ -4,6 +4,7 @@ enum ZIndices {
   BACKDROP = 2000,
   DRAWER = 3000,
   MODAL = 3000,
+  NOTIFICATION = 4000,
 }
 
 export default ZIndices;
