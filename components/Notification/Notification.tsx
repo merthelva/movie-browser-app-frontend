@@ -4,10 +4,11 @@ import { createPortal } from "react-dom";
 import * as S from "./styles";
 import { IProps } from "./props.interface";
 
-import { Colors, NotificationType, SvgIcon } from "lib/constants";
+import { BackdropType, Colors, NotificationType, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
 import Text from "../Text";
+import Backdrop from "../Backdrop";
 
 const Notification: React.FC<IProps> = ({
   isOpen = false,
@@ -46,10 +47,13 @@ const Notification: React.FC<IProps> = ({
   const notificationSlot = document.querySelector("#notification")!;
 
   const notificationEl = (
-    <S.Wrapper isActive={isActive} kind={kind}>
-      {notificationIcon}
-      <Text>{notificationText}</Text>
-    </S.Wrapper>
+    <>
+      <Backdrop isOpen={isActive} type={BackdropType.INVISIBLE} />
+      <S.Wrapper isActive={isActive} kind={kind}>
+        {notificationIcon}
+        <Text>{notificationText}</Text>
+      </S.Wrapper>
+    </>
   );
 
   return createPortal(notificationEl, notificationSlot);

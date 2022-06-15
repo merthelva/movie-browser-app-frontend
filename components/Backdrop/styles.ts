@@ -1,13 +1,32 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import { ZIndices } from "lib/constants";
+import { IWrapperProps } from "./props.interface";
 
-export const Backdrop = styled.div`
+import { BackdropType, ZIndices } from "lib/constants";
+
+const invisibleStyle = css`
+  background-color: transparent;
+`;
+
+const transparentStyle = css`
+  background-color: #00000080;
+`;
+
+const BackdropTypeStyles = {
+  [BackdropType.INVISIBLE]: invisibleStyle,
+  [BackdropType.TRANSPARENT]: transparentStyle,
+};
+
+export const Wrapper = styled.div<IWrapperProps>`
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: ${ZIndices.BACKDROP};
-  background-color: #00000080;
+
+  ${({ type }) =>
+    type
+      ? BackdropTypeStyles[type]
+      : BackdropTypeStyles[BackdropType.INVISIBLE]}
 `;

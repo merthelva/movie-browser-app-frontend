@@ -1,4 +1,5 @@
 export { default as AuthMode } from "./AuthMode";
+export { default as BackdropType } from "./BackdropType";
 export { default as Breakpoints } from "./Breakpoints";
 export { default as ButtonSize } from "./ButtonSize";
 export { default as ButtonType } from "./ButtonType";
