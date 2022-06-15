@@ -1,4 +1,5 @@
 const SvgIcon = {
+  ADD: "add",
   VIDEO: "video",
   SEARCH: "search",
   LIST: "list",
@@ -13,6 +14,7 @@ const SvgIcon = {
   CANCEL: "cancel",
   MOVIE: "movie",
   AUTHENTICATE: "authenticate",
+  MENU: "menu",
   ERROR: "error",
   WARNING: "warning",
   SUCCESS: "success",

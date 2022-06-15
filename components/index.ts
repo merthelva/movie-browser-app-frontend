@@ -1,3 +1,4 @@
+export { default as ActionsMenu } from "./ActionsMenu";
 export { default as Backdrop } from "./Backdrop";
 export { default as Button } from "./Button";
 export { default as CharacterDetail } from "./CharacterDetail";
@@ -16,3 +17,4 @@ export { default as Paginate } from "./Paginate";
 export { default as Spinner } from "./Spinner";
 export { default as Switch } from "./Switch";
 export { default as Text } from "./Text";
+export { default as WatchlistMovie } from "./WatchlistMovie";
