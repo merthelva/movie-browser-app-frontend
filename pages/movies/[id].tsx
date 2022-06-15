@@ -163,9 +163,10 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      store.dispatch(
-        UserActions.fetchWatchlistRequest(store.getState().user.userId)
-      );
+      store.getState().user.isAuthenticated &&
+        store.dispatch(
+          UserActions.fetchWatchlistRequest(store.getState().user.userId)
+        );
 
       const movieDetailsDataPromise = new Promise((resolve) => {
         handleRequest({

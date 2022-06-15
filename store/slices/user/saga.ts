@@ -23,11 +23,12 @@ function* loginUserStarterSaga(action: ILoginRequestAction) {
   });
 
   if ((result.status as number) < 400) {
-    const token = result.data.token;
+    const { token, userId } = result.data;
 
     yield call(cookie.set, "token", token, {}, undefined);
+    yield call(cookie.set, "userId", userId, {}, undefined);
     yield call(cookie.set, "authMode", AuthMode.LOGIN, {}, undefined);
-    yield put(UserActions.loginSuccess(token));
+    yield put(UserActions.loginSuccess(token, userId));
   } else {
     yield put(UserActions.loginFailed(result.response.data.reason));
   }

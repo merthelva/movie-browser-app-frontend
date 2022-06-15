@@ -20,10 +20,11 @@ export const loginRequest = createAction(
 
 export const loginSuccess = createAction(
   "user/loginSuccess",
-  function prepare(token) {
+  function prepare(token, userId) {
     return {
       payload: {
         token,
+        userId,
       },
     };
   }

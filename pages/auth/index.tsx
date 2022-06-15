@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
@@ -20,8 +20,6 @@ import {
 import { UserActions } from "store/slices/user";
 import { UserSelectors } from "store/slices/user";
 
-// TODO: VERY IMPORTANT!!! After logging a user out and logging with another user in, "userId" cookie is NOT updated and it remains as the previous value!!
-
 const AuthPage: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -31,6 +29,8 @@ const AuthPage: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [doesFormSubmitAttempt, setDoesFormSubmitAttempt] =
+    useState<boolean>(false);
 
   const fieldSetterMap: IFieldSetterMap = {
     email: setEmail,
@@ -39,6 +39,14 @@ const AuthPage: NextPage = () => {
   };
 
   const [authMode, setAuthMode] = useState(AuthMode.SIGNUP);
+
+  const isNotificationOpen = useMemo(() => {
+    return (
+      doesFormSubmitAttempt &&
+      errorMessages &&
+      Object.keys(errorMessages).length > 0
+    );
+  }, [doesFormSubmitAttempt, errorMessages]);
 
   const handleInputValueChange = (event: React.FormEvent) => {
     const { name, value } = event.target as HTMLInputElement;
@@ -88,10 +96,16 @@ const AuthPage: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
+  useEffect(() => {
+    if (status === Status.LOADED || status === Status.FAILED) {
+      setDoesFormSubmitAttempt(true);
+    }
+  }, [status]);
+
   return (
     <>
       <Notification
-        isOpen={errorMessages && Object.keys(errorMessages).length > 0}
+        isOpen={isNotificationOpen}
         notificationText="One or more form fields are invalid. Please check them again."
       />
       <S.FormWrapper isLoading={status === Status.LOADING}>

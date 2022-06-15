@@ -33,6 +33,7 @@ const userSlice = createSlice({
       .addCase(UserActions.loginSuccess, (state, action) => {
         state.status = Status.LOADED;
         state.token = action.payload.token;
+        state.userId = action.payload.userId;
       })
       .addCase(UserActions.loginFailed, (state, action) => {
         state.status = Status.FAILED;
@@ -51,6 +52,7 @@ const userSlice = createSlice({
         state.error = action.payload.error;
       })
       .addCase(UserActions.logoutRequest, (state) => {
+        state.error = null;
         state.status = Status.LOADING;
       })
       .addCase(UserActions.logoutSuccess, (state) => {
@@ -85,7 +87,7 @@ const userSlice = createSlice({
         state.watchlist.push({ ...action.payload.addedMovie });
       })
       .addCase(UserActions.addMovieToWatchlistFailed, (state, action) => {
-        state.status = Status.FAILED;
+        state.status = Status.INIT;
         state.error = action.payload.error;
       })
       .addCase(UserActions.removeMovieFromWatchlistRequest, (state) => {
@@ -99,7 +101,7 @@ const userSlice = createSlice({
         );
       })
       .addCase(UserActions.removeMovieFromWatchlistFailed, (state, action) => {
-        state.status = Status.FAILED;
+        state.status = Status.INIT;
         state.error = action.payload.error;
       });
   },
