@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import * as S from "./styles";
 import { IFieldSetterMap } from "./props.interface";
 
-import { useAppDispatch, useAppSelector } from "hooks";
+import { useAppDispatch, useAppSelector, useIsMounted } from "hooks";
 import { Button, Input, Notification, Spinner, Text } from "components";
 import {
   AuthMode,
@@ -32,6 +32,8 @@ const AuthPage: NextPage = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [doesFormSubmitAttempt, setDoesFormSubmitAttempt] =
     useState<boolean>(false);
+
+  const isMounted = useIsMounted();
 
   const fieldSetterMap: IFieldSetterMap = {
     email: setEmail,
@@ -92,6 +94,14 @@ const AuthPage: NextPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, token, userId]);
+
+  // the following check is placed here and in /movies/:id page for the following reason:
+  // since <Notification /> component is used and it is rendered conditionally, whenever
+  // reloading the page, an error is thrown stating that "Hydration failed due to rendered
+  // initial UI does not match with the one in server." With the following, we force the
+  // pages to not render anything unless they are mounted. Still, a more clever solution may
+  // be found to solve this mismatched UIs in server and in client problem in the future.
+  if (!isMounted) return null;
 
   return (
     <>
