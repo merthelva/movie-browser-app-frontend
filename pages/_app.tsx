@@ -1,6 +1,6 @@
-import App, { AppInitialProps } from "next/app";
+import { AppContext, AppInitialProps } from "next/app";
 
-import { wrapper } from "../store";
+import { END, ISagaStore, wrapper } from "../store";
 import { MainLayout } from "../layouts";
 import { cookie } from "../lib/utilities";
 import { CookieType } from "../lib/constants";
@@ -22,21 +22,33 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
 }
 
 MyApp.getInitialProps = wrapper.getInitialAppProps(
-  (store) => async (context) => {
-    const userId = cookie.get("userId", CookieType.STRING, context.ctx);
-    const authMode = cookie.get("authMode", CookieType.NUMBER, context.ctx);
+  (store) =>
+    async ({ ctx, Component }: AppContext) => {
+      const userId = cookie.get("userId", CookieType.STRING, ctx);
+      const authMode = cookie.get("authMode", CookieType.NUMBER, ctx);
 
-    let isAuthenticated = authMode && +authMode >= 0;
+      let isAuthenticated = authMode && +authMode >= 0;
 
-    userId && isAuthenticated && store.dispatch(UserActions.setUserId(userId));
-    store.dispatch(UserActions.setIsAuthenticated(isAuthenticated));
+      userId &&
+        isAuthenticated &&
+        store.dispatch(UserActions.setUserId(userId));
+      store.dispatch(UserActions.setIsAuthenticated(isAuthenticated));
 
-    return {
-      pageProps: {
-        ...(await App.getInitialProps(context)).pageProps,
-      },
-    };
-  }
+      // 2. Stop the saga if on server
+      if (ctx.req && Component.getInitialProps) {
+        store.dispatch(END);
+        await (store as ISagaStore).sagaTask!.toPromise();
+      }
+
+      // 3. Return props
+      return {
+        pageProps: {
+          ...(Component.getInitialProps
+            ? await Component.getInitialProps({ ...ctx, store })
+            : {}),
+        },
+      };
+    }
 );
 
 export default wrapper.withRedux(MyApp);
