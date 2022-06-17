@@ -24,12 +24,10 @@ const Index: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  const isLoading =
-    moviesStatus === Status.LOADING || genresStatus === Status.LOADING;
+  const isLoaded =
+    moviesStatus === Status.LOADED || genresStatus === Status.LOADED;
 
-  // TODO: while movies are not loaded yet, <Paginate /> component is still being displayed! One possible solution is to replace "isLoading" in above statement with "isLoaded" and checking if statuses are LOADED instead of checking if they are in LOADING status
-
-  return isLoading ? (
+  return !isLoaded ? (
     <Spinner thickness={6} />
   ) : (
     <>
