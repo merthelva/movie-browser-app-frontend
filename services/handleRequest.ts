@@ -1,8 +1,4 @@
-import {
-  createMongoDbAxiosInstance,
-  createTMDBAxiosInstance,
-} from "./axiosInstance";
-
+import { createMongoDbAxiosInstance, createTMDBAxiosInstance } from ".";
 import { IRequestConfig, IAxiosResponse } from "./instance.interface";
 
 import { Database } from "lib/constants";
