@@ -32,7 +32,8 @@ const NotificationTypeStyles = {
 export const Wrapper = styled.div<IWrapperProps>`
   position: absolute;
   top: 32px;
-  right: ${({ isActive }) => (isActive ? "24px" : " -100vw")};
+  transform: ${({ isActive }) =>
+    isActive ? "translateX(6%)" : " translateX(-100%)"};
   display: flex;
   align-items: flex-start;
   padding: var(--spacing-8x) var(--spacing-4x);
@@ -43,7 +44,7 @@ export const Wrapper = styled.div<IWrapperProps>`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.light};
   z-index: ${ZIndices.NOTIFICATION};
-  transition: right ${({ isActive }) => (!isActive ? "1s" : " .75s")} linear;
+  transition: transform 0.35s linear;
   ${({ kind }) => (kind ? NotificationTypeStyles[kind] : errorStyle)};
 
   ${TextStyles.Text} {
