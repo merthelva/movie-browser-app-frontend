@@ -56,7 +56,7 @@ const userSlice = createSlice({
         state.status = Status.LOADING;
       })
       .addCase(UserActions.logoutSuccess, (state) => {
-        state.status = Status.INIT;
+        state.status = Status.LOADED;
         state.userId = null;
         state.token = null;
         state.isAuthenticated = false;
@@ -70,7 +70,7 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(UserActions.fetchWatchlistSuccess, (state, action) => {
-        state.status = Status.INIT;
+        state.status = Status.LOADED;
         state.watchlist = action.payload.watchlist;
       })
       .addCase(UserActions.fetchWatchlistFailed, (state, action) => {
@@ -83,11 +83,11 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(UserActions.addMovieToWatchlistSuccess, (state, action) => {
-        state.status = Status.INIT;
+        state.status = Status.LOADED;
         state.watchlist.push({ ...action.payload.addedMovie });
       })
       .addCase(UserActions.addMovieToWatchlistFailed, (state, action) => {
-        state.status = Status.INIT;
+        state.status = Status.FAILED;
         state.error = action.payload.error;
       })
       .addCase(UserActions.removeMovieFromWatchlistRequest, (state) => {
@@ -95,13 +95,13 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(UserActions.removeMovieFromWatchlistSuccess, (state, action) => {
-        state.status = Status.INIT;
+        state.status = Status.LOADED;
         state.watchlist = state.watchlist.filter(
           (movie) => movie.id !== action.payload.movieId
         );
       })
       .addCase(UserActions.removeMovieFromWatchlistFailed, (state, action) => {
-        state.status = Status.INIT;
+        state.status = Status.FAILED;
         state.error = action.payload.error;
       });
   },

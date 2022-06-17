@@ -23,8 +23,10 @@ import { UserSelectors } from "store/slices/user";
 const AuthPage: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const userId = useAppSelector(UserSelectors.makeSelectUserId);
+  const token = useAppSelector(UserSelectors.makeSelectUserToken);
   const status = useAppSelector(UserSelectors.makeSelectUserStatus);
-  const errorMessages = useAppSelector(UserSelectors.makeSelectUserError);
+  const errors = useAppSelector(UserSelectors.makeSelectUserError);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -41,12 +43,8 @@ const AuthPage: NextPage = () => {
   const [authMode, setAuthMode] = useState(AuthMode.SIGNUP);
 
   const isNotificationOpen = useMemo(() => {
-    return (
-      doesFormSubmitAttempt &&
-      errorMessages &&
-      Object.keys(errorMessages).length > 0
-    );
-  }, [doesFormSubmitAttempt, errorMessages]);
+    return doesFormSubmitAttempt && errors && Object.keys(errors).length > 0;
+  }, [doesFormSubmitAttempt, errors]);
 
   const handleInputValueChange = (event: React.FormEvent) => {
     const { name, value } = event.target as HTMLInputElement;
@@ -86,21 +84,15 @@ const AuthPage: NextPage = () => {
         })
       );
     }
+    setDoesFormSubmitAttempt(true);
   };
 
   useEffect(() => {
-    // TODO: this logic may be replaced with checking "isAuthenticated" slice instead. In that case, all Status.INIT settings in userSlice reducers can be revert to Status.LOADED
-    if (status === Status.LOADED) {
+    if (userId || token) {
       router.replace("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status]);
-
-  useEffect(() => {
-    if (status === Status.LOADED || status === Status.FAILED) {
-      setDoesFormSubmitAttempt(true);
-    }
-  }, [status]);
+  }, [status, token, userId]);
 
   return (
     <>
@@ -111,7 +103,7 @@ const AuthPage: NextPage = () => {
       <S.FormWrapper isLoading={status === Status.LOADING}>
         <Input
           id="email"
-          errorMsg={errorMessages?.[FormFields.EMAIL]?.message}
+          errorMsg={errors?.[FormFields.EMAIL]?.message}
           hasClear={email !== ""}
           handleClearInput={handleClearInputValue}
           //isAutoFocused
@@ -124,7 +116,7 @@ const AuthPage: NextPage = () => {
         />
         <Input
           id="password"
-          errorMsg={errorMessages?.[FormFields.PASSWORD]?.message}
+          errorMsg={errors?.[FormFields.PASSWORD]?.message}
           hasClear={password !== ""}
           handleClearInput={handleClearInputValue}
           label="Password"
@@ -136,7 +128,7 @@ const AuthPage: NextPage = () => {
         {authMode === AuthMode.SIGNUP && (
           <Input
             id="confirmPassword"
-            errorMsg={errorMessages?.[FormFields.CONFIRM_PASSWORD]?.message}
+            errorMsg={errors?.[FormFields.CONFIRM_PASSWORD]?.message}
             hasClear={confirmPassword !== ""}
             handleClearInput={handleClearInputValue}
             label="Confirm Password"
