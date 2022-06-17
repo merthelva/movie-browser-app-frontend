@@ -63,7 +63,10 @@ const Drawer: React.FC<IProps> = ({
         <Button
           kind={ButtonType.DANGER}
           size={ButtonSize.SMALL}
-          onClick={onLogoutUser}
+          onClick={() => {
+            onLogoutUser();
+            onToggle();
+          }}
         >
           <Icon name={SvgIcon.LOGOUT} color={Colors.LIGHT} size={16} />
           <Text>LOGOUT</Text>
