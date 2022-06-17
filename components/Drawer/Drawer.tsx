@@ -1,5 +1,4 @@
 import * as S from "./styles";
-
 import { IProps } from "./props.interface";
 
 import Icon from "../Icon";
@@ -18,7 +17,7 @@ const Drawer: React.FC<IProps> = ({
   onToggle,
 }) => {
   return (
-    <S.Wrapper isOpen={isOpen}>
+    <S.Drawer isOpen={isOpen}>
       <Button
         kind={ButtonType.GHOST}
         size={ButtonSize.NOSPACE}
@@ -70,7 +69,7 @@ const Drawer: React.FC<IProps> = ({
           <Text>LOGOUT</Text>
         </Button>
       )}
-    </S.Wrapper>
+    </S.Drawer>
   );
 };
 

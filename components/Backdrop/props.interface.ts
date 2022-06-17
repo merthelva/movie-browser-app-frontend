@@ -1,6 +1,6 @@
 import { BackdropType } from "lib/constants";
 
-export interface IBackdropProps {
+export interface IProps {
   onDismiss?: VoidFunction;
   isOpen: boolean;
   type?: BackdropType;

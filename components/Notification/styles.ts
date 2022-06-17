@@ -29,7 +29,7 @@ const NotificationTypeStyles = {
   [NotificationType.INFO]: infoStyle,
 };
 
-export const Wrapper = styled.div<IWrapperProps>`
+export const Notification = styled.div<IWrapperProps>`
   position: absolute;
   top: 32px;
   transform: ${({ isActive }) =>
@@ -38,7 +38,7 @@ export const Wrapper = styled.div<IWrapperProps>`
   align-items: flex-start;
   padding: var(--spacing-8x) var(--spacing-4x);
   min-width: 200px;
-  max-width: 320px;
+  max-width: 280px;
   min-height: 50px;
   border-radius: 4px;
   overflow: hidden;

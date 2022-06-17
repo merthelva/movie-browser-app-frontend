@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
 import * as S from "./styles";
-
 import { IProps } from "./props.interface";
+
+import Icon from "../Icon";
+import Button from "../Button";
 
 import {
   ButtonSize,
@@ -13,9 +15,6 @@ import {
   InputVariants,
   SvgIcon,
 } from "lib/constants";
-
-import Icon from "../Icon";
-import Button from "../Button";
 
 const Input: React.FC<IProps> = ({
   errorMsg = null,

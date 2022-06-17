@@ -1,11 +1,11 @@
 import * as S from "./styles";
 
 import icons from "./icons";
-import { IIconProps } from "./props.interface";
+import { IProps } from "./props.interface";
 
 import { IconSize } from "lib/constants";
 
-const Icon: React.FC<IIconProps> = ({
+const Icon: React.FC<IProps> = ({
   name,
   color,
   format = IconSize.LARGE,

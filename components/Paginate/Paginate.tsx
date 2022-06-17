@@ -1,23 +1,22 @@
 import * as S from "./styles";
+import { IProps } from "./props.interface";
 
-import { IPaginateProps } from "./props.interface";
-
-import Button from "../Button";
 import Icon from "../Icon";
 import Text from "../Text";
+import Button from "../Button";
 
-import { useAppDispatch, useAppSelector } from "hooks";
-import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
+import { useAppDispatch } from "hooks";
 import { MoviesActions } from "store/slices/movies";
+import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
-const Paginate: React.FC<IPaginateProps> = ({ currentPage }) => {
+const Paginate: React.FC<IProps> = ({ currentPage }) => {
   const dispatch = useAppDispatch();
 
   const handleGoToNextPage = () => dispatch(MoviesActions.goToNextPage());
   const handleGoToPrevPage = () => dispatch(MoviesActions.goToPrevPage());
 
   return (
-    <S.Wrapper>
+    <S.Paginate>
       <Button
         disabled={currentPage === 1}
         kind={ButtonType.GHOST}
@@ -42,7 +41,7 @@ const Paginate: React.FC<IPaginateProps> = ({ currentPage }) => {
           <Icon name={SvgIcon.ANGLE_RIGHT} color={Colors.PRIMARY} />
         </S.ButtonWrapper>
       </Button>
-    </S.Wrapper>
+    </S.Paginate>
   );
 };
 

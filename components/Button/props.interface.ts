@@ -5,9 +5,9 @@ export interface IWrapperProps {
   size: ButtonSize;
 }
 
-export interface IButtonProps {
+export interface IProps {
   children: React.ReactNode;
-  className?: any;
+  className?: string;
   disabled?: boolean;
   kind: ButtonType;
   onClick: (e: React.FormEvent) => void;

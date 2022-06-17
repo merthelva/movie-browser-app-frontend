@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const Wrapper = styled.div`
+export const MovieRate = styled.div`
   min-width: 40px;
   min-height: 40px;
   border-radius: 50%;

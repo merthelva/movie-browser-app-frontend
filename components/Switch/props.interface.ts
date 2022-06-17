@@ -1,4 +1,4 @@
-export interface IStyleProps {
+export interface IIndicatorProps {
   isToggled: boolean;
 }
 

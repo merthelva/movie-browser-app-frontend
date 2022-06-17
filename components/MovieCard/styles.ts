@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const Wrapper = styled.div`
+export const MovieCard = styled.div`
   border-radius: 4px;
   overflow: hidden;
   display: flex;

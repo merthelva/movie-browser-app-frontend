@@ -1,4 +1,4 @@
-export interface IMovieCard {
+export interface IProps {
   coverImageSrc: string;
   genres: string[];
   id: number | string;

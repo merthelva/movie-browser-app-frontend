@@ -10,7 +10,7 @@ const flexStyle = css`
   align-items: flex-start;
 `;
 
-export const Wrapper = styled.article`
+export const WatchlistMovie = styled.article`
   position: relative;
   display: flex;
   flex-direction: column;

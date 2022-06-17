@@ -1,14 +1,13 @@
 import Image from "next/image";
 
 import * as S from "./styles";
-
 import { IProps } from "./props.interface";
 
 import Text from "../Text";
 
 const CharacterDetail: React.FC<IProps> = ({ avatarSrc, character, name }) => {
   return (
-    <S.Wrapper>
+    <S.CharacterDetail>
       <S.ImageWrapper>
         <Image
           alt={name}
@@ -22,7 +21,7 @@ const CharacterDetail: React.FC<IProps> = ({ avatarSrc, character, name }) => {
         <Text>{name}</Text>
         <Text>{character}</Text>
       </S.Details>
-    </S.Wrapper>
+    </S.CharacterDetail>
   );
 };
 

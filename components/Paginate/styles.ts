@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as ButtonStyles from "../Button/styles";
 import * as TextStyles from "../Text/styles";
 
-export const Wrapper = styled.div`
+export const Paginate = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     border-radius: 4px;
   }
 
-  /* ${ButtonStyles.Wrapper}:nth-of-type(2) {
+  /* ${ButtonStyles.Button}:nth-of-type(2) {
     padding: var(--spacing-4x);
     background-color: ${({ theme }) => theme.colors.primary};
 

@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
 
 import * as S from "./styles";
-import { IBackdropProps } from "./props.interface";
+import { IProps } from "./props.interface";
 
 import { BackdropType } from "lib/constants";
 
-const Backdrop: React.FC<IBackdropProps> = ({
+const Backdrop: React.FC<IProps> = ({
   isOpen,
   onDismiss,
   type = BackdropType.TRANSPARENT,
@@ -15,7 +15,7 @@ const Backdrop: React.FC<IBackdropProps> = ({
   const backdropSlot = document.querySelector("#backdrop")!;
 
   const backdropEl = isOpen ? (
-    <S.Wrapper
+    <S.Backdrop
       aria-label="Backdrop"
       onClick={onDismiss}
       role="presentation"

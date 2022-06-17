@@ -7,7 +7,7 @@ import { ZIndices } from "lib/constants";
 import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 
-export const Wrapper = styled.div<IWrapperProps>`
+export const ActionsMenu = styled.div<IWrapperProps>`
   position: absolute;
   top: 28px;
   right: 24px;
@@ -26,13 +26,13 @@ export const Wrapper = styled.div<IWrapperProps>`
   z-index: ${ZIndices.ACTIONS_MENU};
 `;
 
-export const ActionWrapper = styled.div`
+export const ActionItemWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 30px;
 
-  & > ${ButtonStyles.Wrapper} {
+  & > ${ButtonStyles.Button} {
     justify-content: flex-start;
     width: 100%;
 

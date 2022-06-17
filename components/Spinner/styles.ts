@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import { IWrapper } from "./props.interface";
+import { IWrapperProps } from "./props.interface";
 
 const spin = keyframes`
   from {
@@ -12,7 +12,7 @@ const spin = keyframes`
   }
 `;
 
-export const Wrapper = styled.span<IWrapper>`
+export const Spinner = styled.span<IWrapperProps>`
   display: inline-block;
   border: ${({ theme, thickness }) =>
     `${thickness}px solid ${theme.colors.light}`};

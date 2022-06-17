@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { IStyleProps } from "./props.interface";
+import { IIndicatorProps } from "./props.interface";
 
-export const Wrapper = styled.button<IStyleProps>`
+export const Switch = styled.button<IIndicatorProps>`
   position: relative;
   width: 28px;
   height: 14px;
@@ -13,7 +13,7 @@ export const Wrapper = styled.button<IStyleProps>`
   transition: background-color 0.25s;
 `;
 
-export const Indicator = styled.span<IStyleProps>`
+export const Indicator = styled.span<IIndicatorProps>`
   position: absolute;
   left: ${({ isToggled }) => (isToggled ? "14px" : 0)};
   display: inline-block;

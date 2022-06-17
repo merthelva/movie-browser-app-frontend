@@ -1,5 +1,3 @@
-interface IMainLayoutProps {
+export interface IProps {
   children: React.ReactNode;
 }
-
-export default IMainLayoutProps;

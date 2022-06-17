@@ -1,3 +1,3 @@
-export interface IMovieRate {
+export interface IProps {
   rate: number;
 }

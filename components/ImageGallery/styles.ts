@@ -13,16 +13,16 @@ export const Wrapper = styled.div`
   background-color: inherit;
   width: 100%;
 
-  ${ButtonStyles.Wrapper} {
+  ${ButtonStyles.Button} {
     position: absolute;
     z-index: 3;
   }
 
-  ${ButtonStyles.Wrapper}:first-of-type {
+  ${ButtonStyles.Button}:first-of-type {
     left: -8px;
   }
 
-  ${ButtonStyles.Wrapper}:last-of-type {
+  ${ButtonStyles.Button}:last-of-type {
     right: -8px;
   }
 

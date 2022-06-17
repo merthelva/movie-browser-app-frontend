@@ -4,11 +4,11 @@ import { createPortal } from "react-dom";
 import * as S from "./styles";
 import { IProps } from "./props.interface";
 
-import { BackdropType, Colors, NotificationType, SvgIcon } from "lib/constants";
-
 import Icon from "../Icon";
 import Text from "../Text";
 import Backdrop from "../Backdrop";
+
+import { BackdropType, Colors, NotificationType, SvgIcon } from "lib/constants";
 
 const Notification: React.FC<IProps> = ({
   isOpen = false,
@@ -49,10 +49,10 @@ const Notification: React.FC<IProps> = ({
   const notificationEl = (
     <>
       <Backdrop isOpen={isActive} type={BackdropType.INVISIBLE} />
-      <S.Wrapper isActive={isActive} kind={kind}>
+      <S.Notification isActive={isActive} kind={kind}>
         {notificationIcon}
         <Text>{notificationText}</Text>
-      </S.Wrapper>
+      </S.Notification>
     </>
   );
 

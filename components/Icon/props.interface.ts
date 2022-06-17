@@ -1,6 +1,6 @@
 import { Colors, IconSize } from "lib/constants";
 
-export interface IIconProps {
+export interface IProps {
   name: string;
   color?: Colors;
   format?: IconSize;

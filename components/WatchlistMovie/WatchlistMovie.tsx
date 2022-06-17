@@ -46,7 +46,7 @@ const WatchlistMovie: React.FC<IProps> = ({
   const actionHandlers = [handleRemoveMovieFromWatchlist];
 
   return (
-    <S.Wrapper>
+    <S.WatchlistMovie>
       <S.Header>
         <ActionsMenu
           actionHandlers={actionHandlers}
@@ -78,7 +78,7 @@ const WatchlistMovie: React.FC<IProps> = ({
           <Text>$ {convertLongNumberToReadableFormat(budget, {})}</Text>
         </S.FooterInfo>
       </S.Footer>
-    </S.Wrapper>
+    </S.WatchlistMovie>
   );
 };
 

@@ -1,12 +1,12 @@
 import { Colors } from "lib/constants";
 
-export interface ISpinnerProps {
+export interface IProps {
   size?: number;
   color?: Colors;
   thickness?: number;
 }
 
-export interface IWrapper {
+export interface IWrapperProps {
   size: number;
   color: Colors;
   thickness?: number;

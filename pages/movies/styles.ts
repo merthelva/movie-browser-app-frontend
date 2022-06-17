@@ -48,7 +48,7 @@ export const Content = styled.div<IContentProps>`
     margin-bottom: var(--spacing-12x);
   }
 
-  & > ${ButtonStyles.Wrapper} {
+  & > ${ButtonStyles.Button} {
     min-width: 180px;
     margin-bottom: var(--spacing-8x);
 

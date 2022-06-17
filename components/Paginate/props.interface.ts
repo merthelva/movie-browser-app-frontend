@@ -1,3 +1,3 @@
-export interface IPaginateProps {
+export interface IProps {
   currentPage: number;
 }

@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 
 import * as S from "./styles";
-
-import IMainLayoutProps from "./props.interface";
+import { IProps } from "./props.interface";
 
 import { UserActions, UserSelectors } from "store/slices/user";
 import { useAppDispatch, useAppSelector, useToggle } from "hooks";
 import { Backdrop, Container, Drawer, Header } from "components";
 
-const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<IProps> = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector(

@@ -1,5 +1,4 @@
 import * as S from "./styles";
-
 import { IProps, IActionItem } from "./props.interface";
 
 import Icon from "../Icon";
@@ -24,9 +23,9 @@ const ActionsMenu: React.FC<IProps> = ({
         onDismiss={onClose}
         type={BackdropType.INVISIBLE}
       />
-      <S.Wrapper isActive={isActive}>
+      <S.ActionsMenu isActive={isActive}>
         {actionItems.map((action: IActionItem, index: number) => (
-          <S.ActionWrapper key={index}>
+          <S.ActionItemWrapper key={action.id}>
             <Button
               kind={ButtonType.GHOST}
               size={ButtonSize.NOSPACE}
@@ -39,9 +38,9 @@ const ActionsMenu: React.FC<IProps> = ({
               )}
               <Text>{action.name}</Text>
             </Button>
-          </S.ActionWrapper>
+          </S.ActionItemWrapper>
         ))}
-      </S.Wrapper>
+      </S.ActionsMenu>
     </>
   );
 };

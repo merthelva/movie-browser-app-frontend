@@ -13,7 +13,7 @@ export const FormWrapper = styled.form<IFormWrapperProps>`
   border-radius: var(--spacing-4x);
   background-color: ${({ theme }) => theme.colors.dark};
 
-  & > ${ButtonStyles.Wrapper} {
+  & > ${ButtonStyles.Button} {
     width: 120px;
     margin-bottom: var(--spacing-12x);
 
@@ -33,9 +33,10 @@ export const SwitchModeWrapper = styled.div`
     font-size: 14px;
     font-weight: var(--fw-thin);
     margin-right: var(--spacing-2x);
+    text-align: left;
   }
 
-  & > ${ButtonStyles.Wrapper} ${TextStyles.Text} {
+  & > ${ButtonStyles.Button} ${TextStyles.Text} {
     color: ${({ theme }) => theme.colors.primary};
   }
 `;

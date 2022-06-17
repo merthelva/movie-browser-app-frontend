@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import { TextType } from "lib/constants";
 
-export interface ITextCmp {
+export interface IProps {
   children: ReactNode;
   kind?: TextType;
 }

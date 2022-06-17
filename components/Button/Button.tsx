@@ -1,8 +1,7 @@
 import * as S from "./styles";
+import { IProps } from "./props.interface";
 
-import { IButtonProps } from "./props.interface";
-
-const Button: React.FC<IButtonProps> = ({
+const Button: React.FC<IProps> = ({
   children,
   className,
   disabled,
@@ -10,8 +9,11 @@ const Button: React.FC<IButtonProps> = ({
   onClick,
   size,
 }) => {
+  // className prop is passed to the component so that it can be extended in
+  // another style file using "styled" API and overwriting the base styles
+  // please refer to https://styled-components.com/docs/basics#styling-any-component
   return (
-    <S.Wrapper
+    <S.Button
       className={className}
       disabled={disabled}
       kind={kind}
@@ -19,7 +21,7 @@ const Button: React.FC<IButtonProps> = ({
       size={size}
     >
       {children}
-    </S.Wrapper>
+    </S.Button>
   );
 };
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const Wrapper = styled.div`
+export const NavLink = styled.div`
   position: relative;
   cursor: pointer;
   display: flex;

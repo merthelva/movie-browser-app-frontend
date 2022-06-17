@@ -1,9 +1,7 @@
 import Link from "next/link";
 
 import * as S from "./styles";
-
 import { IProps } from "./props.interface";
-import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 import Icon from "../Icon";
 import Text from "../Text";
@@ -11,6 +9,8 @@ import Button from "../Button";
 import NavLink from "../NavLink";
 import Container from "../Container";
 import DrawerButton from "../DrawerButton";
+
+import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
 const Header: React.FC<IProps> = ({
   isAuthenticated,

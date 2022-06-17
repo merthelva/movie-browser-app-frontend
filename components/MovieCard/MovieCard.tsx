@@ -2,12 +2,12 @@ import Link from "next/link";
 
 import * as S from "./styles";
 
-import { IMovieCard } from "./props.interface";
+import { IProps } from "./props.interface";
 
 import MovieRate from "../MovieRate";
 import Text from "../Text";
 
-const MovieCard: React.FC<IMovieCard> = ({
+const MovieCard: React.FC<IProps> = ({
   coverImageSrc,
   genres,
   id,
@@ -16,7 +16,7 @@ const MovieCard: React.FC<IMovieCard> = ({
 }) => {
   return (
     <Link href={`/movies/${id}`}>
-      <S.Wrapper>
+      <S.MovieCard>
         <S.Poster
           alt={title}
           width={600}
@@ -31,7 +31,7 @@ const MovieCard: React.FC<IMovieCard> = ({
           </S.TextWrapper>
           <MovieRate rate={rate} />
         </S.DetailsWrapper>
-      </S.Wrapper>
+      </S.MovieCard>
     </Link>
   );
 };

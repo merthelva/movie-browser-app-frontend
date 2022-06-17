@@ -1,14 +1,14 @@
 import * as S from "./styles";
 
-import { IMovieRate } from "./props.interface";
+import { IProps } from "./props.interface";
 
 import Text from "../Text";
 
-const MovieRate: React.FC<IMovieRate> = ({ rate }) => {
+const MovieRate: React.FC<IProps> = ({ rate }) => {
   return (
-    <S.Wrapper>
+    <S.MovieRate>
       <Text>{rate.toFixed(1)}</Text>
-    </S.Wrapper>
+    </S.MovieRate>
   );
 };
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const Wrapper = styled.div`
+export const CharacterDetail = styled.div`
   min-height: 300px;
   width: 150px;
 `;

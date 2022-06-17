@@ -14,7 +14,7 @@ export const Header = styled.header`
   padding: 0 var(--spacing-8x);
   background-color: ${({ theme }) => theme.colors.light};
 
-  ${ContainerStyles.Wrapper} {
+  ${ContainerStyles.Container} {
     display: flex;
     justify-content: space-between;
     align-items: center;

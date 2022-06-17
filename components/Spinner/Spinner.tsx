@@ -1,15 +1,15 @@
 import * as S from "./styles";
 
-import { ISpinnerProps } from "./props.interface";
+import { IProps } from "./props.interface";
 
 import { Colors } from "lib/constants";
 
-const Spinner: React.FC<ISpinnerProps> = ({
+const Spinner: React.FC<IProps> = ({
   size = 32,
   color = Colors.PRIMARY,
   thickness = 2,
 }) => {
-  return <S.Wrapper size={size} color={color} thickness={thickness} />;
+  return <S.Spinner size={size} color={color} thickness={thickness} />;
 };
 
 export default Spinner;

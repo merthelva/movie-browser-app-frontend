@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
     error: "#CC4343",
     warning: "#E3DB3D",
     success: "#17D914",
-    info: "#8b78de",
+    info: "#8B78DE",
   },
 };
 

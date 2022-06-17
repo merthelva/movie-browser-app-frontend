@@ -62,7 +62,7 @@ const ButtonTypeStyles = {
   [ButtonType.DANGER]: dangerStyle,
 };
 
-export const Wrapper = styled.button<IWrapperProps>`
+export const Button = styled.button<IWrapperProps>`
   font-weight: var(--fw-semi);
   border-radius: 4px;
   ${({ size }) => ButtonSizeStyles[size]};
