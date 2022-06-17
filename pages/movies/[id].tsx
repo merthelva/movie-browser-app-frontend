@@ -38,7 +38,6 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  console.log("MovieDetailsPage RENDERED");
   const userId = useAppSelector(UserSelectors.makeSelectUserId);
   const watchlistStatus = useAppSelector(UserSelectors.makeSelectUserStatus);
   const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
