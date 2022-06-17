@@ -26,14 +26,14 @@ const UserWatchlistPage: NextPage = () => {
     </S.Wrapper>
   );
 
-  const renderNoMovieContainer = (
+  const renderNoMovieContent = (
     <S.NoMovieContainer>
       <Icon name={SvgIcon.WARNING} color={Colors.WARNING} size={24} />
       <Text>No movie is available in user watchlist</Text>
     </S.NoMovieContainer>
   );
 
-  return watchlist.length > 0 ? renderPageContent : renderNoMovieContainer;
+  return watchlist.length > 0 ? renderPageContent : renderNoMovieContent;
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
