@@ -19,7 +19,7 @@ const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
   const [isToggled, handleToggle] = useToggle();
 
   const handleNavigateToAuthPage = () => {
-    router.push("/auth", "/auth/signup");
+    router.push("/auth");
   };
 
   const handleLogoutUser = () => {

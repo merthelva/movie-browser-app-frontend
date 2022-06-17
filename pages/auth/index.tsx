@@ -17,8 +17,7 @@ import {
   InputType,
   Status,
 } from "lib/constants";
-import { UserActions } from "store/slices/user";
-import { UserSelectors } from "store/slices/user";
+import { UserActions, UserSelectors } from "store/slices/user";
 
 const AuthPage: NextPage = () => {
   const router = useRouter();
@@ -57,10 +56,10 @@ const AuthPage: NextPage = () => {
     event.preventDefault();
     setAuthMode((prevState: AuthMode) => {
       if (prevState === AuthMode.SIGNUP) {
-        router.replace("/auth", "/auth/login");
+        router.replace("/auth");
         return AuthMode.LOGIN;
       }
-      router.replace("/auth", "/auth/signup");
+      router.replace("/auth");
       return AuthMode.SIGNUP;
     });
   };
