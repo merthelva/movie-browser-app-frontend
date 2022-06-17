@@ -4,8 +4,6 @@ import { IWatchlistMovie } from ".";
 
 export { setIsAuthenticated, setUserId } from "./userSlice";
 
-// TODO: Add required types for "prepare" function arguments in all actions.ts files
-
 export const loginRequest = createAction(
   "user/loginRequest",
   function prepare({ email, password }) {

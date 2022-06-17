@@ -10,7 +10,6 @@ import { IWatchlistMovie, UserActions, UserSelectors } from "store/slices/user";
 
 const UserWatchlistPage: NextPage = () => {
   const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
-  // TODO: Display different content when no movie is in the watchlist
 
   const renderPageContent = (
     <S.Wrapper>

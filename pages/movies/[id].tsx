@@ -41,7 +41,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   const userId = useAppSelector(UserSelectors.makeSelectUserId);
   const watchlistStatus = useAppSelector(UserSelectors.makeSelectUserStatus);
   const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
-  const errors = useAppSelector(UserSelectors.makeSelectUserError); // TODO: make use of this. e.g. a side notification may be displayed to user
+  const errors = useAppSelector(UserSelectors.makeSelectUserError);
 
   const isMounted = useIsMounted();
   const [isToggled, handleToggle] = useToggle();
