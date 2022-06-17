@@ -7,8 +7,8 @@ enum Colors {
   SHADOW = "#D8F0EE",
   GRAY500 = "#53BAC2",
   ERROR = "#CC4343",
-  WARNING = "#E3DB3D",
-  SUCCESS = "#17D914",
+  WARNING = "#FFCC00",
+  SUCCESS = "#15BF31",
   INFO = "#8b78de",
 }
 

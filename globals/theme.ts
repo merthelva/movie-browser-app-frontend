@@ -10,8 +10,8 @@ const theme: DefaultTheme = {
     shadow: "#D8F0EE",
     gray500: "#53BAC2",
     error: "#CC4343",
-    warning: "#E3DB3D",
-    success: "#17D914",
+    warning: "#FFCC00",
+    success: "#15BF31",
     info: "#8B78DE",
   },
 };
