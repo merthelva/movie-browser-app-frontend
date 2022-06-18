@@ -17,6 +17,19 @@ const Notification: React.FC<IProps> = ({
 }) => {
   const [isActive, setIsActive] = useState<boolean>(!!isOpen);
 
+  const notificationIcon = useMemo(() => {
+    if (kind === NotificationType.ERROR)
+      return <Icon name={SvgIcon.ERROR} color={Colors.ERROR} size={20} />;
+    if (kind === NotificationType.WARNING)
+      return <Icon name={SvgIcon.WARNING} color={Colors.WARNING} size={20} />;
+    if (kind === NotificationType.INFO)
+      return <Icon name={SvgIcon.INFO} color={Colors.INFO} size={20} />;
+    if (kind === NotificationType.SUCCESS)
+      return <Icon name={SvgIcon.SUCCESS} color={Colors.SUCCESS} size={20} />;
+  }, [kind]);
+
+  const handleForceDismissNotification = () => setIsActive(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (isOpen) {
@@ -31,24 +44,17 @@ const Notification: React.FC<IProps> = ({
     if (isOpen) setIsActive(true);
   }, [isOpen]);
 
-  const notificationIcon = useMemo(() => {
-    if (kind === NotificationType.ERROR)
-      return <Icon name={SvgIcon.ERROR} color={Colors.ERROR} size={20} />;
-    if (kind === NotificationType.WARNING)
-      return <Icon name={SvgIcon.WARNING} color={Colors.WARNING} size={20} />;
-    if (kind === NotificationType.INFO)
-      return <Icon name={SvgIcon.INFO} color={Colors.INFO} size={20} />;
-    if (kind === NotificationType.SUCCESS)
-      return <Icon name={SvgIcon.SUCCESS} color={Colors.SUCCESS} size={20} />;
-  }, [kind]);
-
   if (typeof window === "undefined") return null;
 
   const notificationSlot = document.querySelector("#notification")!;
 
   const notificationEl = (
     <>
-      <Backdrop isOpen={isActive} type={BackdropType.INVISIBLE} />
+      <Backdrop
+        isOpen={isActive}
+        onDismiss={handleForceDismissNotification}
+        type={BackdropType.INVISIBLE}
+      />
       <S.Notification isActive={isActive} kind={kind}>
         {notificationIcon}
         <Text>{notificationText}</Text>
