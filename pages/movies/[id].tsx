@@ -10,7 +10,14 @@ import { wrapper, ISagaStore, END } from "store";
 import { convertLongNumberToReadableFormat } from "lib/utilities";
 import { UserActions, UserSelectors, IWatchlistMovie } from "store/slices/user";
 import { useAppDispatch, useAppSelector, useIsMounted, useToggle } from "hooks";
-import { ButtonSize, ButtonType, Colors, Status, SvgIcon } from "lib/constants";
+import {
+  ButtonSize,
+  ButtonType,
+  Colors,
+  NotificationType,
+  Status,
+  SvgIcon,
+} from "lib/constants";
 import {
   Button,
   CharacterDetail,
@@ -172,6 +179,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     <>
       <Notification
         isOpen={errors && Object.keys(errors).length > 0}
+        kind={NotificationType.WARNING}
         notificationText={errors?.userId.message}
       />
       <S.Wrapper>
