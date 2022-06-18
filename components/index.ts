@@ -14,6 +14,7 @@ export { default as MovieRate } from "./MovieRate";
 export { default as NavLink } from "./NavLink";
 export { default as Notification } from "./Notification";
 export { default as Paginate } from "./Paginate";
+export { default as SEOHead } from "./SEOHead";
 export { default as Spinner } from "./Spinner";
 export { default as Switch } from "./Switch";
 export { default as Text } from "./Text";

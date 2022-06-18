@@ -48,4 +48,16 @@ const Index: NextPage = () => {
   );
 };
 
+export const getStaticProps = async () => {
+  return {
+    props: {
+      meta: {
+        title: "Movie Browser App",
+        description:
+          "Movie browser app developed by Mert Helvaci and it uses the official TMDB as the source database for displaying movies.",
+      },
+    },
+  };
+};
+
 export default Index;

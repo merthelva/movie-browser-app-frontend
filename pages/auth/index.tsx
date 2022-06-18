@@ -179,4 +179,15 @@ const AuthPage: NextPage = () => {
   );
 };
 
+export const getStaticProps = async () => {
+  return {
+    props: {
+      meta: {
+        title: "Movie Browser App",
+        description: "Authentication form for user to authenticate",
+      },
+    },
+  };
+};
+
 export default AuthPage;

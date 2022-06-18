@@ -7,6 +7,8 @@ import { CookieType } from "../lib/constants";
 import { UserActions } from "../store/slices/user";
 import { AppPropsWithLayout } from "./app.types";
 import { GlobalStyles, ThemeProvider, Variables } from "../globals";
+import { SEOHead } from "../components";
+
 function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
   // Use the layout defined at the page level, if available
   const getLayout =
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
 
   return (
     <>
+      <SEOHead metaProps={{ ...pageProps?.meta }} />
       <Variables />
       <GlobalStyles />
       <ThemeProvider>{getLayout(<Component {...pageProps} />)}</ThemeProvider>

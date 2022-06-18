@@ -1,14 +1,15 @@
 import { NextPage } from "next";
 
 import * as S from "./styles";
+import { IProps } from "./props.interface";
 
 import { useAppSelector } from "hooks";
 import { Colors, SvgIcon } from "lib/constants";
 import { wrapper, END, ISagaStore } from "store";
-import { Icon, Text, WatchlistMovie } from "components";
+import { Icon, SEOHead, Text, WatchlistMovie } from "components";
 import { IWatchlistMovie, UserActions, UserSelectors } from "store/slices/user";
 
-const UserWatchlistPage: NextPage = () => {
+const UserWatchlistPage: NextPage<IProps> = ({ meta }) => {
   const watchlist = useAppSelector(UserSelectors.makeSelectUserWatchlist);
 
   const renderPageContent = (
@@ -33,7 +34,14 @@ const UserWatchlistPage: NextPage = () => {
     </S.NoMovieContainer>
   );
 
-  return watchlist.length > 0 ? renderPageContent : renderNoMovieContent;
+  return (
+    <>
+      <SEOHead metaProps={{ ...meta }}>
+        <meta name="robots" content="noindex" />
+      </SEOHead>
+      {watchlist.length > 0 ? renderPageContent : renderNoMovieContent}
+    </>
+  );
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
@@ -47,7 +55,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
       await (store as ISagaStore).sagaTask!.toPromise();
 
       return {
-        props: {},
+        props: {
+          meta: {
+            title: `Watchlist`,
+            description: `Watchlist page for user with userId ${userId}`,
+          },
+        },
       };
     }
 );

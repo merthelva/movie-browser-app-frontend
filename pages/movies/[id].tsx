@@ -254,6 +254,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
           rate: movieDetailsData.vote_average,
           imageGallery,
           movieCast,
+          meta: {
+            title: movieDetailsData.title,
+            description: movieDetailsData.overview,
+          },
         },
       };
     }
