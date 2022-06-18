@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
@@ -32,29 +33,33 @@ const AuthPage: NextPage = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [doesFormSubmitAttempt, setDoesFormSubmitAttempt] =
     useState<boolean>(false);
+  const [authMode, setAuthMode] = useState<AuthMode>(AuthMode.SIGNUP);
 
   const isMounted = useIsMounted();
 
-  const fieldSetterMap: IFieldSetterMap = {
-    email: setEmail,
-    password: setPassword,
-    confirmPassword: setConfirmPassword,
-  };
-
-  const [authMode, setAuthMode] = useState(AuthMode.SIGNUP);
+  const fieldSetterMap: IFieldSetterMap = useMemo(() => {
+    return {
+      email: setEmail,
+      password: setPassword,
+      confirmPassword: setConfirmPassword,
+    };
+  }, []);
 
   const isNotificationOpen = useMemo(() => {
     return doesFormSubmitAttempt && errors && Object.keys(errors).length > 0;
   }, [doesFormSubmitAttempt, errors]);
 
-  const handleInputValueChange = (event: React.FormEvent) => {
+  const handleInputValueChange = useCallback((event: React.FormEvent) => {
     const { name, value } = event.target as HTMLInputElement;
     fieldSetterMap[name](value);
-  };
+  }, []);
 
-  const handleClearInputValue = (id: string) => fieldSetterMap[id]("");
+  const handleClearInputValue = useCallback(
+    (id: string) => fieldSetterMap[id](""),
+    []
+  );
 
-  const handleSwitchAuthMode = (event: React.FormEvent) => {
+  const handleSwitchAuthMode = useCallback((event: React.FormEvent) => {
     event.preventDefault();
     setAuthMode((prevState: AuthMode) => {
       if (prevState === AuthMode.SIGNUP) {
@@ -64,36 +69,38 @@ const AuthPage: NextPage = () => {
       router.replace("/auth");
       return AuthMode.SIGNUP;
     });
-  };
+  }, []);
 
-  const handleAuthFormSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleAuthFormSubmit = useCallback(
+    (event: React.FormEvent) => {
+      event.preventDefault();
 
-    if (authMode === AuthMode.LOGIN) {
-      dispatch(
-        UserActions.loginRequest({
-          email,
-          password,
-        })
-      );
-    } else {
-      dispatch(
-        UserActions.signupRequest({
-          email,
-          password,
-          confirmPassword,
-        })
-      );
-    }
-    setDoesFormSubmitAttempt(true);
-  };
+      if (authMode === AuthMode.LOGIN) {
+        dispatch(
+          UserActions.loginRequest({
+            email,
+            password,
+          })
+        );
+      } else {
+        dispatch(
+          UserActions.signupRequest({
+            email,
+            password,
+            confirmPassword,
+          })
+        );
+      }
+      setDoesFormSubmitAttempt(true);
+    },
+    [authMode, email, confirmPassword, password]
+  );
 
   useEffect(() => {
     if (userId || token) {
       router.replace("/");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status, token, userId]);
+  }, [token, userId]);
 
   // the following check is placed here and in /movies/:id page for the following reason:
   // since <Notification /> component is used and it is rendered conditionally, whenever

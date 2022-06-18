@@ -1,13 +1,12 @@
-import { useMemo } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useMemo } from "react";
 import type { NextPage } from "next";
-import { END } from "redux-saga";
 
 import * as S from "./styles";
-
 import { IPageProps } from "./props.interface";
 
 import { handleRequest } from "services";
-import { wrapper, ISagaStore } from "store";
+import { wrapper, ISagaStore, END } from "store";
 import { convertLongNumberToReadableFormat } from "lib/utilities";
 import { UserActions, UserSelectors, IWatchlistMovie } from "store/slices/user";
 import { useAppDispatch, useAppSelector, useIsMounted, useToggle } from "hooks";
@@ -68,14 +67,17 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     }
   };
 
-  const handleRemoveMovieFromWatchlist = () => {
+  const handleRemoveMovieFromWatchlist = useCallback(() => {
     dispatch(UserActions.removeMovieFromWatchlistRequest(id, userId));
-  };
+  }, [id, userId]);
 
-  const handleToggleMovieInWatchlist = () =>
-    isMovieInWatchlist
-      ? handleRemoveMovieFromWatchlist()
-      : handleAddMovieToWatchlist();
+  const handleToggleMovieInWatchlist = useCallback(
+    () =>
+      isMovieInWatchlist
+        ? handleRemoveMovieFromWatchlist()
+        : handleAddMovieToWatchlist(),
+    [isMovieInWatchlist]
+  );
 
   if (!isMounted) return null;
 
