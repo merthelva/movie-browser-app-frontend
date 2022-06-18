@@ -15,6 +15,7 @@ import {
   Button,
   CharacterDetail,
   Icon,
+  ImageGallery,
   MovieRate,
   Notification,
   Spinner,
@@ -31,7 +32,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
   duration,
   title,
   rate,
-  //imageGallery,
+  imageGallery,
   movieCast,
 }) => {
   const dispatch = useAppDispatch();
@@ -165,6 +166,8 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
     </S.Actors>
   );
 
+  const renderImageGallery = <ImageGallery imageSources={imageGallery} />;
+
   return (
     <>
       <Notification
@@ -174,6 +177,7 @@ const MovieDetailsPage: NextPage<IPageProps> = ({
       <S.Wrapper>
         {renderMovieDetails}
         {renderActors}
+        {renderImageGallery}
       </S.Wrapper>
     </>
   );

@@ -1,8 +1,11 @@
-import { Breakpoints } from "lib/constants";
 import Image from "next/image";
 import styled, { css } from "styled-components";
 
+import { IImageWrapper } from "./props.interface";
+
 import * as ButtonStyles from "../Button/styles";
+
+import { Breakpoints } from "lib/constants";
 
 const pseudoStyle = css`
   position: absolute;
@@ -58,14 +61,24 @@ export const ImageGallery = styled.div`
     transition: transform 0.5s;
 
     &:hover {
-      transform: scale(1.35);
+      transform: scale(1.45);
     }
   }
 `;
 
-export const ImageWrapper = styled.figure`
+export const GallerySlider = styled.div`
+  display: flex;
+  overflow: hidden;
   position: absolute;
+  inset: 0;
+`;
+
+export const ImageWrapper = styled.figure<IImageWrapper>`
+  position: relative;
   z-index: -1;
+  transition: transform 0.5s;
+  transform: ${({ index }) => `translateX(calc(-${index} * 100%))`};
+  min-width: 100%;
 
   @supports (inset: 0) {
     inset: 0;
@@ -82,6 +95,8 @@ export const ImageWrapper = styled.figure`
 export const GalleryImage = styled(Image)`
   object-fit: cover;
   object-position: 80% center;
+  min-width: 100%;
+  height: 100%;
 
   @media (min-width: ${Breakpoints.CELL.MIN}px) and (min-width: ${Breakpoints
       .MOBILE.MAX}px) {
