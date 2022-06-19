@@ -10,7 +10,7 @@ const flexStyle = css`
   align-items: flex-start;
 `;
 
-export const WatchlistMovie = styled.article`
+const WatchlistMovie = styled.article`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export const WatchlistMovie = styled.article`
   min-height: 180px;
 `;
 
-export const Header = styled.div`
+const Header = styled.div`
   ${flexStyle};
   flex: 1;
 
@@ -44,11 +44,11 @@ export const Header = styled.div`
   }
 `;
 
-export const Footer = styled.div`
+const Footer = styled.div`
   ${flexStyle};
 `;
 
-export const FooterInfo = styled.div`
+const FooterInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,3 +64,5 @@ export const FooterInfo = styled.div`
     flex-direction: row;
   }
 `;
+
+export { WatchlistMovie, Header, Footer, FooterInfo };

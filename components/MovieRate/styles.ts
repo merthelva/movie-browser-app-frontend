@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const MovieRate = styled.div`
+const MovieRate = styled.div`
   min-width: 40px;
   min-height: 40px;
   border-radius: 50%;
@@ -17,3 +17,5 @@ export const MovieRate = styled.div`
     font-weight: var(--fw-bold);
   }
 `;
+
+export { MovieRate };

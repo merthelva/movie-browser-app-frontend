@@ -36,7 +36,7 @@ const InputVariantStyles = {
   [InputVariants.DARK]: darkStyle,
 };
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
   margin-bottom: var(--spacing-8x);
 `;
 
-export const InputWrapper = styled.div<IWrapperProps>`
+const InputWrapper = styled.div<IWrapperProps>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -52,27 +52,27 @@ export const InputWrapper = styled.div<IWrapperProps>`
   width: 100%;
 `;
 
-export const ClearButtonWrapper = styled.div<IWrapperProps>`
+const ClearButtonWrapper = styled.div<IWrapperProps>`
   position: absolute;
   bottom: ${({ size }) => (size ? size / 2 - 12 : 4)}px;
   right: var(--spacing-2x);
 `;
 
-export const LabelWrapper = styled.div<IWrapperProps>`
+const LabelWrapper = styled.div<IWrapperProps>`
   display: flex;
   align-items: center;
   margin-bottom: var(--spacing-2x);
   margin-right: var(--spacing-2x);
 `;
 
-export const Label = styled.label`
+const Label = styled.label`
   font-size: 14px;
   font-weight: var(--fw-thin);
   color: ${({ theme }) => theme.colors.light};
   margin-right: var(--spacing-2x);
 `;
 
-export const Input = styled.input<IInputProps>`
+const Input = styled.input<IInputProps>`
   ${baseInputStyles};
   ${({ variant }) =>
     variant
@@ -84,7 +84,7 @@ export const Input = styled.input<IInputProps>`
   height: ${({ size }) => size || 32}px;
 `;
 
-export const TextArea = styled.textarea<IInputProps>`
+const TextArea = styled.textarea<IInputProps>`
   ${baseInputStyles};
   resize: none;
   border: 1px solid
@@ -92,8 +92,19 @@ export const TextArea = styled.textarea<IInputProps>`
       hasError ? theme.colors.error : theme.colors.white};
 `;
 
-export const ErrorMessage = styled.span`
+const ErrorMessage = styled.span`
   font-weight: var(--fw-semi);
   font-size: 14px;
   color: ${({ theme }) => theme.colors.error};
 `;
+
+export {
+  Wrapper,
+  InputWrapper,
+  ClearButtonWrapper,
+  LabelWrapper,
+  Label,
+  Input,
+  TextArea,
+  ErrorMessage,
+};

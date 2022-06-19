@@ -8,7 +8,7 @@ import { Breakpoints } from "lib/constants";
 
 import { IContentProps } from "./props.interface";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   max-width: 840px;
   margin: auto;
 
@@ -18,13 +18,13 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Details = styled.div`
+const Details = styled.div`
   overflow: hidden;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.dark};
 `;
 
-export const Body = styled.div`
+const Body = styled.div`
   padding: var(--spacing-12x);
 
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
@@ -37,7 +37,7 @@ export const Body = styled.div`
   }
 `;
 
-export const Content = styled.div<IContentProps>`
+const Content = styled.div<IContentProps>`
   grid-area: content;
 
   & > ${TextStyles.Text} {
@@ -62,7 +62,7 @@ export const Content = styled.div<IContentProps>`
   }
 `;
 
-export const ContentHeader = styled.div`
+const ContentHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -78,7 +78,7 @@ export const ContentHeader = styled.div`
   }
 `;
 
-export const Footer = styled.div`
+const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,7 +92,7 @@ export const Footer = styled.div`
   }
 `;
 
-export const FooterInfo = styled.div`
+const FooterInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +103,7 @@ export const FooterInfo = styled.div`
   }
 `;
 
-export const PosterWrapper = styled.div`
+const PosterWrapper = styled.div`
   grid-area: poster;
   margin-bottom: var(--spacing-12x);
 
@@ -112,16 +112,16 @@ export const PosterWrapper = styled.div`
   }
 `;
 
-export const Poster = styled(Image)`
+const Poster = styled(Image)`
   object-position: center;
 `;
 
-export const Actors = styled.div`
+const Actors = styled.div`
   padding: var(--spacing-12x) var(--spacing-8x);
   background-color: ${({ theme }) => theme.colors.light};
 `;
 
-export const ActorsHeader = styled.div`
+const ActorsHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -135,7 +135,7 @@ export const ActorsHeader = styled.div`
   }
 `;
 
-export const SwitchWrapper = styled.div`
+const SwitchWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -146,7 +146,7 @@ export const SwitchWrapper = styled.div`
   }
 `;
 
-export const CastWrapper = styled.div`
+const CastWrapper = styled.div`
   display: grid;
   gap: var(--spacing-8x);
   justify-items: center;
@@ -167,3 +167,19 @@ export const CastWrapper = styled.div`
     grid-template-columns: repeat(4, 1fr);
   }
 `;
+
+export {
+  Wrapper,
+  Details,
+  Body,
+  Content,
+  ContentHeader,
+  Footer,
+  FooterInfo,
+  PosterWrapper,
+  Poster,
+  Actors,
+  ActorsHeader,
+  SwitchWrapper,
+  CastWrapper,
+};

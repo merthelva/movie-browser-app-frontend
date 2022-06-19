@@ -4,7 +4,7 @@ import { Breakpoints } from "lib/constants";
 
 import * as TextStyles from "components/Text/styles";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-auto-flow: row;
   justify-content: stretch;
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const NoMovieContainer = styled.div`
+const NoMovieContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,3 +30,5 @@ export const NoMovieContainer = styled.div`
     text-align: left;
   }
 `;
+
+export { Wrapper, NoMovieContainer };

@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const CharacterDetail = styled.div`
+const CharacterDetail = styled.div`
   min-height: 300px;
   width: 150px;
 `;
 
-export const Details = styled.div`
+const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +26,8 @@ export const Details = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div`
+const ImageWrapper = styled.div`
   font-size: 0;
 `;
+
+export { CharacterDetail, Details, ImageWrapper };

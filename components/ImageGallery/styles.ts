@@ -17,7 +17,7 @@ const pseudoStyle = css`
   transition: background-color 0.5s;
 `;
 
-export const ImageGallery = styled.div`
+const ImageGallery = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -66,14 +66,14 @@ export const ImageGallery = styled.div`
   }
 `;
 
-export const GallerySlider = styled.div`
+const GallerySlider = styled.div`
   display: flex;
   overflow: hidden;
   position: absolute;
   inset: 0;
 `;
 
-export const ImageWrapper = styled.figure<IImageWrapper>`
+const ImageWrapper = styled.figure<IImageWrapper>`
   position: relative;
   z-index: -1;
   transition: transform 0.5s;
@@ -92,7 +92,7 @@ export const ImageWrapper = styled.figure<IImageWrapper>`
   }
 `;
 
-export const GalleryImage = styled(Image)`
+const GalleryImage = styled(Image)`
   object-fit: cover;
   object-position: 80% center;
   min-width: 100%;
@@ -103,3 +103,5 @@ export const GalleryImage = styled(Image)`
     object-position: 50% center;
   }
 `;
+
+export { ImageGallery, GallerySlider, ImageWrapper, GalleryImage };

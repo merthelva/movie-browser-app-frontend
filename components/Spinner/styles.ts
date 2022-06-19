@@ -12,7 +12,7 @@ const spin = keyframes`
   }
 `;
 
-export const Spinner = styled.span<IWrapperProps>`
+const Spinner = styled.span<IWrapperProps>`
   display: inline-block;
   border: ${({ theme, thickness }) =>
     `${thickness}px solid ${theme.colors.light}`};
@@ -22,3 +22,5 @@ export const Spinner = styled.span<IWrapperProps>`
   height: ${({ size }) => size}px;
   animation: ${spin} 2s linear infinite;
 `;
+
+export { Spinner };

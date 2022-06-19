@@ -29,7 +29,7 @@ const NotificationTypeStyles = {
   [NotificationType.INFO]: infoStyle,
 };
 
-export const Notification = styled.div<IWrapperProps>`
+const Notification = styled.div<IWrapperProps>`
   position: absolute;
   top: 32px;
   transform: ${({ isActive }) =>
@@ -54,3 +54,5 @@ export const Notification = styled.div<IWrapperProps>`
     text-align: left;
   }
 `;
+
+export { Notification };

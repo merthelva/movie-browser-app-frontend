@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Breakpoints } from "lib/constants";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--spacing-12x);
@@ -13,3 +13,5 @@ export const Wrapper = styled.div`
     grid-template-columns: 320px;
   }
 `;
+
+export { Wrapper };

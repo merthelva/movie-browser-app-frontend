@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as ButtonStyles from "../Button/styles";
 import * as TextStyles from "../Text/styles";
 
-export const Paginate = styled.div`
+const Paginate = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@ export const Paginate = styled.div`
   } */
 `;
 
-export const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -37,3 +37,5 @@ export const ButtonWrapper = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
+
+export { Paginate, ButtonWrapper };

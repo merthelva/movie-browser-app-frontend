@@ -7,7 +7,7 @@ import { IWrapperProps } from "./props.interface";
 import * as ButtonStyles from "../Button/styles";
 import * as NavLinkStyles from "../NavLink/styles";
 
-export const Drawer = styled.div<IWrapperProps>`
+const Drawer = styled.div<IWrapperProps>`
   position: fixed;
   top: 0;
   right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
@@ -42,3 +42,5 @@ export const Drawer = styled.div<IWrapperProps>`
     display: none;
   }
 `;
+
+export { Drawer };

@@ -5,7 +5,7 @@ import * as ButtonStyles from "components/Button/styles";
 
 import { IFormWrapperProps } from "./props.interface";
 
-export const FormWrapper = styled.form<IFormWrapperProps>`
+const FormWrapper = styled.form<IFormWrapperProps>`
   box-shadow: var(--shadow) ${({ theme }) => theme.colors.shadow};
   max-width: 540px;
   margin: 0 auto;
@@ -24,7 +24,7 @@ export const FormWrapper = styled.form<IFormWrapperProps>`
   }
 `;
 
-export const SwitchModeWrapper = styled.div`
+const SwitchModeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,3 +40,5 @@ export const SwitchModeWrapper = styled.div`
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
+
+export { FormWrapper, SwitchModeWrapper };

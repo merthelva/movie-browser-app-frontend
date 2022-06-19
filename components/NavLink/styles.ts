@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const NavLink = styled.div`
+const NavLink = styled.div`
   position: relative;
   cursor: pointer;
   display: flex;
@@ -31,3 +31,5 @@ export const NavLink = styled.div`
     transform: scaleX(1);
   }
 `;
+
+export { NavLink };

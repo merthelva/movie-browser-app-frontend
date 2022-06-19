@@ -17,7 +17,7 @@ const BackdropTypeStyles = {
   [BackdropType.TRANSPARENT]: transparentStyle,
 };
 
-export const Backdrop = styled.div<IWrapperProps>`
+const Backdrop = styled.div<IWrapperProps>`
   position: fixed;
   top: 0;
   right: 0;
@@ -30,3 +30,5 @@ export const Backdrop = styled.div<IWrapperProps>`
       ? BackdropTypeStyles[type]
       : BackdropTypeStyles[BackdropType.INVISIBLE]}
 `;
+
+export { Backdrop };

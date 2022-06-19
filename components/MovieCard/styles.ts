@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
-export const MovieCard = styled.div`
+const MovieCard = styled.div`
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -18,11 +18,11 @@ export const MovieCard = styled.div`
   }
 `;
 
-export const Poster = styled(Image)`
+const Poster = styled(Image)`
   object-position: center;
 `;
 
-export const DetailsWrapper = styled.div`
+const DetailsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -30,7 +30,7 @@ export const DetailsWrapper = styled.div`
   padding: var(--spacing-8x);
 `;
 
-export const TextWrapper = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -49,3 +49,5 @@ export const TextWrapper = styled.div`
     font-size: 14px;
   }
 `;
+
+export { MovieCard, Poster, DetailsWrapper, TextWrapper };

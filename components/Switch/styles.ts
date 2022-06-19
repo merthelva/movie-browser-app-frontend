@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { IIndicatorProps } from "./props.interface";
 
-export const Switch = styled.button<IIndicatorProps>`
+const Switch = styled.button<IIndicatorProps>`
   position: relative;
   width: 28px;
   height: 14px;
@@ -13,7 +13,7 @@ export const Switch = styled.button<IIndicatorProps>`
   transition: background-color 0.25s;
 `;
 
-export const Indicator = styled.span<IIndicatorProps>`
+const Indicator = styled.span<IIndicatorProps>`
   position: absolute;
   left: ${({ isToggled }) => (isToggled ? "14px" : 0)};
   display: inline-block;
@@ -24,3 +24,5 @@ export const Indicator = styled.span<IIndicatorProps>`
     !isToggled ? theme.colors.primary : theme.colors.light};
   transition: left 0.25s, background-color 0.25s;
 `;
+
+export { Switch, Indicator };

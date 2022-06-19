@@ -4,7 +4,7 @@ import { Breakpoints, ZIndices } from "lib/constants";
 import * as TextStyles from "../Text/styles";
 import * as ContainerStyles from "../Container/styles";
 
-export const Header = styled.header`
+const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@ export const Header = styled.header`
   }
 `;
 
-export const LogoWrapper = styled.div`
+const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -42,7 +42,7 @@ export const LogoWrapper = styled.div`
   }
 `;
 
-export const NavLinksWrapper = styled.nav`
+const NavLinksWrapper = styled.nav`
   display: none;
 
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
@@ -54,3 +54,5 @@ export const NavLinksWrapper = styled.nav`
     }
   }
 `;
+
+export { Header, LogoWrapper, NavLinksWrapper };
