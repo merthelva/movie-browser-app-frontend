@@ -4,10 +4,16 @@ import type { NextPage } from "next";
 import * as S from "./styles";
 
 import { Status } from "lib/constants";
-import { MovieCard, Spinner, Paginate } from "components";
 import { useAppDispatch, useAppSelector } from "hooks";
+import { MovieCard, SEOHead, Spinner, Paginate } from "components";
 import { MoviesActions, MoviesSelectors } from "store/slices/movies";
 import { GenresActions, GenresSelectors } from "store/slices/genres";
+
+const pageMetaProps = {
+  title: "Movie Browser App",
+  description:
+    "Movie browser app developed by Mert Helvaci and it uses the official TMDB as the source database for displaying movies.",
+};
 
 const Index: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -28,9 +34,13 @@ const Index: NextPage = () => {
     moviesStatus === Status.LOADED || genresStatus === Status.LOADED;
 
   return !isLoaded ? (
-    <Spinner thickness={6} />
+    <>
+      <SEOHead metaProps={pageMetaProps} />
+      <Spinner thickness={6} />
+    </>
   ) : (
     <>
+      <SEOHead metaProps={pageMetaProps} />
       <S.Wrapper>
         {moviesPerPage.map((movie: any) => (
           <MovieCard
@@ -46,18 +56,6 @@ const Index: NextPage = () => {
       <Paginate currentPage={currentPage} />
     </>
   );
-};
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      meta: {
-        title: "Movie Browser App",
-        description:
-          "Movie browser app developed by Mert Helvaci and it uses the official TMDB as the source database for displaying movies.",
-      },
-    },
-  };
 };
 
 export default Index;

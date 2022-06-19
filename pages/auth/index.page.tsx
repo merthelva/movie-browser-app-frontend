@@ -7,7 +7,14 @@ import * as S from "./styles";
 import { IFieldSetterMap } from "./props.interface";
 
 import { useAppDispatch, useAppSelector, useIsMounted } from "hooks";
-import { Button, Input, Notification, Spinner, Text } from "components";
+import {
+  Button,
+  Input,
+  Notification,
+  SEOHead,
+  Spinner,
+  Text,
+} from "components";
 import {
   AuthMode,
   ButtonSize,
@@ -19,6 +26,11 @@ import {
   Status,
 } from "lib/constants";
 import { UserActions, UserSelectors } from "store/slices/user";
+
+const pageMetaProps = {
+  title: "Movie Browser App",
+  description: "Authentication form for user to authenticate",
+};
 
 const AuthPage: NextPage = () => {
   const router = useRouter();
@@ -112,6 +124,7 @@ const AuthPage: NextPage = () => {
 
   return (
     <>
+      <SEOHead metaProps={pageMetaProps} />
       <Notification
         isOpen={isNotificationOpen}
         notificationText="One or more form fields are invalid. Please check them again."
@@ -177,17 +190,6 @@ const AuthPage: NextPage = () => {
       </S.FormWrapper>
     </>
   );
-};
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      meta: {
-        title: "Movie Browser App",
-        description: "Authentication form for user to authenticate",
-      },
-    },
-  };
 };
 
 export default AuthPage;
