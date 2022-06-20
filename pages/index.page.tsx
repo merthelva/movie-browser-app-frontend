@@ -30,10 +30,12 @@ const Index: NextPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  const isLoaded =
-    moviesStatus === Status.LOADED || genresStatus === Status.LOADED;
+  const isLoading =
+    moviesStatus === Status.LOADING ||
+    genresStatus === Status.LOADING ||
+    moviesPerPage.length === 0;
 
-  return !isLoaded ? (
+  return isLoading ? (
     <>
       <SEOHead metaProps={pageMetaProps} />
       <Spinner thickness={6} />
