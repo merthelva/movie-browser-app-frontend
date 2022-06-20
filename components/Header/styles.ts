@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Breakpoints, ZIndices } from "lib/constants";
 
 import * as TextStyles from "../Text/styles";
+import * as ButtonStyles from "../Button/styles";
 import * as ContainerStyles from "../Container/styles";
 
 const Header = styled.header`
@@ -45,6 +46,10 @@ const LogoWrapper = styled.div`
 const NavLinksWrapper = styled.nav`
   display: none;
 
+  & > ${ButtonStyles.Button} ${TextStyles.Text} {
+    font-size: 14px;
+  }
+  
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     display: flex;
     align-items: center;

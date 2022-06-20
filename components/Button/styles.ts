@@ -63,7 +63,8 @@ const ButtonTypeStyles = {
 };
 
 const Button = styled.button<IWrapperProps>`
-  font-weight: var(--fw-semi);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
   border-radius: 4px;
   ${({ size }) => ButtonSizeStyles[size]};
   ${({ kind }) => ButtonTypeStyles[kind]};

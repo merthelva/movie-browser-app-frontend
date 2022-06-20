@@ -40,6 +40,7 @@ const ActionItemWrapper = styled.div`
       margin-left: var(--spacing-2x);
       color: ${({ theme }) => theme.colors.secondary};
       font-weight: var(--fw-semi);
+      font-size: 14px;
     }
   }
 `;

@@ -19,7 +19,8 @@ const FormWrapper = styled.form<IFormWrapperProps>`
 
     ${TextStyles.Text} {
       margin-left: ${({ isLoading }) =>
-        isLoading ? "var(--spacing-4x)" : "0"};
+    isLoading ? "var(--spacing-4x)" : "0"};
+    font-size: 14px;
     }
   }
 `;
@@ -27,7 +28,7 @@ const FormWrapper = styled.form<IFormWrapperProps>`
 const SwitchModeWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 
   & > ${TextStyles.Text} {
     font-size: 14px;
@@ -38,6 +39,7 @@ const SwitchModeWrapper = styled.div`
 
   & > ${ButtonStyles.Button} ${TextStyles.Text} {
     color: ${({ theme }) => theme.colors.primary};
+    font-size: 15px;
   }
 `;
 

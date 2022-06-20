@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   margin: auto;
 
   @media (min-width: ${Breakpoints.TABLET_MINI
-      .MIN}px) and (max-width: ${Breakpoints.TABLET.MIN}px) {
+    .MIN}px) and (max-width: ${Breakpoints.TABLET.MIN}px) {
     padding: 0 var(--spacing-32x);
   }
 `;
@@ -54,6 +54,7 @@ const Content = styled.div<IContentProps>`
 
     ${TextStyles.Text} {
       margin-left: ${({ isLoading }) => (isLoading ? "var(--spacing-2x)" : 0)};
+      font-size: 14px;
     }
   }
 

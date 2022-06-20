@@ -4,6 +4,7 @@ import { Breakpoints, ZIndices } from "lib/constants";
 
 import { IWrapperProps } from "./props.interface";
 
+import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 import * as NavLinkStyles from "../NavLink/styles";
 
@@ -32,6 +33,10 @@ const Drawer = styled.div<IWrapperProps>`
 
   ${ButtonStyles.Button}:last-of-type {
     width: 100%;
+
+    ${TextStyles.Text} {
+      font-size: 14px;
+    }
   }
 
   @media (min-width: ${Breakpoints.MOBILE.MAX}px) {
