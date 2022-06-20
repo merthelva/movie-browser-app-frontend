@@ -9,6 +9,10 @@ import { AppPropsWithLayout } from "./app.types";
 import { GlobalStyles, ThemeProvider, Variables } from "../globals";
 import { SEOHead } from "../components";
 
+// in order to import fonts, https://fontsource.org/docs/guides/nextjs is used as suggested in
+// https://stackoverflow.com/questions/69388400/nextjs-google-font-is-not-loading-or-displaying-on-the-website
+import "@fontsource/acme";
+
 function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
   // Use the layout defined at the page level, if available
   const getLayout =
