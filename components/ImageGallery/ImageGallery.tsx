@@ -10,10 +10,8 @@ import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 const ImageGallery: React.FC<IProps> = ({ imageSources }) => {
   // FIXME: since "placeholder" and "blurDataUrl" props for next/image component are not working as
   // expected here, between image transitions in ImageGallery component, there occurs an empty space
-  // and it is quite bad in terms of UX. In order to solve this issue temporarily,"loading" property
-  // is set to "eager" in Line-... as the last resort, but as documented in the official docs, "eager"
-  // value disables the lazy loading of images and this increases the bandwidth unnecessarily. However,
-  // as soon as a more proper solution is found, it will be implemented as required.
+  // and it is quite bad in terms of UX. Unfortunately, this problem can not be solved for the time
+  // being, however as soon as a proper solution is found, it will be implemented as required.
   const [imageIndex, toPrevImage, toNextImage] = useImageGallery(imageSources);
 
   return (
@@ -31,8 +29,9 @@ const ImageGallery: React.FC<IProps> = ({ imageSources }) => {
             <S.GalleryImage
               alt={src}
               layout="fill"
+              /* placeholder="blur"
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" */
               src={`https://image.tmdb.org/t/p/original/${imageSources[imageIndex]}`}
-              loading="eager"
             />
           </S.ImageWrapper>
         ))}
