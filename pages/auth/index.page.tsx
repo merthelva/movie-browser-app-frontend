@@ -178,7 +178,11 @@ const AuthPage: NextPage = () => {
           <Text>{authMode === AuthMode.SIGNUP ? "SIGNUP" : "LOGIN"}</Text>
         </Button>
         <S.SwitchModeWrapper>
-          <Text>Already have an account? </Text>
+          <Text>
+            {authMode === AuthMode.SIGNUP
+              ? "Already have an account?"
+              : "Don't have an account yet?"}
+          </Text>
           <Button
             kind={ButtonType.GHOST}
             size={ButtonSize.NOSPACE}
