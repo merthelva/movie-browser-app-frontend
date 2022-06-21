@@ -11,7 +11,7 @@ const baseInputStyles = css`
   &::placeholder {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: currentColor;
+    color: ${({ theme }) => theme.colors.gray500};
   }
 `;
 
@@ -80,7 +80,7 @@ const Input = styled.input<IInputProps>`
       : InputVariantStyles[InputVariants.TRANSPARENT]};
   border: 1px solid
     ${({ hasError, theme }) =>
-      hasError ? theme.colors.error : theme.colors.white};
+    hasError ? theme.colors.error : theme.colors.white};
   height: ${({ size }) => size || 32}px;
 `;
 
@@ -89,7 +89,7 @@ const TextArea = styled.textarea<IInputProps>`
   resize: none;
   border: 1px solid
     ${({ hasError, theme }) =>
-      hasError ? theme.colors.error : theme.colors.white};
+    hasError ? theme.colors.error : theme.colors.white};
 `;
 
 const ErrorMessage = styled.span`
