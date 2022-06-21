@@ -39,7 +39,7 @@ const SwitchModeWrapper = styled.div`
 
   & > ${ButtonStyles.Button} ${TextStyles.Text} {
     color: ${({ theme }) => theme.colors.primary};
-    font-size: 15px;
+    font-size: 14px;
   }
 `;
 
