@@ -1,13 +1,21 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { NextPage } from "next";
 
 import * as S from "./styles";
 
-import { Status } from "lib/constants";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { MovieCard, SEOHead, Spinner, Paginate } from "components";
 import { MoviesActions, MoviesSelectors } from "store/slices/movies";
 import { GenresActions, GenresSelectors } from "store/slices/genres";
+import { Colors, InputSize, InputType, Status, SvgIcon } from "lib/constants";
+import {
+  Icon,
+  Input,
+  MovieCard,
+  SEOHead,
+  Spinner,
+  Paginate,
+  Text,
+} from "components";
 
 const pageMetaProps = {
   title: "Movie Browser App",
@@ -24,6 +32,24 @@ const Index: NextPage = () => {
   const genresStatus = useAppSelector(GenresSelectors.makeSelectGenresStatus);
   const genres = useAppSelector(GenresSelectors.makeSelectGenres);
 
+  const [searchedMovieTitle, setSearchedMovieTitle] = useState<string>("");
+  const [isFilterApplied, setIsFilterApplied] = useState<boolean>(false);
+
+  const handleInputValueChange = useCallback((event: React.FormEvent) => {
+    const { value } = event.target as HTMLInputElement;
+    setSearchedMovieTitle(value);
+    if (value.trim().length !== 0) return setIsFilterApplied(true);
+    setIsFilterApplied(false);
+  }, []);
+
+  const displayedMovieListPerPage = useMemo(() => {
+    return !isFilterApplied
+      ? moviesPerPage
+      : moviesPerPage.filter((movie: any) =>
+          movie.title.toLowerCase().includes(searchedMovieTitle.toLowerCase())
+        );
+  }, [isFilterApplied, moviesPerPage, searchedMovieTitle]);
+
   useEffect(() => {
     dispatch(GenresActions.fetchGenresRequest());
     dispatch(MoviesActions.fetchMoviesPerPageRequest(currentPage));
@@ -35,29 +61,51 @@ const Index: NextPage = () => {
     genresStatus === Status.LOADING ||
     moviesPerPage.length === 0;
 
-  return isLoading ? (
+  const renderLoadingContent = (
     <>
       <SEOHead metaProps={pageMetaProps} />
       <Spinner thickness={6} />
     </>
-  ) : (
+  );
+
+  const renderNoMovieContent = (
+    <S.NoMovieContainer>
+      <Icon name={SvgIcon.INFO} color={Colors.INFO} size={24} />
+      <Text>No movie is found with searched title.</Text>
+    </S.NoMovieContainer>
+  );
+
+  const renderPageContent = (
     <>
       <SEOHead metaProps={pageMetaProps} />
+      <Input
+        id="movieTitle"
+        onChange={handleInputValueChange}
+        placeholder="Search movie by title..."
+        size={InputSize.MEDIUM}
+        type={InputType.EMAIL}
+        value={searchedMovieTitle}
+      />
       <S.Wrapper>
-        {moviesPerPage.map((movie: any) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            coverImageSrc={movie.poster_path}
-            genres={movie.genre_ids.map((id: number) => genres[id].name)}
-            rate={movie.vote_average}
-            title={movie.title}
-          />
-        ))}
+        {displayedMovieListPerPage.length === 0
+          ? renderNoMovieContent
+          : displayedMovieListPerPage.map((movie: any) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                coverImageSrc={movie.poster_path}
+                genres={movie.genre_ids.map((id: number) => genres[id].name)}
+                hasFilter={isFilterApplied}
+                rate={movie.vote_average}
+                title={movie.title}
+              />
+            ))}
       </S.Wrapper>
       <Paginate currentPage={currentPage} />
     </>
   );
+
+  return isLoading ? renderLoadingContent : renderPageContent;
 };
 
 export default Index;
