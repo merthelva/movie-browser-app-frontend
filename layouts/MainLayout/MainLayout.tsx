@@ -23,7 +23,7 @@ const MainLayout: React.FC<IProps> = ({ children }) => {
 
   const handleLogoutUser = () => {
     dispatch(UserActions.logoutRequest());
-    router.replace("/");
+    router.replace("/auth");
   };
 
   return (
