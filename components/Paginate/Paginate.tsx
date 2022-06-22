@@ -156,7 +156,7 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
       <S.Pagination>{paginationContent}</S.Pagination>
       <Button
         aria-label="Next page"
-        disabled={currentPage === 1}
+        disabled={currentPage === totalPages}
         kind={ButtonType.GHOST}
         onClick={handleGoToNextPage}
         size={ButtonSize.NOSPACE}
