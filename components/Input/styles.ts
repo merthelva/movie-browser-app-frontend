@@ -58,6 +58,13 @@ const ClearButtonWrapper = styled.div<IWrapperProps>`
   right: var(--spacing-2x);
 `;
 
+const ToggleVisibilityButtonWrapper = styled.div<IWrapperProps>`
+  position: absolute;
+  bottom: ${({ size }) => (size ? size / 2 - 12 : 4)}px;
+  right: ${({ hasValue }) => hasValue ? "var(--spacing-14x)" : "var(--spacing-2x)"};
+  transition: right .25s;
+`;
+
 const LabelWrapper = styled.div<IWrapperProps>`
   display: flex;
   align-items: center;
@@ -102,6 +109,7 @@ export {
   Wrapper,
   InputWrapper,
   ClearButtonWrapper,
+  ToggleVisibilityButtonWrapper,
   LabelWrapper,
   Label,
   Input,

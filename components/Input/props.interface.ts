@@ -17,6 +17,7 @@ export interface IProps {
 
 export interface IWrapperProps {
   size?: InputSize;
+  hasValue?: boolean;
 }
 
 export interface IInputProps {
