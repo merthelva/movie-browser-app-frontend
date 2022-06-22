@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { MoviesActions, IInitialState } from ".";
 
@@ -29,6 +29,9 @@ const moviesSlice = createSlice({
         state.page--;
       }
     },
+    goToSelectedPage(state, action: PayloadAction<number>) {
+      state.page = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -42,7 +45,7 @@ const moviesSlice = createSlice({
       .addCase(MoviesActions.fetchMoviesPerPageSuccess, (state, action) => {
         state.status = Status.LOADED;
         state.moviesPerPage = action.payload.movies;
-        state.totalPages = action.payload.totalPages;
+        state.totalPages = 500; // even if API response gives 34007 as "total_pages", TMDB API allows fetching movies up to page = 500.
       })
       .addCase(MoviesActions.fetchMoviesPerPageFailed, (state, action) => {
         state.status = Status.FAILED;
@@ -53,5 +56,5 @@ const moviesSlice = createSlice({
   },
 });
 
-export const { goToNextPage, goToPrevPage } = moviesSlice.actions;
+export const { goToNextPage, goToPrevPage, goToSelectedPage } = moviesSlice.actions;
 export default moviesSlice.reducer;
