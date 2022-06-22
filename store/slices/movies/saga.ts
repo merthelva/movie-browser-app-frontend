@@ -14,7 +14,7 @@ function* fetchMoviesStarterSaga(action: IFetchMoviesRequestAction) {
   });
 
   if (response.status === 200) {
-    yield put(MoviesActions.fetchMoviesPerPageSuccess(response.data));
+    yield put(MoviesActions.fetchMoviesPerPageSuccess(response.data.results));
   } else {
     yield put(MoviesActions.fetchMoviesPerPageFailed(response));
   }

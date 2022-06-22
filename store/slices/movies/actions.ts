@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-import { goToNextPage, goToPrevPage } from "./moviesSlice";
+import { goToNextPage, goToPrevPage, goToSelectedPage } from "./moviesSlice";
 
 export const fetchMoviesPerPageRequest = createAction(
   "movies/fetchMoviesPerPageRequest",
@@ -15,11 +15,10 @@ export const fetchMoviesPerPageRequest = createAction(
 
 export const fetchMoviesPerPageSuccess = createAction(
   "movies/fetchMoviesPerPageSuccess",
-  function prepare({ results, total_pages }) {
+  function prepare(movies) {
     return {
       payload: {
-        movies: results,
-        totalPages: total_pages,
+        movies,
       },
     };
   }
@@ -37,4 +36,4 @@ export const fetchMoviesPerPageFailed = createAction(
   }
 );
 
-export { goToNextPage, goToPrevPage };
+export { goToNextPage, goToPrevPage, goToSelectedPage };
