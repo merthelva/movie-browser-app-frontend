@@ -17,6 +17,11 @@ export const makeSelectCurrentPage = createSelector(
   ({ page }) => page
 );
 
+export const makeSelectTotalPages = createSelector(
+  selectMovies,
+  ({ totalPages }) => totalPages
+);
+
 export const makeSelectMoviesError = createSelector(
   selectMovies,
   ({ error }) => ({ message: error.message, statusCode: error.statusCode })
