@@ -11,17 +11,16 @@ import { useAppDispatch } from "hooks";
 import { MoviesActions } from "store/slices/movies";
 import { ButtonSize, ButtonType, Colors, SvgIcon } from "lib/constants";
 
-const paginationStart = [1, 2, 3, 4, 5, 6];
+const paginationStart = [1, 2, 3, 4];
 
 const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
   const dispatch = useAppDispatch();
   const paginationEnd = useMemo(() => {
     return [
-      totalPages - 4,
-      totalPages - 3,
-      totalPages - 2,
-      totalPages - 1,
-      totalPages,
+      totalPages - 3, // 497
+      totalPages - 2, // 498
+      totalPages - 1, // 499
+      totalPages, // 500
     ];
   }, [totalPages]);
 
@@ -32,7 +31,7 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
 
   let paginationContent = (
     <>
-      {paginationStart.slice(0, 3).map((page) => (
+      {paginationStart.map((page) => (
         <Button
           key={page}
           kind={ButtonType.GHOST}
@@ -45,7 +44,7 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
         </Button>
       ))}
       <Text>...</Text>
-      {paginationEnd.slice(2, paginationEnd.length).map((page) => (
+      {paginationEnd.slice(2, paginationStart.length).map((page) => (
         <Button
           key={page}
           kind={ButtonType.GHOST}
@@ -60,42 +59,15 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
     </>
   );
 
-  if (currentPage >= 4 && currentPage <= 6) {
-    paginationContent = (
-      <>
-        {paginationStart.map((page) => (
-          <Button
-            key={page}
-            kind={ButtonType.GHOST}
-            onClick={handleGoToSelectedPage.bind(this, page)}
-            size={ButtonSize.NOSPACE}
-          >
-            <S.PageNumberText isActive={currentPage === page}>
-              {page}
-            </S.PageNumberText>
-          </Button>
-        ))}
-        <Text>...</Text>
-        {paginationEnd.slice(2, paginationEnd.length).map((page) => (
-          <Button
-            key={page}
-            kind={ButtonType.GHOST}
-            onClick={handleGoToSelectedPage.bind(this, page)}
-            size={ButtonSize.NOSPACE}
-          >
-            <S.PageNumberText isActive={currentPage === page}>
-              {page}
-            </S.PageNumberText>
-          </Button>
-        ))}
-      </>
-    );
-  } else if (currentPage >= 7 && currentPage <= totalPages - 5) {
+  if (
+    currentPage >= paginationStart.length + 1 &&
+    currentPage <= totalPages - paginationStart.length
+  ) {
     const paginationMiddle = [currentPage - 1, currentPage, currentPage + 1];
 
     paginationContent = (
       <>
-        {paginationStart.slice(0, 3).map((page) => (
+        {paginationStart.slice(0, 2).map((page) => (
           <Button
             key={page}
             kind={ButtonType.GHOST}
@@ -121,7 +93,7 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
           </Button>
         ))}
         <Text>...</Text>
-        {paginationEnd.slice(2, paginationEnd.length).map((page) => (
+        {paginationEnd.slice(2, paginationStart.length).map((page) => (
           <Button
             key={page}
             kind={ButtonType.GHOST}
@@ -135,10 +107,13 @@ const Paginate: React.FC<IProps> = ({ currentPage, totalPages }) => {
         ))}
       </>
     );
-  } else if (currentPage >= totalPages - 4 && currentPage <= totalPages) {
+  } else if (
+    currentPage >= totalPages - (paginationStart.length - 1) &&
+    currentPage <= totalPages
+  ) {
     paginationContent = (
       <>
-        {paginationStart.slice(0, 3).map((page) => (
+        {paginationStart.slice(0, 2).map((page) => (
           <Button
             key={page}
             kind={ButtonType.GHOST}
