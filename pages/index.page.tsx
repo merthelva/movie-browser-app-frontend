@@ -43,13 +43,11 @@ const Index: NextPage = () => {
     setIsFilterApplied(false);
   }, []);
 
-  const displayedMovieListPerPage = useMemo(() => {
-    return !isFilterApplied
-      ? moviesPerPage
-      : moviesPerPage.filter((movie: any) =>
-          movie.title.toLowerCase().includes(searchedMovieTitle.toLowerCase())
-        );
-  }, [isFilterApplied, moviesPerPage, searchedMovieTitle]);
+  const displayedMovieListPerPage = !isFilterApplied
+    ? moviesPerPage
+    : moviesPerPage.filter((movie: any) =>
+        movie.title.toLowerCase().includes(searchedMovieTitle.toLowerCase())
+      );
 
   useEffect(() => {
     dispatch(GenresActions.fetchGenresRequest());
