@@ -16,6 +16,7 @@ const Variables = createGlobalStyle`
     --spacing-6x: calc(var(--spacing-1x) * 6);
     --spacing-8x: calc(var(--spacing-1x) * 8);
     --spacing-12x: calc(var(--spacing-1x) * 12);
+    --spacing-14x: calc(var(--spacing-1x) * 14);
     --spacing-16x: calc(var(--spacing-1x) * 16);
     --spacing-24x: calc(var(--spacing-1x) * 24);
     --spacing-32x: calc(var(--spacing-1x) * 32);
