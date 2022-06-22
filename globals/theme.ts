@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
     light: "#EEEEEE",
     white: "#FFFFFF",
     shadow: "#D8F0EE",
-    gray500: "#53BAC2",
+    gray500: "#697488",
     error: "#CC4343",
     warning: "#FFCC00",
     success: "#15BF31",

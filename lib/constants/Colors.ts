@@ -5,7 +5,7 @@ enum Colors {
   LIGHT = "#EEEEEE",
   WHITE = "#FFFFFF",
   SHADOW = "#D8F0EE",
-  GRAY500 = "#53BAC2",
+  GRAY500 = "#697488",
   ERROR = "#CC4343",
   WARNING = "#FFCC00",
   SUCCESS = "#15BF31",
