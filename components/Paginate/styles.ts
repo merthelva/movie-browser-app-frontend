@@ -1,41 +1,55 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import * as ButtonStyles from "../Button/styles";
+import { IPageNumberText } from './props.interface'
+
 import * as TextStyles from "../Text/styles";
+import * as ButtonStyles from "../Button/styles";
 
-const Paginate = styled.div`
+import { Breakpoints } from "lib/constants";
+
+const activePageNumberStyle = css`
+  padding: var(--spacing-2x);
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.dark};
+  font-weight: var(--fw-bold);
+  border-radius: 4px;
+`;
+
+const inactivePageNumberStyle = css`
+  color: ${({ theme }) => theme.colors.light};
+  font-weight: var(--fw-bold);
+`;
+
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & > ${TextStyles.Text} {
-    padding: var(--spacing-2x) var(--spacing-4x);
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.dark};
-    font-weight: var(--fw-bold);
-    border-radius: 4px;
-  }
-
-  /* ${ButtonStyles.Button}:nth-of-type(2) {
-    padding: var(--spacing-4x);
-    background-color: ${({ theme }) => theme.colors.primary};
-
-    ${TextStyles.Text} {
-      color: ${({ theme }) => theme.colors.dark};
-      font-weight: var(--fw-bold);
-      font-size: 18px;
-    }
-  } */
+  height: 40px;
 `;
 
-const ButtonWrapper = styled.div`
+const Pagination = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  height: 100%;
+  width: 450px;
+  overflow-x: scroll;
 
-  ${TextStyles.Text} {
-    font-weight: var(--fw-normal);
-    color: ${({ theme }) => theme.colors.primary};
+  ${ButtonStyles.Button} {
+    margin: 0 var(--spacing-6x);
   }
+
+  @media (min-width: ${Breakpoints.MOBILE.MIN + 75}px) {
+    justify-content: space-around;
+  }
+
+@media (min-width: ${Breakpoints.MOBILE.MAX}px) {
+  overflow-x: hidden;
+}
 `;
 
-export { Paginate, ButtonWrapper };
+const PageNumberText = styled.span<IPageNumberText>`
+  ${({ isActive }) => isActive ? activePageNumberStyle : inactivePageNumberStyle};
+`;
+
+export { Wrapper, Pagination, PageNumberText }
