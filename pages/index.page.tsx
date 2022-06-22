@@ -28,6 +28,7 @@ const Index: NextPage = () => {
 
   const moviesStatus = useAppSelector(MoviesSelectors.makeSelectMoviesStatus);
   const moviesPerPage = useAppSelector(MoviesSelectors.makeSelectMoviesPerPage);
+  const totalPages = useAppSelector(MoviesSelectors.makeSelectTotalPages);
   const currentPage = useAppSelector(MoviesSelectors.makeSelectCurrentPage);
   const genresStatus = useAppSelector(GenresSelectors.makeSelectGenresStatus);
   const genres = useAppSelector(GenresSelectors.makeSelectGenres);
@@ -101,7 +102,7 @@ const Index: NextPage = () => {
               />
             ))}
       </S.Wrapper>
-      <Paginate currentPage={currentPage} />
+      <Paginate currentPage={currentPage} totalPages={totalPages} />
     </>
   );
 
