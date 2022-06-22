@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     outline: none;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
