@@ -8,7 +8,7 @@ import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 import * as NavLinkStyles from "../NavLink/styles";
 
-const Drawer = styled.div<IWrapperProps>`
+const Drawer = styled.aside<IWrapperProps>`
   position: fixed;
   top: 0;
   right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
