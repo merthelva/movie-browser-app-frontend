@@ -94,7 +94,6 @@ const Index: NextPage = () => {
                 id={movie.id}
                 coverImageSrc={movie.poster_path}
                 genres={movie.genre_ids.map((id: number) => genres[id]?.name)}
-                hasFilter={isFilterApplied}
                 rate={movie.vote_average}
                 title={movie.title}
               />
