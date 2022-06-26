@@ -36,8 +36,6 @@ There are a couple of minor issues that should be worth noted here:
 
 - Sometimes when first run the application on browser (or mobile), after clicking a movie detail card in landing page and clicking "Add to Watchlist" button, a network request may take a bit longer time than expected and loading spinner is on action a bit long. It may mislead the user that the network request cannot be sent. In that case, please do wait for a little bit of longer period so that the actual UI result will be presented to the user.
 
-- With the [latest comment](https://github.com/merthelva/movie-browser-app-frontend/commit/3476db55f1dcbb19ce2dbbad595c3ed04a0e02f9), search functionality for movies is added. When filtering is applied, the cover image for each movie is fetched in original size instead of *width = 300* size. Hence, the time elapsed for the images to be loaded become longer. Even if [`placeholder`](https://nextjs.org/docs/api-reference/next/image#placeholder) and [`blurDataUrl`](https://nextjs.org/docs/api-reference/next/image#blurdataurl) props are provided for Image component, it still does not work as expected as stated in the first issue above. I am not currently sure that it is something that I am doing wrong or there is an incompatibility in [NextJS Image](https://nextjs.org/docs/api-reference/next/image) component for the latest version.
-
 ##
 
 Hope you will enjoy visiting and testing this application. Please do not hesitate to give any feedback for this application where you think there should be an improvement/change/update/feature. I am open to any kind of contribution for making this application better.
