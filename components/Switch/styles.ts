@@ -10,7 +10,7 @@ const Switch = styled.button<IIndicatorProps>`
   height: 14px;
   outline: 3px solid ${getColor("GRAY500")};
   border-radius: 7px;
-  background-color: ${({ theme, isToggled }) =>
+  background-color: ${({ isToggled }) =>
     isToggled ? getColor("PRIMARY") : getColor("LIGHT")};
   transition: background-color 0.25s;
 `;
@@ -22,7 +22,7 @@ const Indicator = styled.span<IIndicatorProps>`
   width: 14px;
   height: 14px;
   border-radius: 7px;
-  background-color: ${({ theme, isToggled }) =>
+  background-color: ${({ isToggled }) =>
     !isToggled ? getColor("PRIMARY") : getColor("LIGHT")};
   transition: left 0.25s, background-color 0.25s;
 `;
