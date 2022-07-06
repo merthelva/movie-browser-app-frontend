@@ -1,9 +1,10 @@
 import { AppContext, AppInitialProps } from "next/app";
+import NextProgress from "next-progress";
 
 import { END, ISagaStore, wrapper } from "../store";
 import { MainLayout } from "../layouts";
 import { cookie } from "../lib/utilities";
-import { CookieType } from "../lib/constants";
+import { Colors, CookieType } from "../lib/constants";
 import { UserActions } from "../store/slices/user";
 import { AppPropsWithLayout } from "./app.types";
 import { GlobalStyles, ThemeProvider, Variables } from "../globals";
@@ -20,6 +21,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout & AppInitialProps) {
 
   return (
     <>
+      <NextProgress
+        height={5}
+        color={Colors.DARK}
+        options={{ showSpinner: false }}
+      />
       <SEOHead metaProps={{ ...pageProps?.meta }} />
       <Variables />
       <GlobalStyles />
