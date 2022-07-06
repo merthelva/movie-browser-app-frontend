@@ -2,6 +2,8 @@ import styled, { keyframes } from "styled-components";
 
 import { IWrapperProps } from "./props.interface";
 
+import { getColor } from "lib/utilities";
+
 const spin = keyframes`
   from {
     transform: rotate(0deg);
@@ -14,8 +16,7 @@ const spin = keyframes`
 
 const Spinner = styled.span<IWrapperProps>`
   display: inline-block;
-  border: ${({ theme, thickness }) =>
-    `${thickness}px solid ${theme.colors.light}`};
+  border: ${({ thickness }) => `${thickness}px solid ${getColor("LIGHT")}`};
   border-top: ${({ color, thickness }) => `${thickness}px solid ${color}`};
   border-radius: 50%;
   width: ${({ size }) => size}px;

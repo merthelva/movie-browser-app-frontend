@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { getColor } from "lib/utilities";
 import { Breakpoints } from "lib/constants";
 
 import * as TextStyles from "components/Text/styles";
@@ -25,7 +26,7 @@ const NoMovieContainer = styled.div`
   ${TextStyles.Text} {
     font-size: 18px;
     font-weight: var(--fw-bold);
-    color: ${({ theme }) => theme.colors.warning};
+    color: ${getColor("WARNING")};
     margin-left: var(--spacing-4x);
     text-align: left;
   }

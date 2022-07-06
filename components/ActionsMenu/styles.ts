@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { IWrapperProps } from "./props.interface";
 
 import { ZIndices } from "lib/constants";
+import { getColor } from "lib/utilities";
 
 import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
@@ -16,9 +17,9 @@ const ActionsMenu = styled.div<IWrapperProps>`
   grid-row-gap: var(--spacing-4x);
   padding: var(--spacing-4x) var(--spacing-2x);
   min-width: 130px;
-  border: 1px solid ${({ theme }) => theme.colors.gray500};
+  border: 1px solid ${getColor("GRAY500")};
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("LIGHT")};
   transform: ${({ isActive }) =>
     isActive ? "scaleX(100%) scaleY(100%)" : "scaleX(0) scaleY(0)"};
   transform-origin: right top;
@@ -38,7 +39,7 @@ const ActionItemWrapper = styled.div`
 
     ${TextStyles.Text} {
       margin-left: var(--spacing-2x);
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${getColor("SECONDARY")};
       font-weight: var(--fw-semi);
       font-size: 14px;
     }

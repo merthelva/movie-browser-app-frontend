@@ -4,6 +4,7 @@ import styled from "styled-components";
 import * as ButtonStyles from "components/Button/styles";
 import * as TextStyles from "components/Text/styles";
 
+import { getColor } from "lib/utilities";
 import { Breakpoints } from "lib/constants";
 
 import { IContentProps } from "./props.interface";
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
   margin: auto;
 
   @media (min-width: ${Breakpoints.TABLET_MINI
-    .MIN}px) and (max-width: ${Breakpoints.TABLET.MIN}px) {
+      .MIN}px) and (max-width: ${Breakpoints.TABLET.MIN}px) {
     padding: 0 var(--spacing-32x);
   }
 `;
@@ -21,7 +22,7 @@ const Wrapper = styled.div`
 const Details = styled.div`
   overflow: hidden;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.colors.dark};
+  background-color: ${getColor("DARK")};
 `;
 
 const Body = styled.div`
@@ -41,7 +42,7 @@ const Content = styled.div<IContentProps>`
   grid-area: content;
 
   & > ${TextStyles.Text} {
-    color: ${({ theme }) => theme.colors.light};
+    color: ${getColor("LIGHT")};
     font-size: 18px;
     font-weight: var(--fw-thin);
     text-align: left;
@@ -70,7 +71,7 @@ const ContentHeader = styled.div`
   margin-bottom: var(--spacing-8x);
 
   & > ${TextStyles.Text} {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${getColor("PRIMARY")};
     font-weight: var(--fw-bolder);
     font-size: 24px;
     text-align: left;
@@ -83,7 +84,7 @@ const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.dark};
+  background-color: ${getColor("DARK")};
   opacity: 0.6;
   margin: 0 calc(-1 * var(--spacing-12x)) calc(-1 * var(--spacing-12x));
   padding: var(--spacing-4x) var(--spacing-12x);
@@ -119,7 +120,7 @@ const Poster = styled(Image)`
 
 const Actors = styled.div`
   padding: var(--spacing-12x) var(--spacing-8x);
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("LIGHT")};
 `;
 
 const ActorsHeader = styled.div`
@@ -132,7 +133,7 @@ const ActorsHeader = styled.div`
     font-size: 24px;
     font-weight: var(--fw-bold);
     font-family: "Acme", sans-serif;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${getColor("DARK")};
   }
 `;
 
@@ -141,7 +142,7 @@ const SwitchWrapper = styled.div`
   align-items: center;
 
   & > ${TextStyles.Text} {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${getColor("SECONDARY")};
     font-size: 14px;
     margin-left: var(--spacing-4x);
   }

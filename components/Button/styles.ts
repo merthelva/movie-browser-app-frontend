@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 import { IWrapperProps } from "./props.interface";
 
+import { getColor } from "lib/utilities";
 import { ButtonSize, ButtonType } from "lib/constants";
 
 const noSpaceStyle = css`
@@ -33,18 +34,18 @@ const blockStyle = css`
 const ghostStyle = css``;
 
 const primaryStyle = css`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${getColor("PRIMARY")};
+  color: ${getColor("WHITE")};
 `;
 
 const secondaryStyle = css`
-  background-color: ${({ theme }) => theme.colors.dark};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${getColor("DARK")};
+  color: ${getColor("WHITE")};
 `;
 
 const dangerStyle = css`
-  background-color: ${({ theme }) => theme.colors.error};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${getColor("ERROR")};
+  color: ${getColor("WHITE")};
 `;
 
 const ButtonSizeStyles = {

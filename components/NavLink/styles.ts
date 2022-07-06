@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
+import { getColor } from "lib/utilities";
+
 const NavLink = styled.div`
   position: relative;
   cursor: pointer;
@@ -11,7 +13,7 @@ const NavLink = styled.div`
   & > ${TextStyles.Text} {
     font-weight: var(--fw-bold);
     text-align: left;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${getColor("SECONDARY")};
     margin-left: var(--spacing-2x);
   }
 
@@ -23,7 +25,7 @@ const NavLink = styled.div`
     width: 100%;
     height: 3px;
     border-radius: 1.5px;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${getColor("PRIMARY")};
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s;

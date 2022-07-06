@@ -4,22 +4,23 @@ import { IWrapperProps } from "./props.interface";
 
 import * as TextStyles from "../Text/styles";
 
+import { getColor } from "lib/utilities";
 import { NotificationType, ZIndices } from "lib/constants";
 
 const errorStyle = css`
-  border-left: 14px solid ${({ theme }) => theme.colors.error};
+  border-left: 14px solid ${getColor("ERROR")};
 `;
 
 const warningStyle = css`
-  border-left: 14px solid ${({ theme }) => theme.colors.warning};
+  border-left: 14px solid ${getColor("WARNING")};
 `;
 
 const successStyle = css`
-  border-left: 14px solid ${({ theme }) => theme.colors.success};
+  border-left: 14px solid ${getColor("SUCCESS")};
 `;
 
 const infoStyle = css`
-  border-left: 14px solid ${({ theme }) => theme.colors.info};
+  border-left: 14px solid ${getColor("INFO")};
 `;
 
 const NotificationTypeStyles = {
@@ -42,14 +43,14 @@ const Notification = styled.div<IWrapperProps>`
   min-height: 50px;
   border-radius: 4px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("LIGHT")};
   z-index: ${ZIndices.NOTIFICATION};
   transition: transform 0.35s linear;
   ${({ kind }) => (kind ? NotificationTypeStyles[kind] : errorStyle)};
 
   ${TextStyles.Text} {
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${getColor("SECONDARY")};
     margin-left: var(--spacing-2x);
     text-align: left;
   }

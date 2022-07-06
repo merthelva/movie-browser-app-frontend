@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
+import { getColor } from "lib/utilities";
+
 const CharacterDetail = styled.div`
   min-height: 300px;
   width: 150px;
@@ -14,7 +16,7 @@ const Details = styled.div`
   align-items: center;
   min-height: 75px;
   padding: var(--spacing-2x);
-  background-color: ${({ theme }) => theme.colors.gray500};
+  background-color: ${getColor("GRAY500")};
 
   ${TextStyles.Text}:first-of-type {
     font-weight: var(--fw-semi);

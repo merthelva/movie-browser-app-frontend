@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
+import { getColor } from "lib/utilities";
 import { Breakpoints } from "lib/constants";
 
 const flexStyle = css`
@@ -20,8 +21,8 @@ const WatchlistMovie = styled.article`
   padding: var(--spacing-8x);
   border: 1px solid #fff;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.colors.light};
-  box-shadow: var(--shadow) ${({ theme }) => theme.colors.shadow};
+  background-color: ${getColor("LIGHT")};
+  box-shadow: var(--shadow) ${getColor("SHADOW")};
   overflow: hidden;
   min-height: 180px;
 `;
@@ -31,7 +32,7 @@ const Header = styled.div`
   flex: 1;
 
   & > ${TextStyles.Text} {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${getColor("SECONDARY")};
     font-weight: var(--fw-bolder);
     font-size: 20px;
     text-align: left;
@@ -57,7 +58,7 @@ const FooterInfo = styled.div`
   ${TextStyles.Text} {
     font-size: 14px;
     font-weight: var(--fw-semi);
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${getColor("SECONDARY")};
   }
 
   @media (min-width: 480px) and (max-width: 599px) {

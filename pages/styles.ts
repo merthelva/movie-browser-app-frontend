@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
+import { getColor } from "lib/utilities";
 import { Breakpoints } from "lib/constants";
 
-import * as TextStyles from 'components/Text/styles'
+import * as TextStyles from "components/Text/styles";
 
 const Wrapper = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ const NoMovieContainer = styled.div`
   ${TextStyles.Text} {
     font-size: 18px;
     font-weight: var(--fw-bold);
-    color: ${({ theme }) => theme.colors.info};
+    color: ${getColor("INFO")};
     margin-left: var(--spacing-4x);
     text-align: left;
   }

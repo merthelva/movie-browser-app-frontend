@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
+import { IFormWrapperProps } from "./props.interface";
+
 import * as TextStyles from "components/Text/styles";
 import * as ButtonStyles from "components/Button/styles";
 
-import { IFormWrapperProps } from "./props.interface";
+import { getColor } from "lib/utilities";
 
 const FormWrapper = styled.form<IFormWrapperProps>`
-  box-shadow: var(--shadow) ${({ theme }) => theme.colors.shadow};
+  box-shadow: var(--shadow) ${getColor("SHADOW")};
   max-width: 540px;
   margin: 0 auto;
   padding: var(--spacing-8x) var(--spacing-16x);
   border-radius: var(--spacing-4x);
-  background-color: ${({ theme }) => theme.colors.dark};
+  background-color: ${getColor("DARK")};
 
   & > ${ButtonStyles.Button} {
     width: 120px;
@@ -19,8 +21,8 @@ const FormWrapper = styled.form<IFormWrapperProps>`
 
     ${TextStyles.Text} {
       margin-left: ${({ isLoading }) =>
-    isLoading ? "var(--spacing-4x)" : "0"};
-    font-size: 14px;
+        isLoading ? "var(--spacing-4x)" : "0"};
+      font-size: 14px;
     }
   }
 `;
@@ -38,7 +40,7 @@ const SwitchModeWrapper = styled.div`
   }
 
   & > ${ButtonStyles.Button} ${TextStyles.Text} {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${getColor("PRIMARY")};
     font-size: 14px;
   }
 `;

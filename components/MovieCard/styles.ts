@@ -3,14 +3,16 @@ import styled from "styled-components";
 
 import * as TextStyles from "../Text/styles";
 
+import { getColor } from "lib/utilities";
+
 const MovieCard = styled.div`
   border-radius: 4px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 620px;
-  box-shadow: var(--shadow) ${({ theme }) => theme.colors.shadow};
-  background-color: ${({ theme }) => theme.colors.dark};
+  box-shadow: var(--shadow) ${getColor("SHADOW")};
+  background-color: ${getColor("DARK")};
   cursor: pointer;
 
   & > span {

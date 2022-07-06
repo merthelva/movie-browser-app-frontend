@@ -1,22 +1,22 @@
 import styled, { css } from "styled-components";
 
-import { IPageNumberText } from './props.interface'
+import { IPageNumberText } from "./props.interface";
 
-import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 
+import { getColor } from "lib/utilities";
 import { Breakpoints } from "lib/constants";
 
 const activePageNumberStyle = css`
   padding: var(--spacing-2x);
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.dark};
+  background-color: ${getColor("PRIMARY")};
+  color: ${getColor("DARK")};
   font-weight: var(--fw-bold);
   border-radius: 4px;
 `;
 
 const inactivePageNumberStyle = css`
-  color: ${({ theme }) => theme.colors.light};
+  color: ${getColor("LIGHT")};
   font-weight: var(--fw-bold);
 `;
 
@@ -43,13 +43,14 @@ const Pagination = styled.div`
     justify-content: space-around;
   }
 
-@media (min-width: ${Breakpoints.MOBILE.MAX}px) {
-  overflow-x: hidden;
-}
+  @media (min-width: ${Breakpoints.MOBILE.MAX}px) {
+    overflow-x: hidden;
+  }
 `;
 
 const PageNumberText = styled.span<IPageNumberText>`
-  ${({ isActive }) => isActive ? activePageNumberStyle : inactivePageNumberStyle};
+  ${({ isActive }) =>
+    isActive ? activePageNumberStyle : inactivePageNumberStyle};
 `;
 
-export { Wrapper, Pagination, PageNumberText }
+export { Wrapper, Pagination, PageNumberText };

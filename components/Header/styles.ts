@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { Breakpoints, ZIndices } from "lib/constants";
 
 import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 import * as ContainerStyles from "../Container/styles";
+
+import { getColor } from "lib/utilities";
+import { Breakpoints, ZIndices } from "lib/constants";
 
 const Header = styled.header`
   position: fixed;
@@ -13,7 +15,7 @@ const Header = styled.header`
   z-index: ${ZIndices.HEADER};
   height: 60px;
   padding: 0 var(--spacing-8x);
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("LIGHT")};
 
   ${ContainerStyles.Container} {
     display: flex;
@@ -38,7 +40,7 @@ const LogoWrapper = styled.div`
       font-family: "Acme", sans-serif;
       font-size: 24px;
       font-weight: var(--fw-bolder);
-      color: ${({ theme }) => theme.colors.primary};
+      color: ${getColor("PRIMARY")};
     }
   }
 `;
@@ -49,7 +51,7 @@ const NavLinksWrapper = styled.nav`
   & > ${ButtonStyles.Button} ${TextStyles.Text} {
     font-size: 14px;
   }
-  
+
   @media (min-width: ${Breakpoints.TABLET.MIN}px) {
     display: flex;
     align-items: center;

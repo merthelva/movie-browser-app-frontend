@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-import { Breakpoints, ZIndices } from "lib/constants";
-
 import { IWrapperProps } from "./props.interface";
 
 import * as TextStyles from "../Text/styles";
 import * as ButtonStyles from "../Button/styles";
 import * as NavLinkStyles from "../NavLink/styles";
+
+import { getColor } from "lib/utilities";
+import { Breakpoints, ZIndices } from "lib/constants";
 
 const Drawer = styled.aside<IWrapperProps>`
   position: fixed;
@@ -20,7 +21,7 @@ const Drawer = styled.aside<IWrapperProps>`
   transition: right 0.25s linear;
   padding: var(--spacing-24x) var(--spacing-8x) var(--spacing-12x);
   width: 70%;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("LIGHT")};
 
   ${NavLinkStyles.NavLink} {
     margin-bottom: var(--spacing-8x);

@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 import { IInputProps, IWrapperProps } from "./props.interface";
 
+import { getColor } from "lib/utilities";
 import { InputVariants } from "lib/constants";
 
 const baseInputStyles = css`
@@ -11,7 +12,7 @@ const baseInputStyles = css`
   &::placeholder {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.gray500};
+    color: ${getColor("GRAY500")};
   }
 `;
 
@@ -21,13 +22,13 @@ const transparentStyle = css`
 `;
 
 const lightStyle = css`
-  background-color: ${({ theme }) => theme.colors.light};
-  color: ${({ theme }) => theme.colors.dark};
+  background-color: ${getColor("LIGHT")};
+  color: ${getColor("DARK")};
 `;
 
 const darkStyle = css`
-  background-color: ${({ theme }) => theme.colors.dark};
-  color: ${({ theme }) => theme.colors.light};
+  background-color: ${getColor("DARK")};
+  color: ${getColor("LIGHT")};
 `;
 
 const InputVariantStyles = {
@@ -61,8 +62,9 @@ const ClearButtonWrapper = styled.div<IWrapperProps>`
 const ToggleVisibilityButtonWrapper = styled.div<IWrapperProps>`
   position: absolute;
   bottom: ${({ size }) => (size ? size / 2 - 12 : 4)}px;
-  right: ${({ hasValue }) => hasValue ? "var(--spacing-14x)" : "var(--spacing-2x)"};
-  transition: right .25s;
+  right: ${({ hasValue }) =>
+    hasValue ? "var(--spacing-14x)" : "var(--spacing-2x)"};
+  transition: right 0.25s;
 `;
 
 const LabelWrapper = styled.div<IWrapperProps>`
@@ -75,7 +77,7 @@ const LabelWrapper = styled.div<IWrapperProps>`
 const Label = styled.label`
   font-size: 14px;
   font-weight: var(--fw-thin);
-  color: ${({ theme }) => theme.colors.light};
+  color: ${getColor("LIGHT")};
   margin-right: var(--spacing-2x);
 `;
 
@@ -86,8 +88,7 @@ const Input = styled.input<IInputProps>`
       ? InputVariantStyles[variant]
       : InputVariantStyles[InputVariants.TRANSPARENT]};
   border: 1px solid
-    ${({ hasError, theme }) =>
-    hasError ? theme.colors.error : theme.colors.white};
+    ${({ hasError }) => (hasError ? getColor("ERROR") : getColor("WHITE"))};
   height: ${({ size }) => size || 32}px;
 `;
 
@@ -95,14 +96,13 @@ const TextArea = styled.textarea<IInputProps>`
   ${baseInputStyles};
   resize: none;
   border: 1px solid
-    ${({ hasError, theme }) =>
-    hasError ? theme.colors.error : theme.colors.white};
+    ${({ hasError }) => (hasError ? getColor("ERROR") : getColor("WHITE"))};
 `;
 
 const ErrorMessage = styled.span`
   font-weight: var(--fw-semi);
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.error};
+  color: ${getColor("ERROR")};
 `;
 
 export {
