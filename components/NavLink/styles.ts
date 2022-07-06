@@ -19,11 +19,13 @@ const NavLink = styled.div`
     position: absolute;
     content: "";
     left: 0;
-    bottom: 0;
+    bottom: -3px;
+    width: 100%;
     height: 3px;
     border-radius: 1.5px;
     background-color: ${({ theme }) => theme.colors.primary};
     transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.25s;
   }
 
